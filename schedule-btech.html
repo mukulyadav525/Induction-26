@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="B.Tech Induction 2026 Schedule — IIIT Delhi. Full day-by-day programme for the undergraduate track.">
+  <title>B.Tech Schedule — Induction '26 · IIIT Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="schedule" data-track="BTECH">
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<nav class="site-nav is-scrolled" id="site-nav">
+  <div class="nav-brand">
+    <div class="nav-iiid-box">IIID</div>
+    <div class="nav-brand-text">
+      <span class="brand-short">IIIT DELHI</span>
+      <span class="brand-full">INDRAPRASTHA INSTITUTE OF INFORMATION TECHNOLOGY, DELHI</span>
+    </div>
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">← MAIN PAGE</a></li>
+    <li><a href="index.html#about">ABOUT</a></li>
+    <li><a href="index.html#mentorship">MENTORSHIP</a></li>
+    <li><a href="index.html#gallery">GALLERY</a></li>
+    <li><a href="index.html#talks">SPEAKERS</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="track-toggle">
+      <button class="track-btn active" id="nav-btn-btech" onclick="window.location.href='schedule-btech.html'">B.TECH</button>
+      <button class="track-btn" id="nav-btn-pg" onclick="window.location.href='schedule-pg.html'">PG TRACK</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCHEDULE PAGE HEADER
+══════════════════════════════════════════════════════════ -->
+<div class="sched-page-hero">
+  <div class="sched-page-hero-inner">
+    <a class="sched-back-link" href="index.html">← BACK TO MAIN PAGE</a>
+    <div class="sched-page-eyebrow">SECTION 04 ·············· FILE / ITINERARY</div>
+    <h1 class="sched-page-title">B.TECH<br>INDUCTION SCHEDULE</h1>
+    <p class="sched-page-sub">UNDERGRADUATE TRACK · INDUCTION 2026 · CLASS OF 2030</p>
+    <div class="sched-page-meta-row">
+      <span class="spm-badge">LIVE SYNC</span>
+      <span class="spm-text">Schedule syncs automatically from the master sheet · Last refreshed: <span id="last-refreshed">—</span></span>
+      <button class="refresh-btn" onclick="refreshSchedule()" title="Pull latest from Google Sheet">
+        <span id="refresh-icon">↻</span>&nbsp;SYNC
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     LIVE NOW BAR
+══════════════════════════════════════════════════════════ -->
+<div class="live-bar" id="live-bar">
+  <div class="live-pill">
+    <span class="live-dot"></span>LIVE NOW
+  </div>
+  <div class="live-content-area" id="live-content">
+    <span class="live-placeholder">Connecting to archive...</span>
+  </div>
+  <div class="live-time-badge" id="live-time"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FULL SCHEDULE
+══════════════════════════════════════════════════════════ -->
+<section class="sec-schedule sched-page-body sched-blocks-body" id="schedule">
+  <div class="container">
+
+    <!-- Day blocks (built by JS — one block per day, e.g. 5 for B.Tech) -->
+    <div id="schedule-body">
+      <div class="sched-loader">
+        <div class="sched-loader-text">ACCESSING CLASSIFIED FILES...</div>
+        <div class="sched-loader-bar"><div class="sched-loader-fill"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-top-strip">
+    <span>B.TECH INDUCTION 2026</span><span class="mq-sep">✦</span>
+    <span>CLASS OF 2030</span><span class="mq-sep">✦</span>
+    <span>IIIT DELHI</span><span class="mq-sep">✦</span>
+    <span>UNDERGRADUATE TRACK</span>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-iiid">IIID</div>
+      <div class="footer-name">INDRAPRASTHA INSTITUTE OF<br>INFORMATION TECHNOLOGY, DELHI</div>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-col">
+        <span class="footer-col-label">SECTIONS</span>
+        <a href="index.html">MAIN PAGE</a>
+        <a href="index.html#about">ABOUT</a>
+        <a href="index.html#gallery">GALLERY</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-label">MORE</span>
+        <a href="index.html#mentorship">MENTORSHIP</a>
+        <a href="index.html#info">INFO</a>
+        <a href="schedule-pg.html">PG SCHEDULE ↗</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-label">SUPPORT</span>
+        <a href="contact.html">CONTACT ↗</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>INDUCTION 2026 — IIIT DELHI — BATCH 2026-2030</span>
+    <span>DOC ID: IND26-2030 · B.TECH TRACK · CONFIDENTIAL WHEN PRINTED</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
