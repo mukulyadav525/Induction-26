@@ -21,7 +21,7 @@ const CONFIG = {
   SHEET_CSV_BTECH: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTo8vcV5AylXmwn6YygKmL_QTFLrYA-npf5PnTB_2VnUBg6TOT5isJnKCt_Cx_cHCDS2WtJHbt7prZA/pub?output=csv',
   SHEET_CSV_PG:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTo8vcV5AylXmwn6YygKmL_QTFLrYA-npf5PnTB_2VnUBg6TOT5isJnKCt_Cx_cHCDS2WtJHbt7prZA/pub?output=csv',
   ONE_SHEET:       true,
-  INDUCTION_START: new Date('2026-08-25T09:00:00+05:30'),
+  INDUCTION_START: new Date('2026-07-17T09:00:00+05:30'),
   REFRESH_EVERY_MS: 3 * 60 * 1000,
 };
 
