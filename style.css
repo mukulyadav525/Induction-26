@@ -63,6 +63,11 @@ body {
   border-bottom: var(--border);
 }
 
+.nav-logo {
+    height: 50px;
+    width: auto;
+}
+
 .nav-brand { display: flex; align-items: center; gap: 12px; }
 .nav-iiid-box {
   font-family: var(--ff-disp);
