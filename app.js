@@ -18,7 +18,7 @@
 
 // ── CONFIG ───────────────────────────────────────────────────────
 const CONFIG = {
-  SHEET_CSV_BTECH: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTo8vcV5AylXmwn6YygKmL_QTFLrYA-npf5PnTB_2VnUBg6TOT5isJnKCt_Cx_cHCDS2WtJHbt7prZA/pub?output=csv',
+  SHEET_CSV_BTECH: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSat0Ps3z_x75VHF5QkAGJmvuL-T_OeBwBL3k60eMPi2jBV9Lw0gmFGr_oUO7nWB2Ra6JRvXgYDbYe9/pub?output=csv',
   SHEET_CSV_PG:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSat0Ps3z_x75VHF5QkAGJmvuL-T_OeBwBL3k60eMPi2jBV9Lw0gmFGr_oUO7nWB2Ra6JRvXgYDbYe9/pub?output=csv',
   ONE_SHEET:       true,
   INDUCTION_START: new Date('2026-07-17T09:00:00+05:30'),
@@ -53,6 +53,17 @@ function pad(n) { return String(n).padStart(2, '0'); }
 
 function parseTime(timeStr, dateStr) {
   if (!timeStr) return null;
+  // Google Sheets sometimes exports time as a decimal fraction of a day (e.g. 0.39930555 = 9:35 AM)
+  const asNum = parseFloat(timeStr);
+  if (!isNaN(asNum) && asNum > 0 && asNum < 1) {
+    const totalMins = Math.round(asNum * 24 * 60);
+    const h = Math.floor(totalMins / 60);
+    const min = totalMins % 60;
+    const base = (dateStr && /^\d{4}-\d{2}-\d{2}$/.test(dateStr))
+      ? new Date(dateStr + 'T00:00:00')
+      : new Date();
+    return new Date(base.getFullYear(), base.getMonth(), base.getDate(), h, min, 0);
+  }
   const m = timeStr.trim().toUpperCase().match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?/);
   if (!m) return null;
   let h = parseInt(m[1], 10);
@@ -64,6 +75,38 @@ function parseTime(timeStr, dateStr) {
     ? new Date(dateStr + 'T00:00:00')
     : new Date();
   return new Date(base.getFullYear(), base.getMonth(), base.getDate(), h, min, 0);
+}
+
+// Returns a clean "H:MM AM/PM" string for display regardless of CSV format
+function formatTimeDisplay(timeStr) {
+  if (!timeStr || /^tba$/i.test(timeStr.trim())) return null;
+  const d = parseTime(timeStr, null);
+  if (!d) return timeStr; // fallback to raw string
+  const h24 = d.getHours();
+  const min = d.getMinutes();
+  const ampm = h24 >= 12 ? 'PM' : 'AM';
+  const h12 = h24 % 12 || 12;
+  return `${h12}:${pad(min)} ${ampm}`;
+}
+
+// ── TYPE COLOR CHIPS ─────────────────────────────────────────────
+const TYPE_COLORS = {
+  TALK:        { bg: '#c8f135', fg: '#1a1a1a' },
+  KEYNOTE:     { bg: '#c8f135', fg: '#1a1a1a' },
+  WORKSHOP:    { bg: '#e85d04', fg: '#ffffff' },
+  CULTURAL:    { bg: '#9d4edd', fg: '#ffffff' },
+  ADMIN:       { bg: '#3a86ff', fg: '#ffffff' },
+  ORIENTATION: { bg: '#3a86ff', fg: '#ffffff' },
+  SPORTS:      { bg: '#06d6a0', fg: '#1a1a1a' },
+  MEAL:        { bg: '#fb5607', fg: '#ffffff' },
+  BREAK:       { bg: '#444444', fg: '#ffffff' },
+  TOUR:        { bg: '#118ab2', fg: '#ffffff' },
+  LECTURE:     { bg: '#c8f135', fg: '#1a1a1a' },
+  CEREMONY:    { bg: '#9d4edd', fg: '#ffffff' },
+};
+const DEFAULT_TYPE_COLOR = { bg: '#555555', fg: '#ffffff' };
+function typeColor(type) {
+  return TYPE_COLORS[(type || '').toUpperCase().trim()] || DEFAULT_TYPE_COLOR;
 }
 
 // ── UNIQUE HELPERS ───────────────────────────────────────────────
@@ -200,10 +243,13 @@ function renderScheduleBlocks(rows) {
       }
       if (isLive) { badgeClass = 'dbe-badge--live'; badgeText = '● LIVE'; }
 
+      const tc = type ? typeColor(type) : null;
       return `
-        <div class="dbe-row${noEvent ? ' is-pending' : ''}">
-          <div class="dbe-time${isTBA ? ' is-tba' : ''}">${time || '—'}</div>
+        <div class="dbe-row${noEvent ? ' is-pending' : ''}${isLive ? ' is-live-row' : ''}"
+             style="border-left: 4px solid ${isLive ? '#c8f135' : (tc ? tc.bg : 'transparent')}">
+          <div class="dbe-time${isTBA ? ' is-tba' : ''}">${formatTimeDisplay(time) || '—'}</div>
           <div class="dbe-info">
+            ${tc ? `<span class="dbe-type-chip" style="background:${tc.bg};color:${tc.fg}">${type}</span>` : ''}
             <div class="dbe-name${noEvent ? ' is-tba' : ''}">${noEvent ? 'Details to be announced' : escHtml(event)}</div>
             ${venue ? `<div class="dbe-venue">${escHtml(venue)}</div>` : ''}
           </div>
