@@ -50,8 +50,8 @@
      HERO — FULL VIEWPORT
 ══════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <!-- Drop a campus photo at photos/campus/hero-bg.jpg — it will appear here, faded and vignetted into the paper background -->
-  <div class="hero-bg-photo" aria-hidden="true"></div>
+  <!-- HERO BACKGROUND — drop your photo into photos/hero/ and set the name below -->
+  <div class="hero-bg-photo" aria-hidden="true" style="background-image: url('photos/hero/images.png')"></div>
   <div class="hero-inner">
 
     <div class="hero-content">
@@ -303,27 +303,27 @@
       <a class="gallery-view-all" href="gallery.html" target="_blank">VIEW FULL ARCHIVE →</a>
     </div>
 
+    <!-- GALLERY PHOTOS — drop files into photos/gallery/ and rename to match paths below -->
     <div class="gallery-grid reveal">
-      <!-- Repeats photos/gallery/gallery-1.jpg until more photos are added — see .gallery-photo in style.css -->
-      <div class="gallery-photo gp-tall">
+      <div class="gallery-photo gp-tall" style="background-image: url('photos/gallery/gallery-1.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">OPENING CEREMONY</span></div>
       </div>
-      <div class="gallery-photo">
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-2.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">KEYNOTE ADDRESS</span></div>
       </div>
-      <div class="gallery-photo">
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-3.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">CAMPUS TOUR</span></div>
       </div>
-      <div class="gallery-photo gp-wide">
+      <div class="gallery-photo gp-wide" style="background-image: url('photos/gallery/gallery-4.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">CULTURAL NIGHT</span></div>
       </div>
-      <div class="gallery-photo">
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-5.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">CLUB FAIR</span></div>
       </div>
-      <div class="gallery-photo">
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-6.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">MENTOR CONNECT</span></div>
       </div>
-      <div class="gallery-photo gp-wide2">
+      <div class="gallery-photo gp-wide2" style="background-image: url('photos/gallery/gallery-7.jpg'), url('photos/gallery/images.png')">
         <div class="gp-overlay"><span class="gp-label">INDUCTION NIGHT</span></div>
       </div>
     </div>
@@ -340,9 +340,11 @@
       <h2 class="sec-heading">TALKS &amp;<br>SESSIONS</h2>
       <p class="talks-sub">Distinguished voices who will address the incoming class of 2030. Full lineup to be announced as induction approaches.</p>
     </div>
+    <!-- SPEAKER PHOTOS — drop files into photos/speakers/ and rename to match paths below -->
+    <!-- To add a speaker: replace "KEYNOTE SPEAKER", role text, and update the photo src -->
     <div class="speakers-grid" id="speakers-grid">
       <div class="speaker-card is-placeholder reveal">
-        <div class="speaker-photo"></div>
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-1.jpg'), url('photos/speakers/images.png')"></div>
         <div class="speaker-info">
           <p class="speaker-name">KEYNOTE SPEAKER</p>
           <p class="speaker-role">Name &amp; designation to be announced</p>
@@ -350,7 +352,7 @@
         </div>
       </div>
       <div class="speaker-card is-placeholder reveal">
-        <div class="speaker-photo"></div>
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-2.jpg'), url('photos/speakers/images.png')"></div>
         <div class="speaker-info">
           <p class="speaker-name">KEYNOTE SPEAKER</p>
           <p class="speaker-role">Name &amp; designation to be announced</p>
@@ -358,7 +360,7 @@
         </div>
       </div>
       <div class="speaker-card is-placeholder reveal">
-        <div class="speaker-photo"></div>
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-3.jpg'), url('photos/speakers/images.png')"></div>
         <div class="speaker-info">
           <p class="speaker-name">SESSION SPEAKER</p>
           <p class="speaker-role">Name &amp; designation to be announced</p>
@@ -366,7 +368,7 @@
         </div>
       </div>
       <div class="speaker-card is-placeholder reveal">
-        <div class="speaker-photo"></div>
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-4.jpg'), url('photos/speakers/images.png')"></div>
         <div class="speaker-info">
           <p class="speaker-name">SESSION SPEAKER</p>
           <p class="speaker-role">Name &amp; designation to be announced</p>
@@ -388,29 +390,30 @@
       <p class="campus-sub">A compact, vibrant campus in South Delhi — everything within walking distance, everyone within reach.</p>
     </div>
 
+    <!-- CAMPUS PHOTOS — drop files into photos/campus/ and rename to match paths below -->
     <div class="campus-grid reveal">
-      <div class="campus-photo cp-tall" data-label="ACADEMIC BLOCK">
-        <div class="cp-inner"></div>
+      <div class="campus-photo cp-tall">
+        <div class="cp-inner" style="background-image: url('photos/campus/academic-block.jpg'), url('photos/campus/images.png')"></div>
         <span class="cp-label">ACADEMIC BLOCK</span>
       </div>
-      <div class="campus-photo" data-label="AUDITORIUM">
-        <div class="cp-inner"></div>
-        <span class="cp-label">RESEARCH AND DEVELOPMENT</span>
+      <div class="campus-photo">
+        <div class="cp-inner" style="background-image: url('photos/campus/auditorium.jpg'), url('photos/campus/images.png')"></div>
+        <span class="cp-label">AUDITORIUM</span>
       </div>
-      <div class="campus-photo" data-label="LIBRARY">
-        <div class="cp-inner"></div>
+      <div class="campus-photo">
+        <div class="cp-inner" style="background-image: url('photos/campus/library.jpg'), url('photos/campus/images.png')"></div>
         <span class="cp-label">LIBRARY</span>
       </div>
-      <div class="campus-photo cp-wide" data-label="SPORTS COMPLEX">
-        <div class="cp-inner"></div>
+      <div class="campus-photo cp-wide">
+        <div class="cp-inner" style="background-image: url('photos/campus/sports-complex.jpg'), url('photos/campus/images.png')"></div>
         <span class="cp-label">SPORTS COMPLEX</span>
       </div>
-      <div class="campus-photo" data-label="RESEARCH LABS">
-        <div class="cp-inner"></div>
+      <div class="campus-photo">
+        <div class="cp-inner" style="background-image: url('photos/campus/research-labs.jpg'), url('photos/campus/images.png')"></div>
         <span class="cp-label">RESEARCH LABS</span>
       </div>
-      <div class="campus-photo" data-label="HOSTEL">
-        <div class="cp-inner"></div>
+      <div class="campus-photo">
+        <div class="cp-inner" style="background-image: url('photos/campus/hostel.jpg'), url('photos/campus/images.png')"></div>
         <span class="cp-label">HOSTEL</span>
       </div>
     </div>
