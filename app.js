@@ -18,8 +18,8 @@
 
 // ── CONFIG ───────────────────────────────────────────────────────
 const CONFIG = {
-  SHEET_CSV_BTECH: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSat0Ps3z_x75VHF5QkAGJmvuL-T_OeBwBL3k60eMPi2jBV9Lw0gmFGr_oUO7nWB2Ra6JRvXgYDbYe9/pub?output=csv',
-  SHEET_CSV_PG:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSat0Ps3z_x75VHF5QkAGJmvuL-T_OeBwBL3k60eMPi2jBV9Lw0gmFGr_oUO7nWB2Ra6JRvXgYDbYe9/pub?output=csv',
+  SHEET_CSV_BTECH: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSB_N0q2HTJoKi9yE272st8HUCTxpRjl4P0wNLvpOpaMJY_2zCVRVYHS3dT--0sP64HVf3bba-IdJy9/pub?output=csv',
+  SHEET_CSV_PG:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSB_N0q2HTJoKi9yE272st8HUCTxpRjl4P0wNLvpOpaMJY_2zCVRVYHS3dT--0sP64HVf3bba-IdJy9/pub?output=csv',
   ONE_SHEET:       true,
   INDUCTION_START: new Date('2026-07-17T09:00:00+05:30'),
   REFRESH_EVERY_MS: 3 * 60 * 1000,
