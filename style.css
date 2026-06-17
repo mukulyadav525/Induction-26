@@ -161,7 +161,6 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url('photos/campus/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   opacity: .25;
@@ -734,7 +733,7 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
 /* ── SCHEDULE — ONE BLOCK PER DAY ─────────────────────────────
    .sched-page-body gets the .sched-blocks-body modifier on the
    schedule-btech.html / schedule-pg.html pages only. */
-.sched-page-body.sched-blocks-body { background: var(--lime); color: var(--ink); }
+.sched-page-body.sched-blocks-body { background: var(--paper); color: var(--ink); }
 
 .day-blocks-grid {
   display: grid;
@@ -786,7 +785,8 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
   font-size: 13px;
   color: var(--ink);
   flex-shrink: 0;
-  width: 58px;
+  width: 72px;
+  white-space: nowrap;
   padding-top: 1px;
 }
 .dbe-time.is-tba { color: #777; font-weight: 400; }
@@ -933,8 +933,7 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
 .speaker-card:hover { transform: translateY(-5px); box-shadow: 6px 6px 0 var(--ink); }
 .speaker-photo {
   height: 270px;
-  background-image: url('photos/speakers/speaker-1.jpg'),
-    repeating-linear-gradient(45deg, #e0ddd5, #e0ddd5 10px, #d4d1c9 10px, #d4d1c9 20px);
+  background-image: repeating-linear-gradient(45deg, #e0ddd5, #e0ddd5 10px, #d4d1c9 10px, #d4d1c9 20px);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -992,8 +991,7 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
 .cp-inner {
   width: 100%;
   height: 100%;
-  background-image: url('photos/campus/hero-bg.jpg'),
-    repeating-linear-gradient(135deg, #222 0 8px, #1a1a1a 8px 16px);
+  background-image: repeating-linear-gradient(135deg, #222 0 8px, #1a1a1a 8px 16px);
   background-size: cover;
   background-position: center;
   transition: opacity .25s;
@@ -1806,7 +1804,6 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
   position: relative;
   overflow: hidden;
   background-color: #1a1a1a;
-  background-image: url('photos/gallery/gallery-1.jpg');
   background-size: cover;
   background-position: center;
   cursor: pointer;
