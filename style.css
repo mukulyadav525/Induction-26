@@ -807,6 +807,19 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
   letter-spacing: .3px;
 }
 .dbe-venue::before { content: '▸ '; }
+.dbe-type-chip {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: 7.5px;
+  letter-spacing: 1.5px;
+  padding: 2px 7px;
+  border-radius: 1px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.dbe-row.is-live-row { background: rgba(200,241,53,.06); }
+.dbe-row { border-left: 4px solid transparent; }
 .dbe-badge {
   font-family: var(--ff-mono);
   font-size: 8px;
