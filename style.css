@@ -1371,8 +1371,7 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
 .mentor-card:hover { transform: translateY(-5px); box-shadow: 6px 6px 0 var(--ink); }
 .mentor-photo {
   height: 240px;
-  background-image: url('photos/mentors/mentor-1.jpg'),
-    repeating-linear-gradient(45deg, #e0ddd5, #e0ddd5 10px, #d4d1c9 10px, #d4d1c9 20px);
+  background-image: repeating-linear-gradient(45deg, #e0ddd5, #e0ddd5 10px, #d4d1c9 10px, #d4d1c9 20px);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1389,6 +1388,7 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
   font-size: 8px;
   letter-spacing: 2px;
   background: var(--lime);
+  color: var(--ink);
   padding: 3px 9px;
   border: 1px solid var(--ink);
 }
@@ -1482,6 +1482,7 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
   }
+  .campus-photo { min-height: 200px; }
   .campus-photo.cp-tall { grid-row: span 1; }
   .campus-photo.cp-wide { grid-column: span 2; }
 }
@@ -1529,7 +1530,9 @@ section { padding: 96px 40px; border-bottom: 3px solid var(--ink); }
   .dbe-row { padding: 14px 18px; }
   .awaits-grid { grid-template-columns: 1fr; }
   .campus-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .campus-photo { min-height: 220px; }
   .campus-photo.cp-wide { grid-column: span 1; }
+  .campus-photo.cp-tall { grid-row: span 1; min-height: 260px; }
   .about-stats { flex-direction: column; align-items: stretch; }
   .astat-divider { width: 100%; height: 2px; }
   .dates-row { flex-direction: column; gap: 24px; }
