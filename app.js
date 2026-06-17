@@ -77,16 +77,38 @@ function parseTime(timeStr, dateStr) {
   return new Date(base.getFullYear(), base.getMonth(), base.getDate(), h, min, 0);
 }
 
-// Returns a clean "H:MM AM/PM" string for display regardless of CSV format
+// Returns a clean "H:MM AM/PM" string — pure arithmetic, no Date objects
 function formatTimeDisplay(timeStr) {
   if (!timeStr || /^tba$/i.test(timeStr.trim())) return null;
-  const d = parseTime(timeStr, null);
-  if (!d) return timeStr; // fallback to raw string
-  const h24 = d.getHours();
-  const min = d.getMinutes();
-  const ampm = h24 >= 12 ? 'PM' : 'AM';
-  const h12 = h24 % 12 || 12;
-  return `${h12}:${pad(min)} ${ampm}`;
+  const asNum = parseFloat(timeStr);
+  if (!isNaN(asNum) && asNum > 0 && asNum < 1) {
+    const totalMins = Math.round(asNum * 24 * 60);
+    const h24 = Math.floor(totalMins / 60);
+    const min = totalMins % 60;
+    const ampm = h24 >= 12 ? 'PM' : 'AM';
+    const h12 = h24 % 12 || 12;
+    return `${h12}:${pad(min)} ${ampm}`;
+  }
+  const m = timeStr.trim().match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?/i);
+  if (!m) return timeStr;
+  let h = parseInt(m[1], 10);
+  const min = parseInt(m[2], 10);
+  const ampm = (m[3] || '').toUpperCase();
+  if (ampm === 'PM' && h < 12) h += 12;
+  if (ampm === 'AM' && h === 12) h = 0;
+  const dispAmpm = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${h12}:${pad(min)} ${dispAmpm}`;
+}
+
+// Maps a day label ("Day 1", "Day 2" ...) to a real calendar date string "YYYY-MM-DD"
+// so live detection only fires on the correct calendar day
+function dayToDate(dayLabel, allDays) {
+  const idx = allDays.indexOf(dayLabel);
+  if (idx < 0) return null;
+  const s = CONFIG.INDUCTION_START;
+  const d = new Date(s.getFullYear(), s.getMonth(), s.getDate() + idx);
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 // ── TYPE COLOR CHIPS ─────────────────────────────────────────────
@@ -226,13 +248,13 @@ function renderScheduleBlocks(rows) {
       const venue   = col(row, 'Venue', 'venue', 'Location', 'location', 'Room', 'room');
       const status  = col(row, 'Status', 'status').toUpperCase();
       const type    = col(row, 'Type', 'type', 'Category').toUpperCase();
-      const dateStr = col(row, 'Date', 'date');
+      const actualDate = dayToDate(day, days); // "2026-07-17", "2026-07-18", etc.
 
       const isTBA   = !time || /^tba$/i.test(time.trim());
       const noEvent = !event || /^tba$/i.test(event.trim());
 
-      const start  = parseTime(time, dateStr);
-      const end    = endTime ? parseTime(endTime, dateStr) : (start ? new Date(start.getTime() + 3600000) : null);
+      const start  = parseTime(time, actualDate);
+      const end    = endTime ? parseTime(endTime, actualDate) : (start ? new Date(start.getTime() + 3600000) : null);
       const isLive = start && end && start <= now && now < end;
 
       let badgeClass = 'dbe-badge--open', badgeText = 'OPEN';
@@ -296,15 +318,17 @@ function updateLiveNow(rows) {
   if (!barEl) return;
 
   const now = new Date();
+  const allDays = uniqueDays(rows);
   let current = null, next = null;
 
   for (const row of rows) {
-    const timeStr = col(row, 'Time', 'time', 'Start Time');
-    const endStr  = col(row, 'End Time', 'end_time', 'EndTime');
-    const dateStr = col(row, 'Date', 'date');
-    const start   = parseTime(timeStr, dateStr);
+    const dayLabel   = col(row, 'Day', 'day', 'Date', 'date');
+    const actualDate = dayToDate(dayLabel, allDays);
+    const timeStr    = col(row, 'Time', 'time', 'Start Time');
+    const endStr     = col(row, 'End Time', 'end_time', 'EndTime');
+    const start      = parseTime(timeStr, actualDate);
     if (!start) continue;
-    const end = endStr ? parseTime(endStr, dateStr) : new Date(start.getTime() + 3600000);
+    const end = endStr ? parseTime(endStr, actualDate) : new Date(start.getTime() + 3600000);
 
     if (start <= now && end && now < end && !current) current = { row, start, end };
     else if (start > now && !next)                    next    = { row, start };
