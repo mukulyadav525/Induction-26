@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Induction 2026 — IIIT Delhi. Welcome to the Class of 2030. Schedule, speakers, mentorship and everything you need to know.">
+  <title>Induction '26 — IIIT Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+<div class="nav-brand">
+    <img src="iiitd-logo.png" alt="IIIT Delhi Logo" class="nav-logo">
+</div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#about">SCHEDULE</a></li>
+    <li><a href="#gallery">GALLERY</a></li>
+    <li><a href="#talks">SPEAKERS</a></li>
+    <li><a href="#info">INFO</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="track-toggle">
+      <button class="track-btn active" id="nav-btn-btech" onclick="openSchedulePage('BTECH')">B.TECH</button>
+      <button class="track-btn" id="nav-btn-pg" onclick="openSchedulePage('PG')">PG TRACK</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO — FULL VIEWPORT
+══════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <!-- HERO BACKGROUND — drop your photo into photos/hero/ and set the name below -->
+  <div class="hero-bg-photo" aria-hidden="true" style="background-image: url('photos/hero/images.png')"></div>
+  <div class="hero-inner">
+
+    <div class="hero-content">
+
+      <!-- Big title row -->
+      <div class="hero-title-row">
+        <div class="sticker sticker-orange" aria-hidden="true">
+          <span>HANDLE</span>
+          <span>WITH <em>+</em></span>
+          <span>CARE</span>
+          <small>THE FUTURE<br>IS FRAGILE</small>
+          <div class="sticker-bar-wrap">
+            <div class="sticker-bars"></div>
+            <span>IND26-0001</span>
+          </div>
+        </div>
+
+        <h1 class="hero-heading">INDUCTION</h1>
+
+        <div class="sticker sticker-lime" aria-hidden="true">
+          <span>CLASS</span>
+          <span>OF</span>
+          <span class="sticker-big-year">2028 </span>
+          <div class="sticker-bar-wrap">
+            <div class="sticker-bars"></div>
+            <span>17 & 18 July 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year + tagline -->
+      <div class="hero-lower">
+        <div class="hero-year">'26</div>
+        <div class="hero-tagline-block">
+          <div class="tagline-rule"></div>
+          <h2 class="hero-tagline">A NEW FILE<br>HAS BEEN OPENED.</h2>
+          <div class="tagline-rule"></div>
+          <p class="hero-subtext">THIS ARCHIVE DOCUMENTS THE ARRIVAL OF A NEW GENERATION AT IIIT DELHI — 2 DAYS THAT INTRODUCE YOU TO THE PEOPLE, THE PLACES, AND THE TRADITIONS THAT WILL SHAPE THE NEXT FOUR YEARS. WHAT FOLLOWS IS NOT JUST AN EVENT. IT IS A DELIBERATE TRANSFER OF CURIOSITY, COMMUNITY, AND CULTURE — FROM THOSE WHO CAME BEFORE YOU, TO YOU.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right metadata sidebar -->
+    <aside class="hero-sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-iiid">IIID</div>
+        <div class="sidebar-inst-name">INDRAPRASTHA INSTITUTE OF<br>INFORMATION TECHNOLOGY, DELHI</div>
+      </div>
+      <div class="sb-rule"></div>
+
+      <dl class="sidebar-meta">
+        <div class="sm-row"><dt>DOCUMENT ID:</dt><dd>IND26-2030</dd></div>
+        <div class="sm-dash"></div>
+        <div class="sm-row"><dt>GENERATION:</dt><dd>2026</dd></div>
+        <div class="sm-dash"></div>
+        <div class="sm-row"><dt>STATUS:</dt><dd class="status-blink" id="hero-status">LOADING</dd></div>
+        <div class="sm-dash"></div>
+        <div class="sm-row"><dt>LOCATION:</dt><dd>IIIT DELHI</dd></div>
+        <div class="sm-dash"></div>
+        <div class="sm-row"><dt>COORDINATES:</dt><dd>28.5445 N,<br>77.2710 E</dd></div>
+        <div class="sm-dash"></div>
+        <div class="sm-row"><dt>LAST UPDATED:</dt><dd>17 June 2026</dd></div>
+        <div class="sm-dash"></div>
+        <div class="sm-row"><dt>CLASS SIZE:</dt><dd>~800</dd></div>
+        <div class="sm-dash"></div>
+      </dl>
+
+      <div class="sb-barcode-block">
+        <div class="barcode-visual" aria-hidden="true"></div>
+        <div class="barcode-label">INDUCTION 2026</div>
+        <div class="barcode-num">2 02620 30260 5</div>
+        <div class="barcode-batch">——— BATCH 2026-2028 ———</div>
+        <div class="barcode-batch">——— BATCH 2026-2030 ———</div>
+      </div>
+      <div class="sb-confidential">CONFIDENTIAL WHEN PRINTED</div>
+    </aside>
+
+  </div>
+
+  <!-- Countdown strip -->
+  <div class="countdown-strip">
+    <span class="cd-label">INDUCTION BEGINS IN</span>
+    <div class="cd-timer" id="countdown">
+      <div class="cd-unit"><span id="cd-days">--</span><span class="cd-lbl">DAYS</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span id="cd-hours">--</span><span class="cd-lbl">HRS</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span id="cd-mins">--</span><span class="cd-lbl">MIN</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span id="cd-secs">--</span><span class="cd-lbl">SEC</span></div>
+    </div>
+    <div class="cd-track-pill" id="cd-track-pill">PG TRACK</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     LIVE NOW BAR
+══════════════════════════════════════════════════════════ -->
+<div class="live-bar" id="live-bar">
+  <div class="live-pill">
+    <span class="live-dot"></span>LIVE NOW
+  </div>
+  <div class="live-content-area" id="live-content">
+    <span class="live-placeholder">Connecting to archive...</span>
+  </div>
+  <div class="live-time-badge" id="live-time"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT / TRACKS
+══════════════════════════════════════════════════════════ -->
+<section class="sec-about" id="about">
+  <div class="container">
+    <div class="about-intro reveal">
+      <span class="sec-tag">FILE: ABOUT</span>
+      <h2 class="sec-heading">WELCOME TO<br>IIIT DELHI</h2>
+      <p class="about-copy">Indraprastha Institute of Information Technology Delhi was created by an act of the Delhi Legislature, empowering it to carry out R&amp;D, conduct educational programmes, and grant degrees. Induction marks your beginning — a curated, deliberate transfer of culture, knowledge, and community from one generation to the next.</p>
+    </div>
+
+    <div class="about-stats reveal">
+      <div class="astat"><span class="astat-n">2008</span><span class="astat-l">FOUNDED</span></div>
+      <div class="astat-divider"></div>
+      <div class="astat"><span class="astat-n">40+</span><span class="astat-l">CLUBS &amp; SOCIETIES</span></div>
+      <div class="astat-divider"></div>
+      <div class="astat"><span class="astat-n">800+</span><span class="astat-l">NEW STUDENTS</span></div>
+      <div class="astat-divider"></div>
+      <div class="astat"><span class="astat-n">2 + 5</span><span class="astat-l">INDUCTION DAYS</span></div>
+      <div class="astat-divider"></div>
+      <div class="astat"><span class="astat-n">2</span><span class="astat-l">TRACKS</span></div>
+    </div>
+
+    <div class="track-cards">
+      <article class="track-card card-btech reveal">
+        <span class="track-card-num">TRACK 01</span>
+        <h3>B.TECH</h3>
+        <div class="track-dates-badge" id="btech-dates-badge">DATES TO BE ANNOUNCED</div>
+        <p>The undergraduate induction welcomes freshers with campus tours, club fairs, department introductions, cultural activities, and senior mentor sessions across multiple days.</p>
+        <button class="track-go-btn" onclick="openSchedulePage('BTECH')">VIEW FULL B.TECH SCHEDULE →</button>
+      </article>
+
+      <article class="track-card card-pg reveal">
+        <span class="track-card-num">TRACK 02</span>
+        <h3>M.TECH /<br>Ph.D</h3>
+        <div class="track-dates-badge" id="pg-dates-badge">17 July - 18 July</div>
+        <p>The postgraduate induction orients M.Tech and Ph.D students to research culture, lab infrastructure, academic policies, and the vibrant research community at IIIT Delhi.</p>
+        <button class="track-go-btn" onclick="openSchedulePage('PG')">VIEW FULL PG SCHEDULE →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     GALLERY — INDUCTION '25
+══════════════════════════════════════════════════════════ -->
+<section class="sec-gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-hdr reveal">
+      <div class="gallery-hdr-left">
+        <h2 class="gallery-title">INDUCTION<br>'25 GALLERY</h2>
+        <p class="gallery-sub">A LOOK BACK AT INDUCTION 2025 — THE YEAR THAT CAME BEFORE YOURS CAPTURED BY TASVEER MEDIA SOCIETY</p>
+      </div>
+      <a class="gallery-view-all" href="gallery.html">VIEW FULL ARCHIVE →</a>
+    </div>
+
+    <!-- GALLERY PHOTOS — drop files into photos/gallery/ and rename to match paths below -->
+    <div class="gallery-grid reveal">
+      <div class="gallery-photo gp-tall" style="background-image: url('photos/gallery/gallery-1.jpg'), url('photos/gallery/images.png')">
+        <div class="gp-overlay"><span class="gp-label">OPENING CEREMONY</span></div>
+      </div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-2.jpg'), url('photos/gallery/images.png')">
+        <div class="gp-overlay"><span class="gp-label">RAVI GUPTA</span></div>
+      </div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-3.jpg'), url('photos/gallery/images.png')">
+        <div class="gp-overlay"><span class="gp-label">GROUP PHOTO</span></div>
+      </div>
+      <div class="gallery-photo gp-wide" style="background-image: url('photos/gallery/gallery-4.jpg'), url('photos/gallery/images.png')">
+        <div class="gp-overlay"><span class="gp-label">CULTURAL NIGHT</span></div>
+      </div>
+      <div class="gallery-photo gp-wide2" style="background-image: url('photos/gallery/gallery-7.jpg'), url('photos/gallery/images.png')">
+        <div class="gp-overlay"><span class="gp-label">INDUCTION NIGHT</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     TALKS & SPEAKERS
+══════════════════════════════════════════════════════════ -->
+<section class="sec-talks" id="talks">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-tag">FILE: SPEAKERS</span>
+      <h2 class="sec-heading">TALKS &amp;<br>SESSIONS</h2>
+      <p class="talks-sub">Distinguished voices who will address the incoming class of 2030. Full lineup to be announced as induction approaches.</p>
+    </div>
+    <!-- SPEAKER PHOTOS — drop files into photos/speakers/ and rename to match paths below -->
+    <!-- To add a speaker: replace "KEYNOTE SPEAKER", role text, and update the photo src -->
+    <div class="speakers-grid" id="speakers-grid">
+      <div class="speaker-card is-placeholder reveal">
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-1.jpg'), url('photos/speakers/images.png')"></div>
+        <div class="speaker-info">
+          <p class="speaker-name">KEYNOTE SPEAKER</p>
+          <p class="speaker-role">Name &amp; designation to be announced</p>
+          <span class="speaker-badge">KEYNOTE</span>
+        </div>
+      </div>
+      <div class="speaker-card is-placeholder reveal">
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-2.jpg'), url('photos/speakers/images.png')"></div>
+        <div class="speaker-info">
+          <p class="speaker-name">KEYNOTE SPEAKER</p>
+          <p class="speaker-role">Name &amp; designation to be announced</p>
+          <span class="speaker-badge">KEYNOTE</span>
+        </div>
+      </div>
+      <div class="speaker-card is-placeholder reveal">
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-3.jpg'), url('photos/speakers/images.png')"></div>
+        <div class="speaker-info">
+          <p class="speaker-name">SESSION SPEAKER</p>
+          <p class="speaker-role">Name &amp; designation to be announced</p>
+          <span class="speaker-badge">SESSION</span>
+        </div>
+      </div>
+      <div class="speaker-card is-placeholder reveal">
+        <div class="speaker-photo" style="background-image: url('photos/speakers/speaker-4.jpg'), url('photos/speakers/images.png')"></div>
+        <div class="speaker-info">
+          <p class="speaker-name">SESSION SPEAKER</p>
+          <p class="speaker-role">Name &amp; designation to be announced</p>
+          <span class="speaker-badge">SESSION</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CAMPUS LIFE
+══════════════════════════════════════════════════════════ -->
+<section class="sec-campus" id="campus">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-tag sec-tag--light">FILE: CAMPUS</span>
+      <h2 class="sec-heading sec-heading--light">IIIT DELHI<br>CAMPUS</h2>
+      <p class="campus-sub">A compact, vibrant campus in South Delhi — everything within walking distance, everyone within reach.</p>
+    </div>
+
+    <!-- CAMPUS PHOTOS — drop files into photos/campus/ and rename to match paths below -->
+    <div class="campus-grid reveal">
+      <div class="campus-photo cp-tall">
+        <div class="cp-inner" style="background-image: url('photos/campus/academic-block.jpg'), url('photos/campus/academic.png')"></div>
+        <span class="cp-label">ACADEMIC BLOCK</span>
+      </div>
+      <div class="campus-photo">
+        <div class="cp-inner" style="background-image: url('photos/campus/auditorium.jpg'), url('photos/campus/oat.jpg')"></div>
+        <span class="cp-label">AUDITORIUM & LIBRARY</span>
+      </div>
+      <div class="campus-photo">
+        <div class="cp-inner" style="background-image: url('photos/campus/library.jpg'), url('photos/campus/lhc.jpg')"></div>
+        <span class="cp-label">LHC</span>
+      </div>
+      <div class="campus-photo cp-wide">
+        <div class="cp-inner" style="background-image: url('photos/campus/sports-complex.jpg'), url('photos/campus/rnd.jpg')"></div>
+        <span class="cp-label">RESEARCH AND DEVELOPMENT BUILDING</span>
+      </div>
+    </div>
+
+    <div class="campus-address reveal">
+      <div class="ca-left">
+        <span class="ca-label">ADDRESS</span>
+        <span class="ca-text">Okhla Industrial Area Phase III,<br>New Delhi, Delhi — 110020</span>
+      </div>
+      <div class="ca-divider"></div>
+      <div class="ca-right">
+        <span class="ca-label">NEAREST METRO</span>
+        <span class="ca-text">Govindpuri Station<br>Violet Line</span>
+      </div>
+      <div class="ca-divider"></div>
+      <div class="ca-right">
+        <span class="ca-label">COORDINATES</span>
+        <span class="ca-text">28.5445° N,<br>77.2710° E</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     IMPORTANT INFORMATION
+══════════════════════════════════════════════════════════ -->
+<section class="sec-info" id="info">
+  <div class="info-inner">
+
+    <div class="info-header-row">
+      <span class="info-sec-tag">SECTION 07</span>
+      <span class="info-sec-tag info-sec-tag--right">FILE / NOTICES</span>
+    </div>
+    <h2 class="info-title">IMPORTANT<br>INFORMATION</h2>
+    <p class="info-subtitle">READ BEFORE ARRIVAL · ALL NOTICES SUBJECT TO REVISION</p>
+
+    <div class="info-grid">
+
+      <div class="info-card reveal">
+        <div class="ic-top">
+          <span class="ic-letter">A</span>
+          <div class="ic-title-row">
+            <span class="ic-title">REGISTRATION</span>
+            <span class="ic-code">INF-A</span>
+          </div>
+        </div>
+        <div class="ic-rule"></div>
+        <p class="ic-text">Report to the registration desk in the Atrium on Day 01 from 09:00. Carry your admission confirmation and original ID proof. A complete registration procedure document will be shared via the student portal before arrival.</p>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="ic-top">
+          <span class="ic-letter">B</span>
+          <div class="ic-title-row">
+            <span class="ic-title">DOCUMENTS TO CARRY</span>
+            <span class="ic-code">INF-B</span>
+          </div>
+        </div>
+        <div class="ic-rule"></div>
+        <p class="ic-text">Original ID proof, admission offer letter, passport-size photographs (×4), academic mark sheets and certificates, migration certificate (where applicable), and hostel allotment details if applying for on-campus accommodation.</p>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="ic-top">
+          <span class="ic-letter">C</span>
+          <div class="ic-title-row">
+            <span class="ic-title">CAMPUS ACCESS</span>
+            <span class="ic-code">INF-C</span>
+          </div>
+        </div>
+        <div class="ic-rule"></div>
+        <p class="ic-text">Access cards are issued at registration on Day 01. Gate 2 (Okhla Phase III) is the primary entry point during induction week. Visitors must register at the gate. Keep your access card on you at all times during induction.</p>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="ic-top">
+          <span class="ic-letter">D</span>
+          <div class="ic-title-row">
+            <span class="ic-title">ACCOMMODATION</span>
+            <span class="ic-code">INF-D</span>
+          </div>
+        </div>
+        <div class="ic-rule"></div>
+        <p class="ic-text">Hostel allotment letters will be shared on the student portal before induction begins. Check-in is on Day 01 from 08:00. Room assignments are final — room swap requests can be submitted after the first semester begins.</p>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="ic-top">
+          <span class="ic-letter">E</span>
+          <div class="ic-title-row">
+            <span class="ic-title">STUDENT SUPPORT</span>
+            <span class="ic-code">INF-E</span>
+          </div>
+        </div>
+        <div class="ic-rule"></div>
+        <p class="ic-text">Wellbeing, mentorship, and academic support desks are open throughout induction week. The Student Counselling Cell, Academic Affairs Office, and Hostel Management Office are all present and available on-site at the Atrium.</p>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="ic-top">
+          <span class="ic-letter">F</span>
+          <div class="ic-title-row">
+            <span class="ic-title">EMERGENCY INFORMATION</span>
+            <span class="ic-code">INF-F</span>
+          </div>
+        </div>
+        <div class="ic-rule"></div>
+        <p class="ic-text">Medical, security, and on-call contacts are posted at every block and will be shared on the student portal. The campus has a dedicated medical room. In case of emergency, contact the induction help desk or call the security office directly.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════════════ -->
+<section class="sec-faq" id="faq">
+  <div class="container">
+    <div class="reveal">
+      <span class="sec-tag">FILE: FAQ</span>
+      <h2 class="sec-heading">CLASSIFIED<br>Q&amp;A</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFAQ(this)">What should I bring on the first day?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Bring your admission offer letter, original ID proof and photocopies, passport-size photographs, and hostel allotment details if applicable. A complete packing checklist will be shared via the official student portal before induction begins.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFAQ(this)">Are B.Tech and PG inductions on the same days?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No. B.Tech and PG (M.Tech / Ph.D) inductions run on separate dates with distinct programmes tailored to each track. Use the B.TECH / PG TRACK buttons in the nav to open the correct full schedule for your programme.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFAQ(this)">When will Induction Buddy assignments be announced?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Induction Buddy assignments are revealed during induction itself, in the dedicated Induction Buddies session. You will meet your buddy in person — yet another reason not to miss it.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFAQ(this)">How do I get to the IIIT Delhi campus?<span class="faq-icon">+</span></button>
+        <div class="faq-a">IIIT Delhi is at Okhla Industrial Area Phase III, near Govindpuri Metro Station on the Violet Line. Auto-rickshaws and cabs are available from the metro exit. Full address: Okhla Industrial Area Phase 3, New Delhi, Delhi 110020.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFAQ(this)">Will the schedule change after it's published?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. The schedule pages sync directly from the master Google Sheet maintained by the induction team. Any changes made to the sheet appear automatically within minutes. Check the schedule pages before each day for the latest programme.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════════════ -->
+<section class="sec-contact-cta" id="contact">
+  <div class="container contact-cta-inner">
+    <div class="reveal">
+      <span class="sec-tag sec-tag--light">FILE: REACH US</span>
+      <h2 class="sec-heading sec-heading--light">REACH THE<br>ARCHIVE</h2>
+      <p class="contact-cta-blurb">Have questions before or during induction? Full contact details, important institute numbers, and a direct line to the team all live on one page.</p>
+    </div>
+    <a class="contact-cta-btn reveal" href="contact.html">OPEN CONTACT PAGE →</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-top-strip">
+    <span>INDUCTION 2026</span><span class="mq-sep">✦</span>
+    <span>CLASS OF 2028</span><span class="mq-sep">✦</span>
+    <span>IIIT DELHI</span><span class="mq-sep">✦</span>
+    <span>A NEW FILE HAS BEEN OPENED</span>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-name">INDRAPRASTHA INSTITUTE OF<br>INFORMATION TECHNOLOGY, DELHI</div>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-col">
+        <span class="footer-col-label">SECTIONS</span>
+        <a href="#about">ABOUT</a>
+        <a href="#about">SCHEDULE</a>
+        <a href="mentors.html">INDUCTION BUDDIES</a>
+        <a href="#gallery">GALLERY</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-label">MORE</span>
+        <a href="#talks">SPEAKERS</a>
+        <a href="#directions">DIRECTIONS</a>
+        <a href="#info">INFO</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-label">SUPPORT</span>
+        <a href="#faq">FAQ</a>
+        <a href="contact.html">CONTACT ↗</a>
+        <a href="schedule-btech.html">B.TECH SCHEDULE</a>
+        <a href="schedule-pg.html">PG SCHEDULE</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <span>
+        Designed by
+        <a href="https://linkedin.com/in/yuvrajj-singhh" target="_blank" rel="noopener noreferrer">Yuvraj Singh</a>
+        and
+        <a href="https://linkedin.com/in/omansharora" target="_blank" rel="noopener noreferrer">Omansh Arora</a>
+    </span>
+    
+    <span>
+        Developed by
+        <a href="https://linkedin.com/in/vasumehta" target="_blank" rel="noopener noreferrer">Vasu Mehta</a>
+        and
+        <a href="https://linkedin.com/in/mukulyadav525" target="_blank" rel="noopener noreferrer">Mukul</a>
+    </span>
+
+    <span>
+        Conveyed by
+        <a href="https://linkedin.com/in/aditya-giri-a5a4a6335" target="_blank" rel="noopener noreferrer">Aditya Giri</a>
+        and
+        <a href="https://linkedin.com/in/anoushka-malik-a60a57333" target="_blank" rel="noopener noreferrer">Anoushka Malik</a>
+    </span>
+
+
+</div>
+
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

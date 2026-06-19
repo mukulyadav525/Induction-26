@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Induction '25 Gallery — IIIT Delhi. The full photo archive from last year's induction.">
+  <title>Gallery — Induction '26 · IIIT Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="gallery">
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<nav class="site-nav is-scrolled" id="site-nav">
+  <div class="nav-brand">
+    <img src="iiitd-logo.png" alt="IIIT Delhi Logo" class="nav-logo">
+    <div class="nav-brand-text">
+      <span class="brand-short">IIIT DELHI</span>
+      <span class="brand-full">INDRAPRASTHA INSTITUTE OF INFORMATION TECHNOLOGY, DELHI</span>
+    </div>
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">← MAIN PAGE</a></li>
+    <li><a href="index.html#about">ABOUT</a></li>
+    <li><a href="mentors.html">INDUCTION BUDDIES</a></li>
+    <li><a href="index.html#talks">SPEAKERS</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="track-toggle">
+      <button class="track-btn" onclick="window.location.href='schedule-btech.html'">B.TECH</button>
+      <button class="track-btn" onclick="window.location.href='schedule-pg.html'">PG TRACK</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     GALLERY PAGE HEADER
+══════════════════════════════════════════════════════════ -->
+<div class="sched-page-hero">
+  <div class="sched-page-hero-inner">
+    <h1 class="sched-page-title">INDUCTION '25<br>GALLERY</h1>
+    <p class="sched-page-sub">THE FULL PHOTO ARCHIVE · A LOOK BACK AT THE YEAR THAT CAME BEFORE YOURS</p>
+    <p class="sched-page-sub">CAPTURED BY TANSVEER, THE MEDIA SOCIETY</p>
+    
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FULL PHOTO ARCHIVE
+══════════════════════════════════════════════════════════ -->
+<section class="sec-gallery sched-page-body" id="gallery-archive">
+  <div class="container">
+
+    <!-- GALLERY PHOTOS — drop files into photos/gallery/ named gallery-01.jpg … gallery-12.jpg -->
+    <!-- To add more photos: duplicate a div and increment the number. To change label: edit the gp-label text -->
+    <div class="gallery-archive-grid reveal">
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-1.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">OPENING CEREMONY</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-2.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">RAVI GUPTA</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-3.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">BATCH PHOTOGRAPHS</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-4.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">SUFI NIGHT</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-5.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">MENTOR CONNECT</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-6.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">CLUB FAIR</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-7.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">INDUCTION NIGHT</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-8.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">CULTURAL NIGHT</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-9.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">DESI ADDA</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-10.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">KEYNOTE SESSION</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-11.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">SELF DEFENCE SESSION</span></div></div>
+      <div class="gallery-photo" style="background-image: url('photos/gallery/gallery-12.jpg'), url('photos/gallery/images.png')"><div class="gp-overlay"><span class="gp-label">TALENT NIGHT</span></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-top-strip">
+    <span>INDUCTION 2026</span><span class="mq-sep">✦</span>
+    <span>CLASS OF 2030</span><span class="mq-sep">✦</span>
+    <span>IIIT DELHI</span><span class="mq-sep">✦</span>
+    <span>FILE / ARCHIVE PHOTOGRAPHS</span>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-name">INDRAPRASTHA INSTITUTE OF<br>INFORMATION TECHNOLOGY, DELHI</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">MAIN PAGE</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="schedule-btech.html">B.TECH SCHEDULE ↗</a>
+      <a href="schedule-pg.html">PG SCHEDULE ↗</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028</span>
+    <span>DOC ID: IND26-2028 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
