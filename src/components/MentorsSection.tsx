@@ -5,9 +5,9 @@ export default function MentorSection() {
     <section className="sec-mentorship" id="mentors">
       <div className="container">
         <div className="reveal">
-          <span className="sec-tag">FILE: MENTORSHIP</span>
+          <span className="sec-tag">FILE: Induction Buddies</span>
           <h2 className="sec-heading">
-            MENTOR
+            BUDDIES
             <br />
             CONNECT
           </h2>
