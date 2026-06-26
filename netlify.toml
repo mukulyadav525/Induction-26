@@ -1,4 +1,3 @@
 [build]
   command = "npm run build"
-  # Remove or comment out the publish line below if it points to .next
-  # publish = ".next"
+  publish = ".next"
