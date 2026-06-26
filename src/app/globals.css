@@ -1004,6 +1004,119 @@ section {
   aspect-ratio: 4 / 3;
 }
 
+/* ── MENTORSHIP ───────────────────────────────────────────── */
+.sec-mentorship {}
+
+.mentorship-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.mentorship-copy p {
+  font-family: var(--ff-ser);
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.mentorship-list {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.mentorship-list li {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  padding: 12px 0 12px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  position: relative;
+  letter-spacing: .2px;
+  line-height: 1.5;
+}
+
+.mentorship-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  font-size: 9px;
+  top: 15px;
+}
+
+.mentorship-callout {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  background: var(--ink);
+  color: var(--lime);
+  padding: 12px 20px;
+  display: inline-block;
+  line-height: 1.6;
+}
+
+.mentor-groups-btn {
+  display: inline-block;
+  margin-top: 24px;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  padding: 14px 28px;
+  transition: background .15s, color .15s, transform .1s;
+}
+
+.mentor-groups-btn:hover {
+  background: var(--ink);
+  color: var(--lime);
+  transform: translateY(-2px);
+}
+
+.mentorship-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  border: 3px solid var(--ink);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 16px;
+  text-align: center;
+  background: rgba(0, 0, 0, .03);
+  border: 1px solid rgba(0, 0, 0, .08);
+  transition: background .2s;
+}
+
+.stat-card:hover {
+  background: rgba(0, 0, 0, .06);
+}
+
+.stat-n {
+  font-family: var(--ff-disp);
+  font-size: 64px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.stat-n sup {
+  font-size: 30px;
+}
+
+.stat-l {
+  font-family: var(--ff-mono);
+  font-size: 8.5px;
+  letter-spacing: 2px;
+  color: #444;
+  margin-top: 10px;
+}
+
 .sec-talks {}
 
 .talks-sub {
@@ -2401,6 +2514,11 @@ section {
 
   .track-cards {
     grid-template-columns: 1fr;
+  }
+
+  .mentorship-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
 
   .contact-layout {

@@ -12,6 +12,14 @@ const btechNavLinks = [
   { label: "CONTACT", href: "/contact" },
 ];
 
+const btechDates = [
+  "3 August 2026",
+  "4 August 2026",
+  "5 August 2026",
+  "6 August 2026",
+  "7 August 2026",
+];
+
 export default async function ScheduleBtechPage() {
   const { days, rows, fetchedAt, error } = await fetchScheduleRows("BTECH");
 
@@ -39,6 +47,7 @@ export default async function ScheduleBtechPage() {
         initialRows={rows}
         initialFetchedAt={fetchedAt}
         track="BTECH"
+        dates={btechDates}
         error={error}
       />
 

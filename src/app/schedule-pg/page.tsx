@@ -14,6 +14,8 @@ const pgNavLinks = [
   { label: "CONTACT", href: "/contact" },
 ];
 
+const pgDates = ["17 July 2026", "18 July 2026"];
+
 export default async function SchedulePgPage() {
   const { days, rows, fetchedAt, error } = await fetchScheduleRows("PG");
 
@@ -36,6 +38,7 @@ export default async function SchedulePgPage() {
         initialRows={rows}
         initialFetchedAt={fetchedAt}
         track="PG"
+        dates={pgDates}
         error={error}
       />
       <Footer

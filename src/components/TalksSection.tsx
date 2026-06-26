@@ -1,13 +1,13 @@
 const speakers = [
   {
     name: "Dr. PANKAJ JALOTE",
-    role: "Founding Director of IIIT-Delhi @4:00 PM",
+    role: "Founding Director of IIIT-Delhi",
     photo: "photos/speakers/speaker-1.jpg",
     badge: "KEYNOTE",
   },
   {
     name: "Dr. RAJDEEP MUKHERJEE",
-    role: "Applied Scientist II, Amazon @",
+    role: "Applied Scientist II @ Amazon",
     photo: "photos/speakers/speaker-2.jpg",
     badge: "ALUMNI",
   },

@@ -208,6 +208,7 @@ interface ScheduleViewProps {
   initialRows: ScheduleRow[];
   initialFetchedAt: string;
   track: Track;
+  dates: Array<String>;
   error: string | null;
 }
 
@@ -216,6 +217,7 @@ export default function ScheduleView({
   initialRows,
   initialFetchedAt,
   track,
+  dates,
   error: initialError,
 }: ScheduleViewProps) {
   const [scheduleDays, setScheduleDays] = useState<ParsedDay[]>(initialDays);
@@ -414,7 +416,7 @@ export default function ScheduleView({
                         DAY {String(day.dayIndex + 1).padStart(2, "0")}
                       </span>
                       <span className="day-block-date">
-                        {day.dayIndex === 0 ? "17 July 2026" : "18 July 2026"}
+                        {dates[day.dayIndex]}
                       </span>
                     </div>
                     <div className="day-block-events">
