@@ -18,7 +18,6 @@ package-lock.json
 # next.js
 /.next/
 /out/
-.gitignore
 *.zip
 AGENTS.md
 CLAUDE.md
