@@ -51,7 +51,7 @@ export default function HeroSection() {
       <div
         className="hero-bg-photo"
         aria-hidden="true"
-        style={{ backgroundImage: "url('/photos/hero/images.png')" }}
+        style={{ backgroundImage: "url('/photos/hero/images.webp')" }}
       />
       <div className="hero-inner">
         <div className="hero-content">

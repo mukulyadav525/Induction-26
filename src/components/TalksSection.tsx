@@ -2,25 +2,25 @@ const speakers = [
   {
     name: "Dr. PANKAJ JALOTE",
     role: "Founding Director of IIIT-Delhi",
-    photo: "photos/speakers/speaker-1.jpg",
+    photo: "photos/speakers/speaker-1.webp",
     badge: "KEYNOTE",
   },
   {
     name: "Dr. RAJDEEP MUKHERJEE",
     role: "Applied Scientist II @ Amazon",
-    photo: "photos/speakers/speaker-2.jpg",
+    photo: "photos/speakers/speaker-2.webp",
     badge: "ALUMNI",
   },
   {
     name: "Mimansha Das",
     role: "AI Engineer @ Trademo",
-    photo: "photos/speakers/speaker-3.jpg",
+    photo: "photos/speakers/speaker-3.webp",
     badge: "ALUMNI",
   },
   {
     name: "SESSION SPEAKER",
     role: "Name & designation to be announced",
-    photo: "photos/speakers/speaker-4.jpg",
+    photo: "photos/speakers/speaker-4.webp",
     badge: "SESSION",
   },
 ];
@@ -47,7 +47,7 @@ export default function TalksSection() {
               <div
                 className="speaker-photo"
                 style={{
-                  backgroundImage: `url('${speaker.photo}'), url('photos/speakers/images.png')`,
+                  backgroundImage: `url('${speaker.photo}'), url('photos/speakers/images.webp')`,
                 }}
               ></div>
               <div className="speaker-info">

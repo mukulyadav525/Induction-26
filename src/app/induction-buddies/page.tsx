@@ -6,8 +6,8 @@ import ScrollRevealInit from "@/components/ScrollReveal";
 const mentorsNavLinks = [
   { label: "← MAIN PAGE", href: "/" },
   { label: "ABOUT", href: "/#about" },
-  { label: "SCHEDULE", href: "/#about" },
-  { label: "INDUCTION BUDDIES", href: "/mentors" },
+  { label: "SCHEDULE", href: "/#schedule" },
+  { label: "BUDDY", href: "/induction-buddies" },
   { label: "CONTACT", href: "/contact" },
 ];
 
@@ -48,7 +48,7 @@ export default function MentorsPage() {
                 <div
                   className="mentor-photo"
                   style={{
-                    backgroundImage: `url('photos/mentors/mentor-01.jpg'), url('photos/mentors/images.png')`,
+                    backgroundImage: `url('photos/mentors/mentor-01.webp'), url('photos/mentors/images.webp')`,
                   }}
                 ></div>
                 <div className="mentor-info">
@@ -76,7 +76,7 @@ export default function MentorsPage() {
         simpleNavLinks={[
           { text: "MAIN PAGE", href: "/" },
           { text: "ABOUT", href: "/#about" },
-          { text: "INDUCTION BUDDIES", href: "/mentors" },
+          { text: "BUDDY", href: "/induction-buddies" },
           { text: "CONTACT", href: "/contact" },
           { text: "B.TECH SCHEDULE ↗", href: "/schedule-btech" },
           { text: "PG SCHEDULE ↗", href: "/schedule-pg" },

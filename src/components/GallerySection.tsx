@@ -3,32 +3,32 @@ import Link from "next/link";
 const galleryPreviewPhotos = [
   {
     className: "gallery-photo gp-tall",
-    src: "photos/gallery/gallery-1.jpg",
-    fallback: "photos/gallery/images.png",
+    src: "photos/gallery/gallery-1.webp",
+    fallback: "photos/gallery/images.webp",
     label: "OPENING CEREMONY",
   },
   {
     className: "gallery-photo",
-    src: "photos/gallery/gallery-2.jpg",
-    fallback: "photos/gallery/images.png",
+    src: "photos/gallery/gallery-2.webp",
+    fallback: "photos/gallery/images.webp",
     label: "RAVI GUPTA",
   },
   {
     className: "gallery-photo",
-    src: "photos/gallery/gallery-3.jpg",
-    fallback: "photos/gallery/images.png",
+    src: "photos/gallery/gallery-3.webp",
+    fallback: "photos/gallery/images.webp",
     label: "GROUP PHOTO",
   },
   {
     className: "gallery-photo gp-wide",
-    src: "photos/gallery/gallery-4.jpg",
-    fallback: "photos/gallery/images.png",
+    src: "photos/gallery/gallery-4.webp",
+    fallback: "photos/gallery/images.webp",
     label: "CULTURAL NIGHT",
   },
   {
     className: "gallery-photo gp-wide2",
-    src: "photos/gallery/gallery-7.jpg",
-    fallback: "photos/gallery/images.png",
+    src: "photos/gallery/gallery-7.webp",
+    fallback: "photos/gallery/images.webp",
     label: "INDUCTION NIGHT",
   },
 ];

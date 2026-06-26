@@ -19,7 +19,8 @@ export default function Navbar({
 }: NavbarProps) {
   const defaultLinks = [
     { label: "ABOUT", href: "/#about" },
-    { label: "SCHEDULE", href: "/#about" },
+    { label: "SCHEDULE", href: "/#schedule" },
+    { label: "BUDDY", href: "/#interaction-buddies" },
     { label: "GALLERY", href: "/#gallery" },
     { label: "SPEAKERS", href: "/#talks" },
     { label: "INFO", href: "/#info" },
@@ -64,7 +65,7 @@ export default function Navbar({
     >
       <div className="nav-brand">
         <Image
-          src="/iiitd-logo.png"
+          src="/iiitd-logo.webp"
           alt="IIIT Delhi Logo"
           className="nav-logo"
           width={220}

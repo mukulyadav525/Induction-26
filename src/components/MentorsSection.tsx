@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function MentorSection() {
   return (
-    <section className="sec-mentorship" id="mentors">
+    <section className="sec-mentorship" id="interaction-buddies">
       <div className="container">
         <div className="reveal">
           <span className="sec-tag">FILE: Induction Buddies</span>
@@ -16,22 +16,23 @@ export default function MentorSection() {
         <div className="mentorship-layout">
           <div className="mentorship-copy reveal">
             <p>
-              Every incoming student is paired with a trained senior mentor —
-              your first anchor in a new world. This is not orientation. It is
-              the start of a relationship that shapes your entire first semester
-              at IIIT Delhi.
+              Every incoming student is paired with a trained senior induction
+              buddy — your first anchor in a new world. This is not orientation.
+              It is the start of a relationship that shapes your entire
+              induction at IIIT Delhi.
             </p>
             <ul className="mentorship-list">
-              <li>One-on-one pairing for the entire first semester</li>
+              <li>One-on-one pairing for the entire induction</li>
               <li>Academic guidance and course selection support</li>
               <li>Insider knowledge from someone who has already been there</li>
               <li>A genuine friend before classes even begin</li>
             </ul>
             <div className="mentorship-callout">
-              MENTOR ASSIGNMENTS REVEALED DURING INDUCTION — ATTEND ALL SESSIONS
+              INDUCTION BUDDY ASSIGNMENTS REVEALED DURING INDUCTION — ATTEND ALL
+              SESSIONS
             </div>
             <Link className="mentor-groups-btn" href="/induction-buddies">
-              VIEW MENTOR GROUPS →
+              VIEW INDUCTION BUDDY GROUPS →
             </Link>
           </div>
 
@@ -46,7 +47,7 @@ export default function MentorSection() {
               <span className="stat-n">
                 100<sup>+</sup>
               </span>
-              <span className="stat-l">SENIOR MENTORS</span>
+              <span className="stat-l">SENIOR INDUCTION BUDDIES</span>
             </div>
             <div className="stat-card">
               <span className="stat-n">2+5</span>

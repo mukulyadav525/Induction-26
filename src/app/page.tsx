@@ -40,8 +40,8 @@ export default function HomePage() {
             label: "SECTIONS",
             links: [
               { text: "ABOUT", href: "/#about" },
-              { text: "SCHEDULE", href: "/#about" },
-              { text: "INDUCTION BUDDIES", href: "/#mentors" },
+              { text: "SCHEDULE", href: "/#schedule" },
+              { text: "BUDDY", href: "/#interaction-buddies" },
               { text: "GALLERY", href: "/#gallery" },
             ],
           },
@@ -49,7 +49,7 @@ export default function HomePage() {
             label: "MORE",
             links: [
               { text: "SPEAKERS", href: "/#talks" },
-              { text: "DIRECTIONS", href: "/#directions" },
+              { text: "DIRECTIONS", href: "/#campus" },
               { text: "INFO", href: "/#info" },
             ],
           },

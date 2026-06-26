@@ -1,26 +1,26 @@
 const campusPhotos = [
   {
     className: "campus-photo cp-tall",
-    src: "photos/campus/academic-block.jpg",
-    fallback: "photos/campus/academic.png",
+    src: "photos/campus/academic-block.webp",
+    fallback: "photos/campus/academic.webp",
     label: "ACADEMIC BLOCK",
   },
   {
     className: "campus-photo",
-    src: "photos/campus/auditorium.jpg",
-    fallback: "photos/campus/oat.jpg",
+    src: "photos/campus/auditorium.webp",
+    fallback: "photos/campus/oat.webp",
     label: "AUDITORIUM & LIBRARY",
   },
   {
     className: "campus-photo",
-    src: "photos/campus/library.jpg",
-    fallback: "photos/campus/lhc.jpg",
+    src: "photos/campus/library.webp",
+    fallback: "photos/campus/lhc.webp",
     label: "LHC",
   },
   {
     className: "campus-photo cp-wide",
-    src: "photos/campus/sports-complex.jpg",
-    fallback: "photos/campus/rnd.jpg",
+    src: "photos/campus/sports-complex.webp",
+    fallback: "photos/campus/rnd.webp",
     label: "RESEARCH AND DEVELOPMENT BUILDING",
   },
 ];

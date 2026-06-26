@@ -6,24 +6,24 @@ import ScrollRevealInit from "@/components/ScrollReveal";
 const galleryNavLinks = [
   { label: "← MAIN PAGE", href: "/" },
   { label: "ABOUT", href: "/#about" },
-  { label: "INDUCTION BUDDIES", href: "/mentors" },
+  { label: "BUDDY", href: "/induction-buddies" },
   { label: "SPEAKERS", href: "/#talks" },
   { label: "CONTACT", href: "/contact" },
 ];
 
 const allGalleryPhotos = [
-  { src: "photos/gallery/gallery-1.jpg", label: "OPENING CEREMONY" },
-  { src: "photos/gallery/gallery-2.jpg", label: "RAVI GUPTA" },
-  { src: "photos/gallery/gallery-3.jpg", label: "BATCH PHOTOGRAPHS" },
-  { src: "photos/gallery/gallery-4.jpg", label: "SUFI NIGHT" },
-  { src: "photos/gallery/gallery-5.jpg", label: "MENTOR CONNECT" },
-  { src: "photos/gallery/gallery-6.jpg", label: "CLUB FAIR" },
-  { src: "photos/gallery/gallery-7.jpg", label: "INDUCTION NIGHT" },
-  { src: "photos/gallery/gallery-8.jpg", label: "CULTURAL NIGHT" },
-  { src: "photos/gallery/gallery-9.jpg", label: "DESI ADDA" },
-  { src: "photos/gallery/gallery-10.jpg", label: "KEYNOTE SESSION" },
-  { src: "photos/gallery/gallery-11.jpg", label: "SELF DEFENCE SESSION" },
-  { src: "photos/gallery/gallery-12.jpg", label: "TALENT NIGHT" },
+  { src: "photos/gallery/gallery-1.webp", label: "OPENING CEREMONY" },
+  { src: "photos/gallery/gallery-2.webp", label: "RAVI GUPTA" },
+  { src: "photos/gallery/gallery-3.webp", label: "BATCH PHOTOGRAPHS" },
+  { src: "photos/gallery/gallery-4.webp", label: "SUFI NIGHT" },
+  { src: "photos/gallery/gallery-5.webp", label: "MENTOR CONNECT" },
+  { src: "photos/gallery/gallery-6.webp", label: "CLUB FAIR" },
+  { src: "photos/gallery/gallery-7.webp", label: "INDUCTION NIGHT" },
+  { src: "photos/gallery/gallery-8.webp", label: "CULTURAL NIGHT" },
+  { src: "photos/gallery/gallery-9.webp", label: "DESI ADDA" },
+  { src: "photos/gallery/gallery-10.webp", label: "KEYNOTE SESSION" },
+  { src: "photos/gallery/gallery-11.webp", label: "SELF DEFENCE SESSION" },
+  { src: "photos/gallery/gallery-12.webp", label: "TALENT NIGHT" },
 ];
 
 export default function GalleryPage() {
@@ -53,7 +53,7 @@ export default function GalleryPage() {
                 key={i}
                 className="gallery-photo"
                 style={{
-                  backgroundImage: `url('${photo.src}'), url('photos/gallery/images.png')`,
+                  backgroundImage: `url('${photo.src}'), url('photos/gallery/images.webp')`,
                 }}
               >
                 <div className="gp-overlay">

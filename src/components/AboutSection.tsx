@@ -12,6 +12,7 @@ export default function AboutSection() {
   return (
     <section className="sec-about" id="about">
       <div className="container">
+        <div id="schedule" style={{ position: "relative", top: "-96px" }} />
         <div className="about-intro reveal">
           <span className="sec-tag">FILE: ABOUT</span>
           <h2 className="sec-heading">
