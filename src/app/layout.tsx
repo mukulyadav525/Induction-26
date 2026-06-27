@@ -4,10 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Induction '26 — IIIT Delhi",
   description:
-    "Induction 2026 — IIIT Delhi. Welcome to the Class of 2030. Schedule, speakers, mentorship and everything you need to know.",
+    "Induction 2026 — IIIT Delhi. Welcome to the Class of 2028. Schedule, speakers, mentorship and everything you need to know.",
   openGraph: {
     title: "Induction '26 — IIIT Delhi",
-    description: "Official induction portal for the IIIT Delhi Class of 2030.",
+    description: "Official induction portal for the IIIT Delhi Class of 2028.",
     images: ["https://induction.iiitd.edu.in/iiitd.png"],
     url: "https://induction.iiitd.edu.in",
     type: "website",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Induction '26 — IIIT Delhi",
-    description: "Official induction portal for the IIIT Delhi Class of 2030.",
+    description: "Official induction portal for the IIIT Delhi Class of 2028.",
     images: ["https://induction.iiitd.edu.in/iiitd.png"],
   },
 };
