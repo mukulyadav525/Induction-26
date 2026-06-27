@@ -7,7 +7,6 @@ import PageHero from "@/components/PageHero";
 import ScrollRevealInit from "@/components/ScrollReveal";
 
 const contactNavLinks = [
-  { label: "← MAIN PAGE", href: "/" },
   { label: "ABOUT", href: "/#about" },
   { label: "SCHEDULE", href: "/#schedule" },
   { label: "BUDDY", href: "/induction-buddies" },

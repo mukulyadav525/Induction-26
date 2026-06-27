@@ -7,7 +7,6 @@ import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 export const dynamic = "force-dynamic";
 
 const pgNavLinks = [
-  { label: "← MAIN PAGE", href: "/" },
   { label: "ABOUT", href: "/#about" },
   { label: "GALLERY", href: "/#gallery" },
   { label: "SPEAKERS", href: "/#talks" },

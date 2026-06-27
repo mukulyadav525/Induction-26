@@ -64,13 +64,15 @@ export default function Navbar({
       id="site-nav"
     >
       <div className="nav-brand">
-        <Image
-          src="/iiitd-logo.webp"
-          alt="IIIT Delhi Logo"
-          className="nav-logo"
-          width={220}
-          height={50}
-        />
+        <Link href={"/"}>
+          <Image
+            src="/iiitd-logo.webp"
+            alt="IIIT Delhi Logo"
+            className="nav-logo"
+            width={220}
+            height={50}
+          />
+        </Link>
         {isScrolledByDefault && (
           <div className="nav-brand-text">
             <span className="brand-short">IIIT DELHI</span>

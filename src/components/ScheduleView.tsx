@@ -146,7 +146,11 @@ function EventRow({ event, allDayLabels, dayLabel, now }: EventRowProps) {
         <div className={`dbe-name${hasNoEvent ? " is-tba" : ""}`}>
           {hasNoEvent ? "Details to be announced" : event.event}
         </div>
-        {event.venue && <div className="dbe-venue">{event.venue}</div>}
+        {event.venue && (
+          <div className="dbe-venue">
+            {[event.venue, event.speaker].filter(Boolean).join(" · ")}
+          </div>
+        )}
       </div>
       <div className={`dbe-badge ${badgeClass}`}>{badgeText}</div>
     </div>
@@ -162,8 +166,16 @@ interface LiveBarComputedProps {
 function computeLiveBarState(props: LiveBarComputedProps) {
   const { days, allDayLabels, now } = props;
 
-  let currentSession: { event: ParsedEvent; dayLabel: string; end: Date } | null = null;
-  let nextSession: { event: ParsedEvent; dayLabel: string; start: Date } | null = null;
+  let currentSession: {
+    event: ParsedEvent;
+    dayLabel: string;
+    end: Date;
+  } | null = null;
+  let nextSession: {
+    event: ParsedEvent;
+    dayLabel: string;
+    start: Date;
+  } | null = null;
 
   for (const day of days) {
     const dateObj = dayLabelToDate(day.dayLabel, allDayLabels);

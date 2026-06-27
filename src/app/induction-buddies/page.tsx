@@ -4,7 +4,6 @@ import PageHero from "@/components/PageHero";
 import ScrollRevealInit from "@/components/ScrollReveal";
 
 const mentorsNavLinks = [
-  { label: "← MAIN PAGE", href: "/" },
   { label: "ABOUT", href: "/#about" },
   { label: "SCHEDULE", href: "/#schedule" },
   { label: "BUDDY", href: "/induction-buddies" },
