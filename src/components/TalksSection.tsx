@@ -20,8 +20,26 @@ const speakers = [
   {
     name: "SESSION SPEAKER",
     role: "Name & designation to be announced",
-    photo: "photos/speakers/speaker-4.webp",
-    badge: "SESSION",
+    photo: "photos/speakers/speaker-.webp",
+    badge: "TBD",
+  },
+  {
+    name: "SESSION SPEAKER",
+    role: "Name & designation to be announced",
+    photo: "photos/speakers/speaker-.webp",
+    badge: "TBD",
+  },
+  {
+    name: "SESSION SPEAKER",
+    role: "Name & designation to be announced",
+    photo: "photos/speakers/speaker-.webp",
+    badge: "TBD",
+  },
+  {
+    name: "SESSION SPEAKER",
+    role: "Name & designation to be announced",
+    photo: "photos/speakers/speaker-.webp",
+    badge: "TBD",
   },
 ];
 
