@@ -1,53 +1,59 @@
-import {
-  SCHEDULE_CONFIG,
-  Track,
-  ScheduleRow,
-  ParsedDay,
-  parseScheduleRows,
-  groupRowsByDay,
-} from "./scheduleEngine";
+import { Track, ParsedEvent, ParsedDay } from "./scheduleEngine";
+import { getEventsByTrack, initScheduleTable, DbEvent } from "./scheduleDb";
 
 export interface FetchScheduleResult {
   days: ParsedDay[];
-  rows: ScheduleRow[];
   fetchedAt: string;
   error: string | null;
+}
+
+function dbEventsToParsedDays(dbEvents: DbEvent[]): ParsedDay[] {
+  const dayMap = new Map<
+    string,
+    { dayLabel: string; dayIndex: number; events: ParsedEvent[] }
+  >();
+
+  for (const ev of dbEvents) {
+    if (!dayMap.has(ev.day_label)) {
+      dayMap.set(ev.day_label, {
+        dayLabel: ev.day_label,
+        dayIndex: ev.day_index,
+        events: [],
+      });
+    }
+    dayMap.get(ev.day_label)!.events.push({
+      time: ev.time,
+      endTime: ev.end_time,
+      event: ev.event,
+      venue: ev.venue,
+      speaker: ev.speaker,
+      status: ev.status ?? "",
+      type: ev.type ?? "",
+    });
+  }
+
+  return Array.from(dayMap.values()).sort((a, b) => a.dayIndex - b.dayIndex);
 }
 
 export async function fetchScheduleRows(
   track: Track,
 ): Promise<FetchScheduleResult> {
-  const sheetUrl =
-    track === "BTECH"
-      ? SCHEDULE_CONFIG.SHEET_CSV_BTECH
-      : SCHEDULE_CONFIG.SHEET_CSV_PG;
   const fetchedAt = new Date().toISOString();
 
   try {
-    const response = await fetch(sheetUrl, {
-      next: { revalidate: 90 },
-    });
-
-    if (!response.ok) {
-      return {
-        days: [],
-        rows: [],
-        fetchedAt,
-        error: `HTTP ${response.status}`,
-      };
-    }
-
-    const csvText = await response.text();
-    const rows = parseScheduleRows(csvText, track);
-    const days = groupRowsByDay(rows);
-
-    return { days, rows, fetchedAt, error: null };
-  } catch (err) {
+    await initScheduleTable();
+    const dbEvents = await getEventsByTrack(track);
+    return {
+      days: dbEventsToParsedDays(dbEvents),
+      fetchedAt,
+      error: null,
+    };
+  } catch (dbError) {
+    console.error("[fetchScheduleRows] DB fetch failed:", dbError);
     return {
       days: [],
-      rows: [],
       fetchedAt,
-      error: err instanceof Error ? err.message : "Unknown error",
+      error: dbError instanceof Error ? dbError.message : "Database error",
     };
   }
 }

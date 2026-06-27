@@ -6,13 +6,10 @@ import {
   ParsedEvent,
   pad,
   formatTimeDisplay,
-  readColumn,
-  ScheduleRow,
   SCHEDULE_CONFIG,
 } from "@/lib/scheduleEngine";
 import { Track } from "@/lib/scheduleEngine";
 import { FetchScheduleResult } from "@/lib/fetchScheduleRows";
-
 const TYPE_COLORS: Record<string, { bg: string; fg: string }> = {
   TALK: { bg: "#c8f135", fg: "#1a1a1a" },
   KEYNOTE: { bg: "#c8f135", fg: "#1a1a1a" },
@@ -157,46 +154,30 @@ function EventRow({ event, allDayLabels, dayLabel, now }: EventRowProps) {
 }
 
 interface LiveBarComputedProps {
-  rows: ScheduleRow[];
+  days: ParsedDay[];
   allDayLabels: string[];
   now: Date;
 }
 
 function computeLiveBarState(props: LiveBarComputedProps) {
-  const { rows, allDayLabels, now } = props;
+  const { days, allDayLabels, now } = props;
 
-  let currentSession: { row: ScheduleRow; end: Date } | null = null;
-  let nextSession: { row: ScheduleRow; start: Date } | null = null;
+  let currentSession: { event: ParsedEvent; dayLabel: string; end: Date } | null = null;
+  let nextSession: { event: ParsedEvent; dayLabel: string; start: Date } | null = null;
 
-  for (const row of rows) {
-    const dayLabel = readColumn(row, "Day", "day", "Date", "date").trim();
-    const dateObj = dayLabelToDate(dayLabel, allDayLabels);
-    const timeStr = readColumn(
-      row,
-      "Time",
-      "time",
-      "Start Time",
-      "start_time",
-    ).trim();
-    const endStr = readColumn(
-      row,
-      "End Time",
-      "end_time",
-      "EndTime",
-      "End",
-    ).trim();
-
-    const start = parseEventTime(timeStr, dateObj);
-    if (!start) continue;
-
-    const end = endStr
-      ? parseEventTime(endStr, dateObj)
-      : new Date(start.getTime() + 3600000);
-
-    if (start <= now && end && now < end && !currentSession) {
-      currentSession = { row, end };
-    } else if (start > now && !nextSession) {
-      nextSession = { row, start };
+  for (const day of days) {
+    const dateObj = dayLabelToDate(day.dayLabel, allDayLabels);
+    for (const event of day.events) {
+      const start = parseEventTime(event.time, dateObj);
+      if (!start) continue;
+      const end = event.endTime
+        ? parseEventTime(event.endTime, dateObj)
+        : new Date(start.getTime() + 3600000);
+      if (start <= now && end && now < end && !currentSession) {
+        currentSession = { event, dayLabel: day.dayLabel, end };
+      } else if (start > now && !nextSession) {
+        nextSession = { event, dayLabel: day.dayLabel, start };
+      }
     }
   }
 
@@ -205,7 +186,6 @@ function computeLiveBarState(props: LiveBarComputedProps) {
 
 interface ScheduleViewProps {
   initialDays: ParsedDay[];
-  initialRows: ScheduleRow[];
   initialFetchedAt: string;
   track: Track;
   dates: Array<String>;
@@ -214,14 +194,12 @@ interface ScheduleViewProps {
 
 export default function ScheduleView({
   initialDays,
-  initialRows,
   initialFetchedAt,
   track,
   dates,
   error: initialError,
 }: ScheduleViewProps) {
   const [scheduleDays, setScheduleDays] = useState<ParsedDay[]>(initialDays);
-  const [scheduleRows, setScheduleRows] = useState<ScheduleRow[]>(initialRows);
   const [fetchError, setFetchError] = useState<string | null>(initialError);
   const [lastRefreshed, setLastRefreshed] = useState<string>(() => {
     const date = new Date(initialFetchedAt);
@@ -232,6 +210,7 @@ export default function ScheduleView({
   const [csTime, setCsTime] = useState<string>("");
 
   const refreshIconRef = useRef<HTMLSpanElement>(null);
+  const doRefreshRef = useRef<() => Promise<void>>(() => Promise.resolve());
 
   const allDayLabels = scheduleDays.map((d) => d.dayLabel);
 
@@ -257,7 +236,6 @@ export default function ScheduleView({
       const response = await fetch(`/api/schedule?track=${track}`);
       const result: FetchScheduleResult = await response.json();
       setScheduleDays(result.days);
-      setScheduleRows(result.rows);
       setFetchError(result.error);
       const refreshDate = new Date(result.fetchedAt);
       setLastRefreshed(
@@ -275,8 +253,19 @@ export default function ScheduleView({
     }
   }, [isRefreshing, track]);
 
+  doRefreshRef.current = doRefresh;
+
+  useEffect(() => {
+    doRefreshRef.current();
+    const autoRefreshInterval = setInterval(
+      () => doRefreshRef.current(),
+      SCHEDULE_CONFIG.REFRESH_EVERY_MS,
+    );
+    return () => clearInterval(autoRefreshInterval);
+  }, []);
+
   const { currentSession, nextSession } = computeLiveBarState({
-    rows: scheduleRows,
+    days: scheduleDays,
     allDayLabels,
     now,
   });
@@ -286,25 +275,9 @@ export default function ScheduleView({
   let liveBarIsActive = false;
 
   if (currentSession) {
-    const eventName =
-      readColumn(
-        currentSession.row,
-        "Event",
-        "event",
-        "Session",
-        "session",
-        "Title",
-        "title",
-        "Activity",
-      ) || "Current Session";
-    const venueValue = readColumn(
-      currentSession.row,
-      "Venue",
-      "venue",
-      "Location",
-      "location",
-    );
-    const speakerValue = readColumn(currentSession.row, "Speaker", "speaker");
+    const eventName = currentSession.event.event || "Current Session";
+    const venueValue = currentSession.event.venue;
+    const speakerValue = currentSession.event.speaker;
     liveBarContent = (
       <>
         <span className="live-event-name">{eventName}</span>
@@ -315,17 +288,7 @@ export default function ScheduleView({
     liveTimeText = `Until ${pad(currentSession.end.getHours())}:${pad(currentSession.end.getMinutes())}`;
     liveBarIsActive = true;
   } else if (nextSession) {
-    const eventName =
-      readColumn(
-        nextSession.row,
-        "Event",
-        "event",
-        "Session",
-        "session",
-        "Title",
-        "title",
-        "Activity",
-      ) || "Next Session";
+    const eventName = nextSession.event.event || "Next Session";
     liveBarContent = (
       <>
         <span className="live-up-label">UP NEXT —</span>{" "}

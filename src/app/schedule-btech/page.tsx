@@ -4,6 +4,8 @@ import PageHero from "@/components/PageHero";
 import ScheduleView from "@/components/ScheduleView";
 import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 
+export const dynamic = "force-dynamic";
+
 const btechNavLinks = [
   { label: "← MAIN PAGE", href: "/" },
   { label: "ABOUT", href: "/#about" },
@@ -21,7 +23,7 @@ const btechDates = [
 ];
 
 export default async function ScheduleBtechPage() {
-  const { days, rows, fetchedAt, error } = await fetchScheduleRows("BTECH");
+  const { days, fetchedAt, error } = await fetchScheduleRows("BTECH");
 
   return (
     <>
@@ -44,7 +46,6 @@ export default async function ScheduleBtechPage() {
 
       <ScheduleView
         initialDays={days}
-        initialRows={rows}
         initialFetchedAt={fetchedAt}
         track="BTECH"
         dates={btechDates}

@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import ScheduleView from "@/components/ScheduleView";
 import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 
-export const revalidate = 90;
+export const dynamic = "force-dynamic";
 
 const pgNavLinks = [
   { label: "← MAIN PAGE", href: "/" },
@@ -17,7 +17,7 @@ const pgNavLinks = [
 const pgDates = ["17 July 2026", "18 July 2026"];
 
 export default async function SchedulePgPage() {
-  const { days, rows, fetchedAt, error } = await fetchScheduleRows("PG");
+  const { days, fetchedAt, error } = await fetchScheduleRows("PG");
 
   return (
     <>
@@ -35,7 +35,6 @@ export default async function SchedulePgPage() {
       />
       <ScheduleView
         initialDays={days}
-        initialRows={rows}
         initialFetchedAt={fetchedAt}
         track="PG"
         dates={pgDates}
