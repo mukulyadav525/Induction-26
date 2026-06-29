@@ -7,6 +7,7 @@
 }
 
 :root {
+  --sidebar-width: 240px;
   --paper: #f4f0e8;
   --ink: #1a1a1a;
   --lime: #c8f135;
@@ -257,10 +258,11 @@ body {
 .hero-inner {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
   position: relative;
   z-index: 1;
-  max-width: 1600px;
+  max-width: 1500px;
+  margin: 0 auto;
   width: 100%;
   align-self: center;
 }
@@ -270,6 +272,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 48px 40px;
+  min-width: 0;
 }
 
 .hero-title-row {
@@ -280,7 +283,7 @@ body {
 
 .hero-heading {
   font-family: var(--ff-disp);
-  font-size: clamp(120px, 14vw + 5vh, 280px);
+  font-size: clamp(100px, 10vw, 220px);
   line-height: .86;
   letter-spacing: 1px;
   color: var(--ink);
@@ -525,15 +528,29 @@ body {
 }
 
 .countdown-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
   background: var(--ink);
   color: var(--paper);
-  padding: 18px 40px;
+
+  align-items: center;
+  padding: 18px 0;
+}
+
+.countdown-left {
   display: flex;
   align-items: center;
   gap: 28px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
+  padding: 0 40px;
+}
+
+.countdown-right {
+  display: flex;
+  justify-content: center;   /* try flex-start if you want it at the left edge */
+  align-items: center;
 }
 
 .cd-label {
@@ -580,13 +597,13 @@ body {
 }
 
 .cd-track-pill {
-  margin-left: auto;
   font-family: var(--ff-mono);
   font-size: 9px;
   letter-spacing: 3px;
   border: 1px solid #444;
   padding: 5px 12px;
   color: #888;
+  margin-left: 0;
 }
 
 .countdown-live-label {
