@@ -41,9 +41,7 @@ export default function InfoSection() {
   return (
     <section className="sec-info" id="info">
       <div className="info-inner">
-        <div className="info-header-row">
-           <span className="sec-tag sec-tag--dark">FILE: NOTICES</span>
-        </div>
+        <span className="sec-tag sec-tag--dark">FILE: NOTICES</span>
         <h2 className="info-title">
           IMPORTANT
           <br />

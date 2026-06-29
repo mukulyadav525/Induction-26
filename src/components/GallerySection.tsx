@@ -39,9 +39,7 @@ export default function GallerySection() {
       <div className="gallery-inner">
         <div className="gallery-hdr reveal">
           <div className="gallery-hdr-left">
-            <div className="info-header-row">
-              <span className="sec-tag sec-tag--light">FILE: GALLERY</span>
-            </div>
+            <span className="sec-tag sec-tag--light">FILE: GALLERY</span>
             <h2 className="gallery-title">
               INDUCTION
               <br />
