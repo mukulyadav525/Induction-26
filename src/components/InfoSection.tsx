@@ -42,10 +42,7 @@ export default function InfoSection() {
     <section className="sec-info" id="info">
       <div className="info-inner">
         <div className="info-header-row">
-          <span className="info-sec-tag">SECTION 07</span>
-          <span className="info-sec-tag info-sec-tag--right">
-            FILE / NOTICES
-          </span>
+           <span className="sec-tag sec-tag--dark">FILE: NOTICES</span>
         </div>
         <h2 className="info-title">
           IMPORTANT
