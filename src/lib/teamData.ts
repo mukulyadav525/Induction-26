@@ -7,9 +7,11 @@ export interface TeamMember {
 }
 
 export interface SAOfficial {
+  name: string;
   title: string;
   adjective: string;
   photo: string | null;
+  email: string;
 }
 
 export interface OcSubsection {
@@ -18,6 +20,19 @@ export interface OcSubsection {
   heading: string;
   adjective: string;
   members: TeamMember[];
+}
+
+export interface TeamLead extends TeamMember {
+  department:
+    | "Operations"
+    | "Nirvana"
+    | "Events"
+    | "Design"
+    | "PR"
+    | "Ambience"
+    | "Web Development"
+    | "Sponsorship"
+    | "Mentor";
 }
 
 export const convenorMembers: TeamMember[] = [
@@ -45,10 +60,27 @@ export const convenorMembers: TeamMember[] = [
 ];
 
 export const saOfficeMembers: SAOfficial[] = [
-  { title: "PRESIDENT", adjective: "Visionary", photo: null },
-  { title: "VICE PRESIDENT", adjective: "Unstoppable", photo: null },
-  { title: "JOINT SECRETARY", adjective: "Meticulous", photo: null },
-  { title: "CULTURAL SECRETARY", adjective: "Electrifying", photo: null },
+  {
+    name: "Dr. Kiriti Kanjilal",
+    email: "kanjilal@iiitd.ac.in",
+    title: "Dean of Student Affairs (DoSA)",
+    adjective: "Visionary",
+    photo: "/photos/sa/SA-1.jpg",
+  },
+  {
+    name: "Jagadanand Dwivedi",
+    email: "jagadanand@iiitd.ac.in",
+    title: "Junior Administrative Officer (SG) (Student Affairs)",
+    adjective: "Steadfast",
+    photo: "/photos/sa/SA-2.jpg",
+  },
+  {
+    name: "Sonal Garg",
+    email: "sonal@iiitd.ac.in",
+    title: "Junior Administrative Officer (SG) (Student Affairs)",
+    adjective: "Precise",
+    photo: "/photos/sa/SA-3.jpg",
+  },
 ];
 
 export const ocSubsections: OcSubsection[] = [
@@ -286,3 +318,20 @@ export const ocSubsections: OcSubsection[] = [
 export const allOcMembers: TeamMember[] = ocSubsections.flatMap(
   (subsection) => subsection.members,
 );
+
+export const allLeads: TeamLead[] = Array.from({ length: 10 }, (_, i) => {
+  return {
+    name: `Placeholder name ${i}`,
+    email: "EMAIL",
+    department: "Web Development",
+    role: "ROLE: Placeholder until I recieve more info",
+    photo: "/photos/mentors/mentor-01.webp",
+  };
+});
+
+export const wholeTeam: TeamMember[] = [
+  ...convenorMembers,
+  ...allOcMembers,
+  ...allLeads,
+];
+// console.log(wholeTeam);

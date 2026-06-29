@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import CursorTrail from "@/components/CursorTrail";
 
 export const metadata: Metadata = {
   title: "Induction '26 — IIIT Delhi",
@@ -53,7 +54,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <CursorTrail color="#fff" strokeWidth={2} points={24} delay={12.5} />{" "}
+        {children}
+      </body>
     </html>
   );
 }

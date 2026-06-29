@@ -10,7 +10,7 @@
   --paper: #f4f0e8;
   --ink: #1a1a1a;
   --lime: #c8f135;
-  --orange: #e85d04;
+  --orange: #e57632;
   --grey: #6b6b6b;
   --border: 2px solid #1a1a1a;
 
@@ -3629,8 +3629,6 @@ section {
   }
 }
 
-/* ─── TEAM PAGE ──────────────────────────────────────────────── */
-
 .team-subheading {
   font-family: var(--ff-disp);
   font-size: clamp(28px, 3.5vw, 48px);
@@ -3699,8 +3697,6 @@ section {
 .team-talks-sub--light {
   color: #aaa;
 }
-
-/* ─── TEAM HORIZONTAL SCROLL ─────────────────────────────────── */
 
 /*
   CARD HEIGHT CONTRACT
@@ -3990,11 +3986,96 @@ section {
 
 .team-member-tag--orange {
   background: var(--orange);
-  color: var(--paper);
+  color: var(--ink);
   border-color: var(--orange);
 }
 
-/* ─── TEAM CTA ───────────────────────────────────────────────── */
+
+.sa-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  border-top: 2px solid rgba(244, 240, 232, 0.2);
+  border-left: 2px solid rgba(244, 240, 232, 0.2);
+}
+
+.sa-card {
+  border-right: 2px solid rgba(244, 240, 232, 0.2);
+  border-bottom: 2px solid rgba(244, 240, 232, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.sa-card-photo {
+  height: 260px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center top;
+  background-color: #2a2a2a;
+}
+
+.sa-card-info {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  padding: 18px 20px 20px;
+  border-top: 2px solid rgba(244, 240, 232, 0.2);
+  gap: 0;
+}
+
+.sa-card-adjective {
+  font-family: var(--ff-ser);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--lime);
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.sa-card-name {
+  font-family: var(--ff-disp);
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--paper);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.sa-card-role {
+  font-family: var(--ff-ser);
+  font-size: 11px;
+  color: #888;
+  line-height: 1.6;
+  font-style: italic;
+  align-self: start;
+  margin-bottom: 14px;
+}
+
+.sa-card-info .team-member-tag {
+  align-self: start;
+}
+
+@media (max-width: 900px) {
+  .sa-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .sa-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sa-card-photo {
+    height: 180px;
+  }
+
+  .sa-card-name {
+    font-size: 16px;
+  }
+}
 
 .team-cta-section {
   background: var(--ink);
@@ -4061,6 +4142,336 @@ section {
   letter-spacing: 3px;
   color: #666;
   text-transform: uppercase;
+}
+
+.all-members-dept-heading {
+  font-family: var(--ff-disp);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: .92;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.all-members-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .all-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .all-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.roster-page-body {
+  padding-bottom: 48px;
+}
+
+.roster-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.roster-header-left {
+  flex: 1;
+  min-width: 240px;
+}
+
+.roster-header-left .sec-heading {
+  margin-bottom: 0;
+}
+
+.roster-header-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.roster-total-count {
+  font-family: var(--ff-disp);
+  font-size: clamp(72px, 10vw, 120px);
+  line-height: 0.85;
+  letter-spacing: -2px;
+  color: var(--ink);
+}
+
+.roster-total-label {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-top: 10px;
+}
+
+.roster-total-sub {
+  font-family: var(--ff-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-top: 4px;
+}
+
+.roster-dept-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 32px;
+  border: 2px solid var(--ink);
+  border-right: none;
+  border-bottom: none;
+}
+
+.roster-dept-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--ff-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.roster-dept-nav-item:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.roster-dept-nav-count {
+  font-family: var(--ff-mono);
+  font-size: 7px;
+  letter-spacing: 1px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 6px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.roster-dept-nav-item:hover .roster-dept-nav-count {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.roster-dept-section {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 52px 40px 64px;
+  border-top: 2px solid var(--ink);
+}
+
+.roster-dept-section--alt {
+  background: var(--ink);
+  color: var(--paper);
+  border-top-color: rgba(244, 240, 232, 0.15);
+}
+
+.roster-dept-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.roster-dept-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.roster-dept-section--alt .roster-dept-header {
+  border-bottom-color: rgba(244, 240, 232, 0.2);
+}
+
+.roster-dept-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.roster-dept-title {
+  font-family: var(--ff-disp);
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 0.9;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.roster-dept-title--light {
+  color: var(--paper);
+}
+
+.roster-dept-badge {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  padding: 6px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.roster-dept-badge--light {
+  color: var(--paper);
+  border-color: rgba(244, 240, 232, 0.3);
+}
+
+.roster-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.roster-row {
+  display: grid;
+  grid-template-columns: 36px 48px 1fr auto;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+  transition: background 0.12s;
+}
+
+.roster-row:last-child {
+  border-bottom: none;
+}
+
+.roster-row:hover {
+  background: rgba(26, 26, 26, 0.04);
+}
+
+.roster-row--light {
+  border-bottom-color: rgba(244, 240, 232, 0.1);
+}
+
+.roster-row--light:hover {
+  background: rgba(244, 240, 232, 0.06);
+}
+
+.roster-index {
+  font-family: var(--ff-mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--grey);
+  padding: 14px 0 14px 0;
+  flex-shrink: 0;
+}
+
+.roster-index--light {
+  color: #555;
+}
+
+.roster-photo {
+  width: 36px;
+  height: 36px;
+  background-size: cover;
+  background-position: center top;
+  flex-shrink: 0;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+}
+
+.roster-row--light .roster-photo {
+  border-color: rgba(244, 240, 232, 0.15);
+}
+
+.roster-info {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  min-width: 0;
+}
+
+.roster-name {
+  font-family: var(--ff-disp);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roster-name--light {
+  color: var(--paper);
+}
+
+.roster-role {
+  font-family: var(--ff-ser);
+  font-size: 10px;
+  color: var(--grey);
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roster-role--light {
+  color: #888;
+}
+
+.roster-dept-pill {
+  font-family: var(--ff-mono);
+  font-size: 7px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding: 12px 0 12px 12px;
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.roster-dept-pill--light {
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .roster-row {
+    grid-template-columns: 28px 40px 1fr;
+  }
+
+  .roster-dept-pill {
+    display: none;
+  }
+
+  .roster-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .roster-header-right {
+    text-align: left;
+  }
+
+  .roster-dept-section {
+    padding: 40px 20px 48px;
+  }
 }
 
 @media (max-width: 768px) {

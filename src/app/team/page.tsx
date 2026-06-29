@@ -12,8 +12,20 @@ import {
   convenorMembers,
   allOcMembers,
   type TeamMember,
+  allLeads,
 } from "@/lib/teamData";
 import { useEffect } from "react";
+
+interface ColumnDescriptor {
+  columnKey: string;
+  tag: string;
+  heading: string;
+  adjective: string;
+  topRowMember: TeamMember | null;
+  bottomRowMember: TeamMember | null;
+  tagLabel: string;
+  tagColorClass?: string;
+}
 
 const teamNavLinks = [
   { label: "ABOUT", href: "/#about" },
@@ -71,25 +83,6 @@ function MemberCard({
       </div>
     </div>
   );
-}
-
-// function DummyCardSlot({ isLight = false }: { isLight?: boolean }) {
-//   return (
-//     <div
-//       className={`team-hscroll-dummy-slot${isLight ? " team-hscroll-dummy-slot--light" : ""}`}
-//     />
-//   );
-// }
-
-interface ColumnDescriptor {
-  columnKey: string;
-  tag: string;
-  heading: string;
-  adjective: string;
-  topRowMember: TeamMember | null;
-  bottomRowMember: TeamMember | null;
-  tagLabel: string;
-  tagColorClass?: string;
 }
 
 function buildRowColumns(
@@ -190,6 +183,7 @@ export default function TeamPage() {
       behavior: "instant" as ScrollBehavior,
     });
   }, []);
+
   const convenorColumns = buildRowColumns(
     "col-convenors",
     "FILE: Leadership",
@@ -228,26 +222,15 @@ export default function TeamPage() {
     ...ocColumns,
   ];
 
-  const saColumns = saOfficeMembers.flatMap((official, officialIndex) => {
-    const saMemberRecord: TeamMember = {
-      name: "To Be Announced",
-      role: official.title,
-      department: "SA OFFICE",
-      photo: official.photo,
-      email: `sa-${officialIndex}`,
-    };
-
-    return buildRowColumns(
-      `sa-${officialIndex}`,
-      "FILE: Student Affairs",
-      official.title,
-      official.adjective,
-      [saMemberRecord],
-      official.adjective.toUpperCase(),
-      "team-member-tag--orange",
-      1,
-    );
-  });
+  const leadColumns = buildRowColumns(
+    "col-leads",
+    "File: Team Leaders",
+    "Team Leads",
+    "Roaring",
+    allLeads,
+    "TEAM LEAD",
+    "team-member-tag--lime",
+  );
 
   return (
     <>
@@ -313,14 +296,57 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <TeamHScrollTrack lightVariant>
-            {saColumns.map((column) => (
-              <HScrollColumn key={column.columnKey} column={column} isLight />
+          <div className="sa-grid">
+            {saOfficeMembers.map((official) => (
+              <div key={official.name} className="sa-card">
+                <div
+                  className="sa-card-photo"
+                  style={{
+                    backgroundImage: `url('${official.photo ?? FALLBACK_PHOTO}')`,
+                  }}
+                />
+                <div className="sa-card-info">
+                  {official.adjective ? (
+                    <span className="sa-card-adjective">
+                      {official.adjective}
+                    </span>
+                  ) : null}
+                  <p className="sa-card-name">{official.name}</p>
+                  <p className="sa-card-role">{official.title}</p>
+                  <span className="team-member-tag team-member-tag--orange">
+                    SA OFFICE
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section
+        className="sec-talks sched-page-body team-page-body"
+        id="team-leads"
+      >
+        <div className="container">
+          <div className="reveal">
+            <span className="sec-tag">FILE: Team Leads</span>
+            <h2 className="sec-heading">
+              TEAM
+              <br />
+              LEADS
+            </h2>
+            {/* <p className="talks-sub">
+              {allOcMembers.length} members across {ocSubsections.length}{" "}
+              domains powering every moment of Induction 2026.
+            </p> */}
+          </div>
+
+          <TeamHScrollTrack>
+            {leadColumns.map((column) => (
+              <HScrollColumn key={column.columnKey} column={column} />
             ))}
           </TeamHScrollTrack>
         </div>
       </section>
-
       <section className="team-cta-section">
         <div className="container">
           <div className="team-cta-inner reveal">
