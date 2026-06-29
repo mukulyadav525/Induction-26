@@ -168,35 +168,39 @@ export default function HeroSection() {
       </div>
 
       <div className="countdown-strip">
-        <span className="cd-label">PG INDUCTION BEGINS IN</span>
-        <div className="cd-timer">
-          {isLive ? (
-            <span className="countdown-live-label">INDUCTION IS LIVE ●</span>
-          ) : (
-            <>
-              <div className="cd-unit">
-                <span>{countdown.days}</span>
-                <span className="cd-lbl">DAYS</span>
-              </div>
-              <span className="cd-sep">:</span>
-              <div className="cd-unit">
-                <span>{countdown.hours}</span>
-                <span className="cd-lbl">HRS</span>
-              </div>
-              <span className="cd-sep">:</span>
-              <div className="cd-unit">
-                <span>{countdown.mins}</span>
-                <span className="cd-lbl">MIN</span>
-              </div>
-              <span className="cd-sep">:</span>
-              <div className="cd-unit">
-                <span>{countdown.secs}</span>
-                <span className="cd-lbl">SEC</span>
-              </div>
-            </>
-          )}
+        <div className="countdown-left">
+          <span className="cd-label">PG INDUCTION BEGINS IN</span>
+          <div className="cd-timer">
+            {isLive ? (
+              <span className="countdown-live-label">INDUCTION IS LIVE ●</span>
+            ) : (
+              <>
+                <div className="cd-unit">
+                  <span>{countdown.days}</span>
+                  <span className="cd-lbl">DAYS</span>
+                </div>
+                <span className="cd-sep">:</span>
+                <div className="cd-unit">
+                  <span>{countdown.hours}</span>
+                  <span className="cd-lbl">HRS</span>
+                </div>
+                <span className="cd-sep">:</span>
+                <div className="cd-unit">
+                  <span>{countdown.mins}</span>
+                  <span className="cd-lbl">MIN</span>
+                </div>
+                <span className="cd-sep">:</span>
+                <div className="cd-unit">
+                  <span>{countdown.secs}</span>
+                  <span className="cd-lbl">SEC</span>
+                </div>
+              </>
+            )}
+          </div>
         </div>
-        <div className="cd-track-pill">PG TRACK</div>
+        <div className="countdown-right">
+          <div className="cd-track-pill">PG TRACK</div>
+        </div>
       </div>
     </section>
   );
