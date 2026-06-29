@@ -405,7 +405,7 @@ body {
 }
 
 .hero-sidebar {
-  border-left: 3px solid var(--ink);
+  border: 3px solid var(--ink);
   background: var(--lime);
   padding: 80px 14px 16px;
   display: flex;
