@@ -61,7 +61,7 @@ export default function AboutSection() {
             <span className="track-card-num">TRACK 01</span>
             <h3>B.TECH</h3>
             <div className="track-dates-badge" id="btech-dates-badge">
-              DATES TO BE ANNOUNCED
+              03 August - 07 August
             </div>
             <p>
               The undergraduate induction welcomes freshers with campus tours,
