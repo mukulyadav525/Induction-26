@@ -288,8 +288,8 @@ body {
   letter-spacing: 2px;
   color: var(--ink);
   flex: 1;
-  text-shadow: 3px 3px 0 rgba(0,0,0,.07),
-               -1px -1px 0 rgba(0,0,0,.04);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, .07),
+    -1px -1px 0 rgba(0, 0, 0, .04);
 }
 
 .sticker {
@@ -550,7 +550,8 @@ body {
 
 .countdown-right {
   display: flex;
-  justify-content: center;   /* try flex-start if you want it at the left edge */
+  justify-content: center;
+  /* try flex-start if you want it at the left edge */
   align-items: center;
 }
 
@@ -3985,7 +3986,7 @@ section {
 }
 
 .team-member-photo {
-  height: 260px;
+  height: 320px;
   width: 100%;
   display: block;
   position: relative;
@@ -4046,6 +4047,9 @@ section {
 
 .team-member-tag {
   display: inline-block;
+  vertical-align: middle;
+  /* height: 22px; */
+  text-align: center;
   font-family: var(--ff-mono);
   font-size: 8px;
   letter-spacing: 2px;
@@ -4066,6 +4070,39 @@ section {
   background: var(--orange);
   color: var(--ink);
   border-color: var(--orange);
+}
+
+.team-member-mail-btn {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-left: 6px;
+  width: 22px;
+  height: 22px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.team-member-mail-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.team-member-mail-btn--light {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--paper);
+}
+
+.team-member-mail-btn--light:hover {
+  background: var(--paper);
+  color: var(--ink);
 }
 
 

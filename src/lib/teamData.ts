@@ -41,14 +41,14 @@ export const convenorMembers: TeamMember[] = [
     role: "Convenor",
     department: "CONVENOR",
     photo: "/photos/team/CONVENOR/ADITYA_GIRI.webp",
-    email: "",
+    email: "aditya24037@iiitd.ac.in",
   },
   {
     name: "Anoushka Malik",
     role: "Convenor",
     department: "CONVENOR",
     photo: "/photos/team/CONVENOR/ANOUSHKA_MALIK.webp",
-    email: "",
+    email: "anoushka24086@iiitd.ac.in",
   },
   {
     name: "Aditya Kaushik",
@@ -319,15 +319,31 @@ export const allOcMembers: TeamMember[] = ocSubsections.flatMap(
   (subsection) => subsection.members,
 );
 
-export const allLeads: TeamLead[] = Array.from({ length: 10 }, (_, i) => {
-  return {
-    name: `Placeholder name ${i}`,
-    email: "EMAIL",
+export const allLeads: TeamLead[] = [
+  {
+    name: "Mukul Yadav",
+    email: "mukul24360@iiitd.ac.in",
     department: "Web Development",
-    role: "ROLE: Placeholder until I recieve more info",
-    photo: "/photos/mentors/mentor-01.webp",
-  };
-});
+    role: "WebDev Lead",
+    photo: "/photos/leads/WEBDEV/MUKUL.webp",
+  },
+  {
+    name: "Paramveer Oberoi",
+    email: "paramveer25356@iiitd.ac.in",
+    department: "Web Development",
+    role: "WebDev Lead",
+    photo: "/photos/leads/WEBDEV/PARAMVEER.webp",
+  },
+  ...Array.from({ length: 10 }, (_, i) => {
+    return {
+      name: `Placeholder name ${i}`,
+      email: "EMAIL",
+      department: "PR",
+      role: "ROLE: Placeholder",
+      photo: "/photos/mentors/mentor-01.webp",
+    } as TeamLead;
+  }),
+];
 
 export const allOTs: TeamLead[] = Array.from({ length: 10 }, (_, i) => {
   return {

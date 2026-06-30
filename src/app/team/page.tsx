@@ -86,6 +86,25 @@ function MemberCard({
         >
           {tagLabel}
         </span>
+        {member.email ? (
+          <a
+            href={`mailto:${member.email}`}
+            className={`team-member-mail-btn${isLight ? " team-member-mail-btn--light" : ""}`}
+            aria-label={`Email ${member.name}`}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m2 7 10 6 10-6" />
+            </svg>
+          </a>
+        ) : null}
       </div>
     </div>
   );
@@ -322,6 +341,25 @@ export default function TeamPage() {
                   <span className="team-member-tag team-member-tag--orange">
                     SA OFFICE
                   </span>
+                  {official.email ? (
+                    <a
+                      href={`mailto:${official.email}`}
+                      className="team-member-mail-btn"
+                      aria-label={`Email ${official.name}`}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m2 7 10 6 10-6" />
+                      </svg>
+                    </a>
+                  ) : null}
                 </div>
               </div>
             ))}
