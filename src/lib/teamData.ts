@@ -329,9 +329,20 @@ export const allLeads: TeamLead[] = Array.from({ length: 10 }, (_, i) => {
   };
 });
 
+export const allOTs: TeamLead[] = Array.from({ length: 10 }, (_, i) => {
+  return {
+    name: `Placeholder name ${i}`,
+    email: "EMAIL",
+    department: "Web Development",
+    role: "ROLE: Placeholder until I recieve more info",
+    photo: "/photos/mentors/mentor-01.webp",
+  };
+});
+
 export const wholeTeam: TeamMember[] = [
-  ...convenorMembers,
-  ...allOcMembers,
-  ...allLeads,
+  // ...convenorMembers,
+  // ...allOcMembers,
+  // ...allLeads,
+  ...allOTs,
 ];
 // console.log(wholeTeam);
