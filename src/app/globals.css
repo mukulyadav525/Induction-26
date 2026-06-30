@@ -249,7 +249,7 @@ body {
   pointer-events: none;
   background-size: cover;
   background-position: center;
-  opacity: .35;
+  opacity: .25;
   filter: blur(1.5px) saturate(.85);
   -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 35%, transparent 78%);
   mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 35%, transparent 78%);
@@ -2654,70 +2654,37 @@ section {
   }
 
   .hero-content {
-    padding: 60px 20px 0;
-  }
-
-  .hero-lower {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .hero-subtext {
-
-    max-width: 310px;
+    padding: 32px 20px 0;
   }
 
   .hero-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: nowrap;
-    margin-bottom: 28px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-end;
   }
 
   .sticker {
-    padding: 8px 10px;
-    font-size: 9px;
-    width: 72px;
-    box-shadow:
-      0 6px 12px rgba(0, 0, 0, .18),
-      0 2px 3px rgba(0, 0, 0, .08);
-    overflow: visible;
-    position: relative;
+    font-size: 11px;
+    padding: 9px 12px;
+    min-width: 0;
   }
 
   .sticker-orange {
-    position: absolute;
-    top: -6px;
-    left: -43px;
-    transform: rotate(-6deg) scale(0.72);
+    transform: rotate(-3deg);
+    width: 150px;
   }
 
   .sticker-lime {
-    position: absolute;
-    top: 150px;
-    right: -40px;
-    transform: rotate(5deg) scale(0.72);
-  }
-
-  .sticker-big-year {
-    font-size: 18px;
-  }
-
-  .sticker-bars {
-    height: 12px;
+    transform: rotate(2deg);
+    width: 96px;
   }
 
   .hero-heading {
-    flex: 1;
-    width: auto;
-    text-align: center;
-    font-size: clamp(50px, 15vw, 82px);
-    line-height: 0.9;
-    margin-top: 40px;
-    min-width: 0;
+    font-size: clamp(56px, 18vw, 96px);
+    width: 100%;
+    order: 3;
   }
 
   .hero-lower {
