@@ -2553,6 +2553,14 @@ section {
 
   .countdown-strip {
     padding: 16px 28px;
+    grid-template-columns: 1fr;
+  }
+  .countdown-right {
+    display: none;
+  }
+
+  .countdown-left {
+    justify-content: center;
   }
 
   .live-bar {
