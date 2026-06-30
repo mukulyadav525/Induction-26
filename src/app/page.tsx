@@ -28,8 +28,8 @@ export default function HomePage() {
       <InfoSection />
       <MentorSection />
       <FaqSection />
-      <ContactCtaSection />
       <ConvenorsSection />
+      <ContactCtaSection />
       <Footer
         stripItems={[
           "INDUCTION 2026",

@@ -33,7 +33,7 @@ export default function ConvenorsSection() {
           <h2 className="sec-heading">
             MEET THE
             <br />
-            CONVENORS
+            TEAM
           </h2>
         </div>
 
