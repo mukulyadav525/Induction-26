@@ -40,7 +40,7 @@ export default function GalleryPage() {
         }
         subtitles={[
           "THE FULL PHOTO ARCHIVE · A LOOK BACK AT THE YEAR THAT CAME BEFORE YOURS",
-          "CAPTURED BY TANSVEER, THE MEDIA SOCIETY",
+          "CAPTURED BY TASVEER, THE MEDIA SOCIETY",
         ]}
       />
 

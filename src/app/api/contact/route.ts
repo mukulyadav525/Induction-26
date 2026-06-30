@@ -27,9 +27,25 @@ export async function POST(request: NextRequest) {
 
   const web3FormsResponse = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
+    headers: {
+      "User-Agent": "Mozilla/5.0 (compatible; Induction26Server/1.0)",
+      Accept: "application/json",
+    },
     body: outgoingFormData,
   });
 
-  const responseJson = await web3FormsResponse.json();
+  const responseText = await web3FormsResponse.text();
+  let responseJson;
+  try {
+    responseJson = JSON.parse(responseText);
+  } catch {
+    return NextResponse.json(
+      {
+        success: false,
+        message: `Web3Forms returned non-JSON response: ${responseText.slice(0, 200)}`,
+      },
+      { status: web3FormsResponse.status || 502 },
+    );
+  }
   return NextResponse.json(responseJson, { status: web3FormsResponse.status });
 }

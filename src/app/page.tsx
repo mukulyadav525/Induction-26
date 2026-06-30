@@ -13,6 +13,7 @@ import InfoSection from "@/components/InfoSection";
 import MentorSection from "@/components/MentorsSection";
 import FaqSection from "@/components/FaqSection";
 import ContactCtaSection from "@/components/ContactCtaSection";
+import ConvenorsSection from "@/components/ConvenorsSection";
 
 export default function HomePage() {
   return (
@@ -27,6 +28,7 @@ export default function HomePage() {
       <InfoSection />
       <MentorSection />
       <FaqSection />
+      <ConvenorsSection />
       <ContactCtaSection />
       <Footer
         stripItems={[
