@@ -56,31 +56,20 @@ export default function HeroSection() {
       <div className="hero-inner">
         <div className="hero-content">
           <div className="hero-title-row">
-            <div className="sticker sticker-orange" aria-hidden="true">
-              <span>HANDLE</span>
-              <span>
-                WITH <em>+</em>
-              </span>
-              <span>CARE</span>
-              <small>
-                THE FUTURE
-                <br />
-                IS FRAGILE
-              </small>
-              <div className="sticker-bar-wrap">
-                <div className="sticker-bars" />
-                <span>IND26-0001</span>
-              </div>
+            <div className="sticker sticker-orange">
+              <img
+                src="/orange-sticker.svg"
+                alt="Handle with care. The future is fragile. IND26-0001"
+                className="sticker-orange-bg"
+              />
             </div>
             <h1 className="hero-heading">INDUCTION</h1>
-            <div className="sticker sticker-lime" aria-hidden="true">
-              <span>CLASS</span>
-              <span>OF</span>
-              <span className="sticker-big-year">2028 </span>
-              <div className="sticker-bar-wrap">
-                <div className="sticker-bars" />
-                <span>17 &amp; 18 July 2026</span>
-              </div>
+            <div className="sticker sticker-lime">
+              <img
+                src="/lime-sticker.svg"
+                alt="Class of 2028, 17 & 18 July 2026"
+                className="sticker-lime-bg"
+              />
             </div>
           </div>
 
@@ -117,44 +106,153 @@ export default function HeroSection() {
           <div className="sb-rule" />
           <dl className="sidebar-meta">
             <div className="sm-row">
-              <dt>DOCUMENT ID:</dt>
-              <dd>IND26-2028</dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M13 2v6h6" />
+                  <path d="M8 13h8" />
+                  <path d="M8 17h8" />
+                  <path d="M8 9h2" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>DOCUMENT ID:</dt>
+                <dd>IND26-2028</dd>
+              </div>
             </div>
-            <div className="sm-dash" />
             <div className="sm-row">
-              <dt>GENERATION:</dt>
-              <dd>2026</dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4" />
+                  <path d="M8 2v4" />
+                  <path d="M3 10h18" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>GENERATION:</dt>
+                <dd>2026</dd>
+              </div>
             </div>
-            <div className="sm-dash" />
             <div className="sm-row">
-              <dt>STATUS:</dt>
-              <dd className="status-blink">CONFIRMED</dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>STATUS:</dt>
+                <dd className="status-blink">CONFIRMED</dd>
+              </div>
             </div>
-            <div className="sm-dash" />
             <div className="sm-row">
-              <dt>LOCATION:</dt>
-              <dd>IIIT DELHI</dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 21s-8-7.58-8-12a8 8 0 1 1 16 0c0 4.42-8 12-8 12z" />
+                  <circle cx="12" cy="9" r="3" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>LOCATION:</dt>
+                <dd>IIIT DELHI</dd>
+              </div>
             </div>
-            <div className="sm-dash" />
             <div className="sm-row">
-              <dt>COORDINATES:</dt>
-              <dd>
-                28.5445 N,
-                <br />
-                77.2710 E
-              </dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M22 12h-4" />
+                  <path d="M6 12H2" />
+                  <path d="M12 6V2" />
+                  <path d="M12 22v-4" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>COORDINATES:</dt>
+                <dd>
+                  28.5445 N,
+                  <br />
+                  77.2710 E
+                </dd>
+              </div>
             </div>
-            <div className="sm-dash" />
             <div className="sm-row">
-              <dt>LAST UPDATED:</dt>
-              <dd>17 June 2026</dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>LAST UPDATED:</dt>
+                <dd>17 June 2026</dd>
+              </div>
             </div>
-            <div className="sm-dash" />
             <div className="sm-row">
-              <dt>CLASS SIZE:</dt>
-              <dd>~800</dd>
+              <div className="sm-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div className="sm-text">
+                <dt>CLASS SIZE:</dt>
+                <dd>~800</dd>
+              </div>
             </div>
-            <div className="sm-dash" />
           </dl>
           <div className="sb-barcode-block">
             <div className="barcode-visual" aria-hidden="true" />

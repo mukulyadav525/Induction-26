@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <pattern id="stickerLimeBars" width="16" height="20" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="2" height="20" fill="#1a1a1a" />
+      <rect x="4" y="0" width="1" height="20" fill="#1a1a1a" />
+      <rect x="8" y="0" width="1" height="20" fill="#1a1a1a" />
+      <rect x="12" y="0" width="1" height="20" fill="#1a1a1a" />
+    </pattern>
+  </defs>
+
+  <path
+    d="M8.9 0.9 L91.1 0.9 A8 8 0 0 0 99.1 8.9 L99.1 91.1 A8 8 0 0 0 91.1 99.1 L8.9 99.1 A8 8 0 0 0 0.9 91.1 L0.9 8.9 A8 8 0 0 0 8.9 0.9 Z"
+    fill="#c8f135"
+    stroke="#1a1a1a"
+    stroke-width="1.8"
+  />
+
+  <g font-family="'Space Mono', monospace" font-weight="700" fill="#1a1a1a" text-anchor="middle">
+    <text x="50" y="22" font-size="9" letter-spacing="1">CLASS</text>
+    <text x="50" y="33" font-size="9" letter-spacing="1">OF</text>
+    <text x="50" y="57" font-size="23">2028</text>
+
+    <rect x="14" y="65" width="72" height="11" fill="url(#stickerLimeBars)" opacity="0.75" />
+    <text x="50" y="85" font-size="5.5" letter-spacing="0.5">17 &amp; 18 JULY 2026</text>
+  </g>
+</svg>
