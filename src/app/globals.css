@@ -2479,6 +2479,22 @@ section {
 .dir-grid-two .dir-card {
   margin-bottom: 0;
 }
+@media (max-width: 1250px){
+  .hero-sidebar {
+    display: none;
+  }
+  .countdown-strip {
+    padding: 16px 28px;
+    grid-template-columns: 1fr;
+  }
+  .countdown-right {
+    display: none;
+  }
+
+  .countdown-left {
+    justify-content: center;
+  }
+}
 
 @media (max-width: 1024px) {
   .campus-grid {
@@ -2554,8 +2570,15 @@ section {
 
   .countdown-strip {
     padding: 16px 28px;
+    grid-template-columns: 1fr;
+  }
+  .countdown-right {
+    display: none;
   }
 
+  .countdown-left {
+    justify-content: center;
+  }
   .live-bar {
     padding: 12px 28px;
   }
@@ -2673,9 +2696,12 @@ section {
   }
 
   .cd-unit span:first-child {
-    font-size: 38px;
+    font-size: 30px;
   }
-
+  .cd-sep {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
   .cd-track-pill {
     display: none;
   }
@@ -2743,8 +2769,42 @@ section {
   }
 
   .countdown-strip {
-    padding: 14px 20px;
-    gap: 16px;
+    padding: 18px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+  }
+  .countdown-left {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+  }
+  .cd-label {
+    text-align: center;
+  }
+  .cd-timer {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 4px;
+  }
+  .cd-unit {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .site-nav {
