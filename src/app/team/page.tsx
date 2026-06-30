@@ -276,46 +276,16 @@ export default function TeamPage() {
 
       <section
         className="sec-talks sched-page-body team-page-body"
-        id="team-oc"
-      >
-        <div className="container">
-          <div className="reveal">
-            <span className="sec-tag">FILE: Organizing Committee</span>
-            <h2 className="sec-heading">
-              ORGANIZING
-              <br />
-              COMMITTEE
-            </h2>
-            <p className="talks-sub">
-              {allOcMembers.length} members across {ocSubsections.length}{" "}
-              domains powering every moment of Induction 2026.
-            </p>
-          </div>
-
-          <TeamHScrollTrack>
-            {allOcTrackColumns.map((column) => (
-              <HScrollColumn key={column.columnKey} column={column} />
-            ))}
-          </TeamHScrollTrack>
-        </div>
-      </section>
-
-      <section
-        className="sec-talks sched-page-body team-page-body team-page-body--ink"
         id="team-sa"
       >
         <div className="container">
           <div className="reveal">
-            <span className="sec-tag sec-tag--light">
-              FILE: Student Affairs
-            </span>
-            <h2 className="sec-heading sec-heading--light">
-              <span className="team-adjective team-adjective--light">
-                Sovereign
-              </span>
+            <span className="sec-tag">FILE: Student Affairs</span>
+            <h2 className="sec-heading">
+              <span className="team-adjective">Sovereign</span>
               SA OFFICE
             </h2>
-            <p className="talks-sub team-talks-sub--light">
+            <p className="talks-sub">
               The institutional backbone of every student-led initiative at IIIT
               Delhi. Steadfast, capable, essential.
             </p>
@@ -368,6 +338,38 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
+
+      <section
+        className="sec-talks sched-page-body team-page-body team-page-body--ink"
+        id="team-oc"
+      >
+        <div className="container">
+          <div className="reveal">
+            <span className="sec-tag sec-tag--light">
+              FILE: Organizing Committee
+            </span>
+            <h2 className="sec-heading sec-heading--light">
+              <span className="team-adjective team-adjective--light">
+                Tireless
+              </span>
+              ORGANIZING
+              <br />
+              COMMITTEE
+            </h2>
+            <p className="talks-sub team-talks-sub--light">
+              {allOcMembers.length} members across {ocSubsections.length}{" "}
+              domains powering every moment of Induction 2026.
+            </p>
+          </div>
+
+          <TeamHScrollTrack lightVariant>
+            {allOcTrackColumns.map((column) => (
+              <HScrollColumn key={column.columnKey} column={column} isLight />
+            ))}
+          </TeamHScrollTrack>
+        </div>
+      </section>
+
       <section
         className="sec-talks sched-page-body team-page-body"
         id="team-leads"
