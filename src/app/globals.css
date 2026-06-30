@@ -2554,14 +2554,6 @@ section {
 
   .countdown-strip {
     padding: 16px 28px;
-    grid-template-columns: 1fr;
-  }
-  .countdown-right {
-    display: none;
-  }
-
-  .countdown-left {
-    justify-content: center;
   }
 
   .live-bar {
@@ -2681,11 +2673,7 @@ section {
   }
 
   .cd-unit span:first-child {
-    font-size: 30px;
-  }
-  .cd-sep {
-    font-size: 20px;
-    padding-bottom: 5px;
+    font-size: 38px;
   }
 
   .cd-track-pill {
@@ -2755,44 +2743,9 @@ section {
   }
 
   .countdown-strip {
-    padding: 18px 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 14px;
+    padding: 14px 20px;
+    gap: 16px;
   }
-  .countdown-left {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 12px;
-  }
-  .cd-label {
-    text-align: center;
-  }
-  .cd-timer {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 4px;
-  }
-  .cd-unit {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
 
   .site-nav {
     padding: 12px 20px;
@@ -4048,8 +4001,6 @@ section {
 .team-member-tag {
   display: inline-block;
   vertical-align: middle;
-  /* height: 22px; */
-  text-align: center;
   font-family: var(--ff-mono);
   font-size: 8px;
   letter-spacing: 2px;
@@ -4137,6 +4088,13 @@ section {
   padding: 18px 20px 20px;
   border-top: 2px solid rgba(244, 240, 232, 0.2);
   gap: 0;
+}
+
+.sa-card-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
 
 .sa-card-adjective {
