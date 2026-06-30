@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -53,10 +54,15 @@ function MemberCard({
     <div
       className={`team-member-card${isLight ? " team-member-card--light" : ""}`}
     >
-      <div
-        className="team-member-photo"
-        style={{ backgroundImage: `url('${resolvedPhoto}')` }}
-      />
+      <div className="team-member-photo">
+        <Image
+          src={resolvedPhoto}
+          alt={member.name}
+          fill
+          sizes="(max-width: 900px) 240px, 300px"
+          style={{ objectFit: "cover", objectPosition: "center top" }}
+        />
+      </div>
       <div
         className={`team-member-info${isLight ? " team-member-info--light" : ""}`}
       >

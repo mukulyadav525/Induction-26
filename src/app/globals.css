@@ -3715,8 +3715,14 @@ section {
 
 .team-hscroll-pin-wrapper {
   margin-top: 48px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  contain: layout paint;
+  transform: translateZ(0);
 }
 
 .team-hscroll-pin-wrapper--light {
@@ -3729,7 +3735,6 @@ section {
   align-items: flex-start;
   gap: 0;
   overflow: visible;
-  will-change: transform;
   border-top: 2px solid var(--ink);
   border-left: 2px solid var(--ink);
 }
@@ -3746,6 +3751,9 @@ section {
   width: var(--team-column-width);
   border-right: 2px solid var(--ink);
   overflow-y: hidden;
+  scroll-snap-align: start;
+  content-visibility: auto;
+  contain-intrinsic-size: var(--team-column-width) 600px;
 }
 
 .team-hscroll-column--light {
@@ -3913,9 +3921,14 @@ section {
 
 .team-member-photo {
   height: 260px;
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
   background-image: repeating-linear-gradient(45deg, #e0ddd5, #e0ddd5 10px, #d4d1c9 10px, #d4d1c9 20px);
   background-size: cover;
   background-position: center top;
+  content-visibility: auto;
 }
 
 .team-member-info {
