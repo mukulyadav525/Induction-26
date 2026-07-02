@@ -315,9 +315,10 @@ export const ocSubsections: OcSubsection[] = [
   },
 ];
 
-export const allOcMembers: TeamMember[] = ocSubsections.flatMap(
-  (subsection) => subsection.members,
-);
+export const allOcMembers: TeamMember[] = [
+  ...convenorMembers,
+  ...ocSubsections.flatMap((subsection) => subsection.members),
+];
 
 export const allLeads: TeamLead[] = [
   {
