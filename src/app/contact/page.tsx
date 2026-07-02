@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import ScrollRevealInit from "@/components/ScrollReveal";
+import FaqSection from "@/components/FaqSection";
 
 const contactNavLinks = [
   { label: "ABOUT", href: "/#about" },
@@ -328,7 +329,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
+      <FaqSection />
       <Footer
         stripItems={[
           "INDUCTION 2026",
