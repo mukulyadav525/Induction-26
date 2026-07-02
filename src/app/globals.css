@@ -4210,7 +4210,7 @@ section {
   font-family: var(--ff-disp);
   font-size: 20px;
   letter-spacing: 1px;
-  color: var(--ink);
+  color: var(--paper);
   line-height: 1.05;
   margin-bottom: 8px;
 }

@@ -10,8 +10,7 @@ import GallerySection from "@/components/GallerySection";
 import TalksSection from "@/components/TalksSection";
 import CampusSection from "@/components/CampusSection";
 import InfoSection from "@/components/InfoSection";
-import MentorSection from "@/components/MentorsSection";
-import FaqSection from "@/components/FaqSection";
+// import MentorSection from "@/components/MentorsSection";
 import ContactCtaSection from "@/components/ContactCtaSection";
 import ConvenorsSection from "@/components/ConvenorsSection";
 
@@ -26,8 +25,7 @@ export default function HomePage() {
       <TalksSection />
       <CampusSection />
       <InfoSection />
-      <MentorSection />
-      <FaqSection />
+      {/* <MentorSection /> */}
       <ConvenorsSection />
       <ContactCtaSection />
       <Footer
@@ -43,7 +41,6 @@ export default function HomePage() {
             links: [
               { text: "ABOUT", href: "/#about" },
               { text: "SCHEDULE", href: "/#schedule" },
-              { text: "BUDDY", href: "/#interaction-buddies" },
               { text: "GALLERY", href: "/#gallery" },
             ],
           },

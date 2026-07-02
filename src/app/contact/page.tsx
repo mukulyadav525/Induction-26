@@ -9,7 +9,9 @@ import ScrollRevealInit from "@/components/ScrollReveal";
 const contactNavLinks = [
   { label: "ABOUT", href: "/#about" },
   { label: "SCHEDULE", href: "/#schedule" },
-  { label: "BUDDY", href: "/induction-buddies" },
+  // { label: "BUDDY", href: "/induction-buddies" },
+  { label: "INFO", href: "/#info" },
+
   { label: "DIRECTIONS", href: "/contact#directions" },
 ];
 
@@ -339,7 +341,7 @@ export default function ContactPage() {
         simpleNavLinks={[
           { text: "MAIN PAGE", href: "/" },
           { text: "ABOUT", href: "/#about" },
-          { text: "BUDDY", href: "/induction-buddies" },
+          // { text: "BUDDY", href: "/induction-buddies" },
           { text: "DIRECTIONS", href: "/contact#directions" },
           { text: "B.TECH SCHEDULE ↗", href: "/schedule-btech" },
           { text: "PG SCHEDULE ↗", href: "/schedule-pg" },

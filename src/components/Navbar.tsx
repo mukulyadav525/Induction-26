@@ -20,7 +20,6 @@ export default function Navbar({
   const defaultLinks = [
     { label: "ABOUT", href: "/#about" },
     { label: "SCHEDULE", href: "/#schedule" },
-    { label: "BUDDY", href: "/#interaction-buddies" },
     { label: "GALLERY", href: "/#gallery" },
     { label: "SPEAKERS", href: "/#talks" },
     { label: "INFO", href: "/#info" },

@@ -5,7 +5,9 @@ import ScrollRevealInit from "@/components/ScrollReveal";
 
 const galleryNavLinks = [
   { label: "ABOUT", href: "/#about" },
-  { label: "BUDDY", href: "/induction-buddies" },
+  // { label: "BUDDY", href: "/induction-buddies" },
+  { label: "INFO", href: "/#info" },
+
   { label: "SPEAKERS", href: "/#talks" },
   { label: "CONTACT", href: "/contact" },
 ];
