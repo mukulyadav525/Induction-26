@@ -1883,7 +1883,7 @@ section {
 .mentor-lead {
   font-family: var(--ff-ser);
   font-size: 12.5px;
-  color: var(--grey);
+  color: var(--paper);
   margin-bottom: 12px;
   line-height: 1.5;
 }
@@ -4170,6 +4170,11 @@ section {
   border-bottom: 2px solid rgba(26, 26, 26, 0.15);
   display: flex;
   flex-direction: column;
+  transition: background .2s ease;
+}
+
+.sa-card:hover {
+  background: rgba(26, 26, 26, 0.03);
 }
 
 .sa-card-photo {
@@ -4178,6 +4183,13 @@ section {
   background-size: cover;
   background-position: center top;
   background-color: #2a2a2a;
+  overflow: hidden;
+  transition: filter .3s ease;
+  filter: grayscale(.15);
+}
+
+.sa-card:hover .sa-card-photo {
+  filter: grayscale(0);
 }
 
 .sa-card-info {
@@ -4210,7 +4222,7 @@ section {
   font-family: var(--ff-disp);
   font-size: 20px;
   letter-spacing: 1px;
-  color: var(--paper);
+  color: var(--ink);
   line-height: 1.05;
   margin-bottom: 8px;
 }
@@ -5027,4 +5039,102 @@ section {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.oc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  border-top: 2px solid rgba(244, 240, 232, 0.15);
+  border-left: 2px solid rgba(244, 240, 232, 0.15);
+}
+
+.oc-card {
+  border-right: 2px solid rgba(244, 240, 232, 0.15);
+  border-bottom: 2px solid rgba(244, 240, 232, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: background .2s ease;
+}
+
+.oc-card:hover {
+  background: rgba(244, 240, 232, 0.04);
+}
+
+.oc-card-photo {
+  height: 260px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center top;
+  background-color: #2a2a2a;
+  overflow: hidden;
+  transition: filter .3s ease;
+  filter: grayscale(.15);
+}
+
+.oc-card:hover .oc-card-photo {
+  filter: grayscale(0);
+}
+
+.oc-card-info {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 18px 20px 20px;
+  border-top: 2px solid rgba(244, 240, 232, 0.15);
+  gap: 0;
+}
+
+.oc-card-name {
+  font-family: var(--ff-disp);
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--paper);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.oc-card-role {
+  font-family: var(--ff-ser);
+  font-size: 11px;
+  color: #888;
+  line-height: 1.6;
+  font-style: italic;
+  align-self: start;
+  margin-bottom: 14px;
+}
+
+.oc-card-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  align-self: start;
+}
+
+.oc-card-tag-row .team-member-tag {
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid var(--paper);
+}
+
+@media (max-width: 900px) {
+  .oc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .oc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .oc-card-photo {
+    height: 180px;
+  }
+
+  .oc-card-name {
+    font-size: 16px;
+  }
 }

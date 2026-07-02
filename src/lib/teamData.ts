@@ -50,13 +50,6 @@ export const convenorMembers: TeamMember[] = [
     photo: "/photos/team/CONVENOR/ANOUSHKA_MALIK.webp",
     email: "anoushka24086@iiitd.ac.in",
   },
-  {
-    name: "Aditya Kaushik",
-    role: "Overall Mentor",
-    department: "OVERALL MENTOR",
-    photo: "/photos/team/OVERALL MENTOR/ADITYA_KAUSHIK.webp",
-    email: "",
-  },
 ];
 
 export const saOfficeMembers: SAOfficial[] = [
@@ -266,6 +259,13 @@ export const ocSubsections: OcSubsection[] = [
         department: "WEB DEV",
         photo: "/photos/team/WEBDEV/VASU_MEHTA.webp",
         email: "vasu24610@iiitd.ac.in",
+      },
+      {
+        name: "Mukul Yadav",
+        email: "mukul24360@iiitd.ac.in",
+        role: "Web Development OC",
+        department: "WEB DEV",
+        photo: "/photos/leads/WEBDEV/MUKUL.webp",
       },
     ],
   },

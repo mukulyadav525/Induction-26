@@ -250,7 +250,7 @@ export default function HeroSection() {
               </div>
               <div className="sm-text">
                 <dt>CLASS SIZE:</dt>
-                <dd>~800</dd>
+                <dd>~250</dd>
               </div>
             </div>
           </dl>

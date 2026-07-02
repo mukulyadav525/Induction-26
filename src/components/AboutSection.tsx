@@ -41,7 +41,7 @@ export default function AboutSection() {
           </div>
           <div className="astat-divider"></div>
           <div className="astat">
-            <span className="astat-n">800+</span>
+            <span className="astat-n">250+</span>
             <span className="astat-l">NEW STUDENTS</span>
           </div>
           <div className="astat-divider"></div>

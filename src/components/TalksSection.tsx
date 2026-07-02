@@ -17,30 +17,6 @@ const speakers = [
     photo: "photos/speakers/speaker-3.webp",
     badge: "ALUMNI",
   },
-  {
-    name: "SESSION SPEAKER",
-    role: "Name & designation to be announced",
-    photo: "photos/speakers/speaker-.webp",
-    badge: "TBD",
-  },
-  {
-    name: "SESSION SPEAKER",
-    role: "Name & designation to be announced",
-    photo: "photos/speakers/speaker-.webp",
-    badge: "TBD",
-  },
-  {
-    name: "SESSION SPEAKER",
-    role: "Name & designation to be announced",
-    photo: "photos/speakers/speaker-.webp",
-    badge: "TBD",
-  },
-  {
-    name: "SESSION SPEAKER",
-    role: "Name & designation to be announced",
-    photo: "photos/speakers/speaker-.webp",
-    badge: "TBD",
-  },
 ];
 
 export default function TalksSection() {

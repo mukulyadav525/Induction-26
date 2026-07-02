@@ -41,29 +41,29 @@
 //         ]}
 //       />
 
-//       <section className="sec-talks sched-page-body" id="mentor-groups">
-//         <div className="container">
-//           <div className="mentor-grid">
-//             {mentorGroups.map((group) => (
-//               <div className="mentor-card" key={group.groupNumber}>
-//                 <div
-//                   className="mentor-photo"
-//                   style={{
-//                     backgroundImage: `url('photos/mentors/mentor-01.webp'), url('photos/mentors/images.webp')`,
-//                   }}
-//                 ></div>
-//                 <div className="mentor-info">
-//                   <p className="mentor-group-name">GROUP {group.groupNumber}</p>
-//                   <p className="mentor-lead">
-//                     Lead mentor name &amp; year to be announced
-//                   </p>
-//                   <span className="mentor-tag">LEAD MENTOR</span>
-//                 </div>
-//               </div>
-//             ))}
+// <section className="sec-talks sched-page-body" id="mentor-groups">
+//   <div className="container">
+//     <div className="mentor-grid">
+//       {mentorGroups.map((group) => (
+//         <div className="mentor-card" key={group.groupNumber}>
+//           <div
+//             className="mentor-photo"
+//             style={{
+//               backgroundImage: `url('photos/mentors/mentor-01.webp'), url('photos/mentors/images.webp')`,
+//             }}
+//           ></div>
+//           <div className="mentor-info">
+//             <p className="mentor-group-name">GROUP {group.groupNumber}</p>
+//             <p className="mentor-lead">
+//               Lead mentor name &amp; year to be announced
+//             </p>
+//             <span className="mentor-tag">LEAD MENTOR</span>
 //           </div>
 //         </div>
-//       </section>
+//       ))}
+//     </div>
+//   </div>
+// </section>
 
 //       <Footer
 //         stripItems={[

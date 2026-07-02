@@ -1,12 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import ScrollRevealInit from "@/components/ScrollReveal";
-import TeamHScrollTrack from "@/components/TeamHScrollTrack";
 import {
   ocSubsections,
   saOfficeMembers,
@@ -16,7 +13,6 @@ import {
   allLeads,
 } from "@/lib/teamData";
 import { useEffect } from "react";
-import FaqSection from "@/components/FaqSection";
 
 interface ColumnDescriptor {
   columnKey: string;
@@ -33,7 +29,6 @@ const teamNavLinks = [
   { label: "ABOUT", href: "/#about" },
   { label: "SCHEDULE", href: "/#schedule" },
   { label: "TEAM", href: "/team" },
-  // { label: "BUDDY", href: "/induction-buddies" },
   { label: "CONTACT", href: "/contact" },
 ];
 
@@ -149,58 +144,6 @@ function buildRowColumns(
   return columns;
 }
 
-function HScrollColumn({
-  column,
-  isLight = false,
-}: {
-  column: ColumnDescriptor;
-  isLight?: boolean;
-}) {
-  const borderClass = isLight ? " team-hscroll-column--light" : "";
-
-  return (
-    <div className={`team-hscroll-column${borderClass}`}>
-      <div className="team-hscroll-column-header">
-        <span className={`team-subtag${isLight ? " team-subtag--light" : ""}`}>
-          {column.tag}
-        </span>
-        <h3
-          className={`team-subheading${isLight ? " team-subheading--light" : ""}`}
-        >
-          <span
-            className={`team-adjective team-adjective--sub${isLight ? " team-adjective--light" : ""}`}
-          >
-            {column.adjective}
-          </span>
-          {column.heading}
-        </h3>
-      </div>
-      <div className="team-hscroll-cards">
-        {column.topRowMember ? (
-          <MemberCard
-            member={column.topRowMember}
-            tagLabel={column.tagLabel}
-            tagColorClass={column.tagColorClass}
-            isLight={isLight}
-          />
-        ) : (
-          <></>
-        )}
-        {column.bottomRowMember ? (
-          <MemberCard
-            member={column.bottomRowMember}
-            tagLabel={column.tagLabel}
-            tagColorClass={column.tagColorClass}
-            isLight={isLight}
-          />
-        ) : (
-          <></>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export default function TeamPage() {
   useEffect(() => {
     window.scrollTo({
@@ -262,61 +205,18 @@ export default function TeamPage() {
     <>
       <Navbar isScrolledByDefault={true} links={teamNavLinks} />
 
-      <PageHero
-        title={
-          <>
-            THE
-            <br />
-            TEAM
-          </>
-        }
-        subtitles={[
-          "THE PEOPLE BEHIND INDUCTION 2026 · CLASS OF 2028 · IIIT DELHI",
-        ]}
-      />
-
       <section
         className="sec-talks sched-page-body team-page-body"
-        id="team-oc"
-      >
-        <div className="container">
-          <div className="reveal">
-            <span className="sec-tag">FILE: Organizing Committee</span>
-            <h2 className="sec-heading">
-              ORGANIZING
-              <br />
-              COMMITTEE
-            </h2>
-            <p className="talks-sub">
-              {allOcMembers.length} members across {ocSubsections.length}{" "}
-              domains powering every moment of Induction 2026.
-            </p>
-          </div>
-
-          <TeamHScrollTrack>
-            {allOcTrackColumns.map((column) => (
-              <HScrollColumn key={column.columnKey} column={column} />
-            ))}
-          </TeamHScrollTrack>
-        </div>
-      </section>
-
-      <section
-        className="sec-talks sched-page-body team-page-body team-page-body--ink"
         id="team-sa"
       >
         <div className="container">
           <div className="reveal">
-            <span className="sec-tag sec-tag--light">
-              FILE: Student Affairs
-            </span>
-            <h2 className="sec-heading sec-heading--light">
-              <span className="team-adjective team-adjective--light">
-                Sovereign
-              </span>
+            <span className="sec-tag">FILE: Student Affairs</span>
+            <h2 className="sec-heading">
+              <span className="team-adjective">Sovereign</span>
               SA OFFICE
             </h2>
-            <p className="talks-sub team-talks-sub--light">
+            <p className="talks-sub">
               The institutional backbone of every student-led initiative at IIIT
               Delhi. Steadfast, capable, essential.
             </p>
@@ -369,33 +269,70 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
+
       <section
-        className="sec-talks sched-page-body team-page-body"
-        id="team-leads"
+        className="sec-talks sched-page-body team-page-body team-page-body--ink"
+        id="team-oc"
       >
         <div className="container">
           <div className="reveal">
-            <span className="sec-tag">FILE: Team Leads</span>
-            <h2 className="sec-heading">
-              TEAM
+            <span className="sec-tag sec-tag--light">
+              FILE: Organizing Committee
+            </span>
+            <h2 className="sec-heading sec-heading--light">
+              <span className="team-adjective team-adjective--light">
+                Tireless
+              </span>
+              ORGANIZING
               <br />
-              LEADS
+              COMMITTEE
             </h2>
-            {/* <p className="talks-sub">
+            <p className="talks-sub team-talks-sub--light">
               {allOcMembers.length} members across {ocSubsections.length}{" "}
               domains powering every moment of Induction 2026.
-            </p> */}
+            </p>
           </div>
 
-          <TeamHScrollTrack>
-            {leadColumns.map((column) => (
-              <HScrollColumn key={column.columnKey} column={column} />
+          <div className="oc-grid">
+            {allOcMembers.map((member) => (
+              <div className="oc-card" key={member.name}>
+                <div
+                  className="oc-card-photo"
+                  style={{
+                    backgroundImage: `url('${member.photo ?? FALLBACK_PHOTO}')`,
+                  }}
+                />
+                <div className="oc-card-info">
+                  <p className="oc-card-name">{member.name}</p>
+                  <p className="oc-card-role">{member.role}</p>
+                  <div className="oc-card-tag-row">
+                    <span className="team-member-tag">{member.department}</span>
+                    {member.email ? (
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="team-member-mail-btn team-member-mail-btn--light"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <rect x="2" y="4" width="20" height="16" rx="2" />
+                          <path d="m2 7 10 6 10-6" />
+                        </svg>
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
             ))}
-          </TeamHScrollTrack>
+          </div>
         </div>
       </section>
-      <FaqSection />
-
       <Footer
         stripItems={[
           "INDUCTION 2026",
@@ -410,7 +347,6 @@ export default function TeamPage() {
           { text: "ABOUT", href: "/#about" },
           { text: "TEAM", href: "/team" },
           { text: "ALL MEMBERS", href: "/team/all-members" },
-          // { text: "BUDDY", href: "/induction-buddies" },
           { text: "CONTACT", href: "/contact" },
         ]}
       />
