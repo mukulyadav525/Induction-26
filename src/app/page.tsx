@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollRevealInit from "@/components/ScrollReveal";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import ScheduleSection from "@/components/ScheduleSection";
 import GallerySection from "@/components/GallerySection";
 import TalksSection from "@/components/TalksSection";
 import CampusSection from "@/components/CampusSection";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Navbar activeBtech={true} />
       <HeroSection />
       <AboutSection />
+      <ScheduleSection />
       <GallerySection />
       <TalksSection />
       <CampusSection />
