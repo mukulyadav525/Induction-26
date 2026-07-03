@@ -1,5 +1,5 @@
 import { Track, ParsedEvent, ParsedDay } from "./scheduleEngine";
-import { getEventsByTrack, initScheduleTable, DbEvent } from "./scheduleDb";
+import { getEventsByTrack, DbEvent } from "./scheduleDb";
 
 export interface FetchScheduleResult {
   days: ParsedDay[];
@@ -41,7 +41,6 @@ export async function fetchScheduleRows(
   const fetchedAt = new Date().toISOString();
 
   try {
-    await initScheduleTable();
     const dbEvents = await getEventsByTrack(track);
     return {
       days: dbEventsToParsedDays(dbEvents),

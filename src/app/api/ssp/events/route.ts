@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyPanelPassword } from "@/lib/panelAuth";
 import {
-  initScheduleTable,
   getAllEvents,
   createEvent,
   updateEvent,
@@ -19,7 +18,6 @@ async function guardedRequest(request: NextRequest): Promise<string | null> {
 
 export async function GET() {
   try {
-    await initScheduleTable();
     const events = await getAllEvents();
     return NextResponse.json({ events });
   } catch (err) {
@@ -29,7 +27,6 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    await initScheduleTable();
     const rawBody = await request.text();
     const body = JSON.parse(rawBody);
     const password = typeof body.password === "string" ? body.password : "";
@@ -59,7 +56,6 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
-    await initScheduleTable();
     const rawBody = await request.text();
     const body = JSON.parse(rawBody);
     const password = typeof body.password === "string" ? body.password : "";
@@ -87,7 +83,6 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
-    await initScheduleTable();
     const rawBody = await request.text();
     const body = JSON.parse(rawBody);
     const password = typeof body.password === "string" ? body.password : "";

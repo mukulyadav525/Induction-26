@@ -1,39 +1,6 @@
 import { InArgs } from "@libsql/client";
 import buildTursoClient from "./db";
 
-export async function initScheduleTable(): Promise<void> {
-  await buildTursoClient().execute(`
-    CREATE TABLE IF NOT EXISTS schedule_events (
-      id         INTEGER  PRIMARY KEY AUTOINCREMENT,
-      track      TEXT     NOT NULL CHECK (track IN ('BTECH', 'PG', 'ALL')),
-      day_label  TEXT     NOT NULL CHECK (length(day_label) > 0),
-      day_index  INTEGER  NOT NULL DEFAULT 0 CHECK (day_index >= 0),
-      time       TEXT     NOT NULL DEFAULT '',
-      end_time   TEXT     NOT NULL DEFAULT '',
-      event      TEXT     NOT NULL CHECK (length(event) > 0),
-      venue      TEXT     NOT NULL DEFAULT '',
-      speaker    TEXT     NOT NULL DEFAULT '',
-      status     TEXT     CHECK (status IN ('CONFIRMED', 'OPEN') OR status IS NULL),
-      type       TEXT     CHECK (type IN ('TALK','KEYNOTE','WORKSHOP','CULTURAL','ADMIN','ORIENTATION','SPORTS','MEAL','BREAK','TOUR','LECTURE','CEREMONY') OR type IS NULL),
-      sort_order INTEGER  NOT NULL DEFAULT 0 CHECK (sort_order >= 0),
-      created_at TEXT     NOT NULL DEFAULT (datetime('now')),
-      updated_at TEXT     NOT NULL DEFAULT (datetime('now'))
-    )
-  `);
-  await buildTursoClient().execute(`
-    CREATE INDEX IF NOT EXISTS idx_schedule_events_track
-      ON schedule_events (track)
-  `);
-  await buildTursoClient().execute(`
-    CREATE INDEX IF NOT EXISTS idx_schedule_events_day_index
-      ON schedule_events (day_index)
-  `);
-  await buildTursoClient().execute(`
-    CREATE INDEX IF NOT EXISTS idx_schedule_events_sort
-      ON schedule_events (day_index ASC, sort_order ASC, time ASC)
-  `);
-}
-
 export interface DbEvent {
   id: number;
   track: string;

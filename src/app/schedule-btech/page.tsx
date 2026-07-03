@@ -1,10 +1,11 @@
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import ScheduleView from "@/components/ScheduleView";
 import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 5;
 
 const btechNavLinks = [
   { label: "ABOUT", href: "/#about" },
@@ -21,9 +22,34 @@ const btechDates = [
   "7 August 2026",
 ];
 
-export default async function ScheduleBtechPage() {
-  const { days, fetchedAt, error } = await fetchScheduleRows("BTECH");
+function ScheduleSkeleton() {
+  return (
+    <section className="sec-schedule sched-page-body sched-blocks-body">
+      <div className="container">
+        <div className="blocks-pending">
+          <div className="cs-icon">⏳</div>
+          <div className="cs-title">LOADING SCHEDULE</div>
+          <div className="cs-text">Pulling the latest schedule…</div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
+async function BtechScheduleData() {
+  const { days, fetchedAt, error } = await fetchScheduleRows("BTECH");
+  return (
+    <ScheduleView
+      initialDays={days}
+      initialFetchedAt={fetchedAt}
+      track="BTECH"
+      dates={btechDates}
+      error={error}
+    />
+  );
+}
+
+export default function ScheduleBtechPage() {
   return (
     <>
       <Navbar
@@ -43,13 +69,9 @@ export default async function ScheduleBtechPage() {
         subtitles={["UNDERGRADUATE TRACK · INDUCTION 2026 · CLASS OF 2030"]}
       />
 
-      <ScheduleView
-        initialDays={days}
-        initialFetchedAt={fetchedAt}
-        track="BTECH"
-        dates={btechDates}
-        error={error}
-      />
+      <Suspense fallback={<ScheduleSkeleton />}>
+        <BtechScheduleData />
+      </Suspense>
 
       <Footer
         stripItems={[

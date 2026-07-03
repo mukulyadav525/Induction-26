@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 import { Track } from "@/lib/scheduleEngine";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 5;
 
 export async function GET(request: NextRequest) {
   const trackParam = request.nextUrl.searchParams.get("track")?.toUpperCase();

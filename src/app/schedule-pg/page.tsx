@@ -1,10 +1,11 @@
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import ScheduleView from "@/components/ScheduleView";
 import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 5;
 
 const pgNavLinks = [
   { label: "ABOUT", href: "/#about" },
@@ -15,9 +16,34 @@ const pgNavLinks = [
 
 const pgDates = ["17 July 2026", "18 July 2026"];
 
-export default async function SchedulePgPage() {
-  const { days, fetchedAt, error } = await fetchScheduleRows("PG");
+function ScheduleSkeleton() {
+  return (
+    <section className="sec-schedule sched-page-body sched-blocks-body">
+      <div className="container">
+        <div className="blocks-pending">
+          <div className="cs-icon">⏳</div>
+          <div className="cs-title">LOADING SCHEDULE</div>
+          <div className="cs-text">Pulling the latest schedule…</div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
+async function PgScheduleData() {
+  const { days, fetchedAt, error } = await fetchScheduleRows("PG");
+  return (
+    <ScheduleView
+      initialDays={days}
+      initialFetchedAt={fetchedAt}
+      track="PG"
+      dates={pgDates}
+      error={error}
+    />
+  );
+}
+
+export default function SchedulePgPage() {
   return (
     <>
       <Navbar isScrolledByDefault={true} activePg={true} links={pgNavLinks} />
@@ -32,13 +58,9 @@ export default async function SchedulePgPage() {
         subtitles={["POSTGRADUATE TRACK · INDUCTION 2026 · CLASS OF 2028"]}
         modifier="sched-page-hero--pg"
       />
-      <ScheduleView
-        initialDays={days}
-        initialFetchedAt={fetchedAt}
-        track="PG"
-        dates={pgDates}
-        error={error}
-      />
+      <Suspense fallback={<ScheduleSkeleton />}>
+        <PgScheduleData />
+      </Suspense>
       <Footer
         stripItems={[
           "PG INDUCTION 2026",
