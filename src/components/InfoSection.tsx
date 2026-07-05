@@ -9,15 +9,13 @@ const infoCards = [
     letter: "B",
     title: "DOCUMENTS TO CARRY",
     code: "INF-B",
-    text: "Just carry your ID card (along with your personal belongings) and enjoy the induction! :)
-",
+    text: "Just carry your ID card (along with your personal belongings) and enjoy the induction! :)",
   },
   {
     letter: "C",
     title: "CAMPUS ACCESS",
     code: "INF-C",
-    text: "ID cards will be issued during the final document submission process. Students must use their ID cards to enter the campus and for all campus entries. Visitors are required to register at the gate before entering the campus.
-",
+    text: "ID cards will be issued during the final document submission process. Students must use their ID cards to enter the campus and for all campus entries. Visitors are required to register at the gate before entering the campus.",
   },
   {
     letter: "D",
