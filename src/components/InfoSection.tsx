@@ -21,7 +21,7 @@ const infoCards = [
     letter: "D",
     title: "ACCOMMODATION",
     code: "INF-D",
-    text: "Hostel allotment letters will be shared on the student portal before induction begins. Check-in is on Day 01 from 08:00. Room assignments are final — room swap requests can be submitted after the first semester begins.",
+    text: "Students who wish to stay on campus during the induction activities will be provided complimentary accommodation for the duration of the induction. Hostel allotment for the regular academic session will take place after the induction, in accordance with the eligibility criteria and allotment process published on the institute website.",
   },
   {
     letter: "E",
