@@ -3,19 +3,21 @@ const infoCards = [
     letter: "A",
     title: "REGISTRATION",
     code: "INF-A",
-    text: "Report to the registration desk in the Atrium on Day 01 from 09:00. Carry your admission confirmation and original ID proof. A complete registration procedure document will be shared via the student portal before arrival.",
+    text: "Report to the registration desk in the Atrium on Day 01 at 09:00 to collect your induction kit and complete the registration process.",
   },
   {
     letter: "B",
     title: "DOCUMENTS TO CARRY",
     code: "INF-B",
-    text: "Original ID proof, admission offer letter, passport-size photographs (×4), academic mark sheets and certificates, migration certificate (where applicable), and hostel allotment details if applying for on-campus accommodation.",
+    text: "Just carry your ID card (along with your personal belongings) and enjoy the induction! :)
+",
   },
   {
     letter: "C",
     title: "CAMPUS ACCESS",
     code: "INF-C",
-    text: "Access cards are issued at registration on Day 01. Gate 2 (Okhla Phase III) is the primary entry point during induction week. Visitors must register at the gate. Keep your access card on you at all times during induction.",
+    text: "ID cards will be issued during the final document submission process. Students must use their ID cards to enter the campus and for all campus entries. Visitors are required to register at the gate before entering the campus.
+",
   },
   {
     letter: "D",
@@ -33,7 +35,7 @@ const infoCards = [
     letter: "F",
     title: "EMERGENCY INFORMATION",
     code: "INF-F",
-    text: "Medical, security, and on-call contacts are posted at every block and will be shared on the student portal. The campus has a dedicated medical room. In case of emergency, contact the induction help desk or call the security office directly.",
+    text: "Medical, security, and on-call contacts are posted at every block. Students can access medical assistance through the college's infirmary. In case of an emergency, contact the induction help desk or call the security office directly.",
   },
 ];
 
