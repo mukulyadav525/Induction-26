@@ -8,12 +8,11 @@ import ScrollRevealInit from "@/components/ScrollReveal";
 import FaqSection from "@/components/FaqSection";
 
 const contactNavLinks = [
-  { label: "ABOUT", href: "/#about" },
-  { label: "SCHEDULE", href: "/#schedule" },
+  { label: "HOME", href: "/" },
   // { label: "BUDDY", href: "/induction-buddies" },
-  { label: "INFO", href: "/#info" },
-
-  { label: "DIRECTIONS", href: "/contact#directions" },
+  { label: "GET IN TOUCH", href: "#get-in-touch" },
+  { label: "CONTACTS", href: "#important-contacts" },
+  { label: "DIRECTIONS", href: "#directions" },
 ];
 
 const importantContacts = [
@@ -107,7 +106,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <section className="sec-contact">
+      <section className="sec-contact" id="get-in-touch">
         <div className="container">
           <div className="contact-layout">
             <div className="contact-info">
@@ -214,7 +213,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="sec-contact-icc">
+      <section className="sec-contact-icc" id="important-contacts">
         <div className="container">
           <div className="icc-block">
             <h3 className="icc-title">IMPORTANT CONTACTS</h3>
