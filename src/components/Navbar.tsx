@@ -18,13 +18,13 @@ export default function Navbar({
   links,
 }: NavbarProps) {
   const defaultLinks = [
-    { label: "ABOUT", href: "/#about" },
-    { label: "SCHEDULE", href: "/#schedule" },
-    { label: "GALLERY", href: "/#gallery" },
-    { label: "SPEAKERS", href: "/#talks" },
-    { label: "INFO", href: "/#info" },
-    { label: "TEAM", href: "/#team" },
-    { label: "CONTACT", href: "/contact" },
+    { label: "ABOUT", href: "#about" },
+    { label: "SCHEDULE", href: "#schedule" },
+    { label: "GALLERY", href: "#gallery" },
+    { label: "SPEAKERS", href: "#talks" },
+    { label: "INFO", href: "#info" },
+    { label: "TEAM", href: "#team" },
+    { label: "CONTACT", href: "#contact" },
   ];
 
   const navLinks = links ?? defaultLinks;
