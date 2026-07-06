@@ -8,9 +8,8 @@ import { fetchScheduleRows } from "@/lib/fetchScheduleRows";
 export const revalidate = 5;
 
 const pgNavLinks = [
-  { label: "ABOUT", href: "/#about" },
-  { label: "GALLERY", href: "/#gallery" },
-  { label: "SPEAKERS", href: "/#talks" },
+  { label: "HOME", href: "/" },
+  { label: "GALLERY", href: "/gallery" },
   { label: "CONTACT", href: "/contact" },
 ];
 

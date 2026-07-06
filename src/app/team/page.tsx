@@ -26,10 +26,9 @@ interface ColumnDescriptor {
 }
 
 const teamNavLinks = [
-  { label: "ABOUT", href: "/#about" },
-  { label: "SCHEDULE", href: "/#schedule" },
-  { label: "TEAM", href: "/team" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "HOME", href: "/" },
+  { label: "SA OFFICE", href: "#team-sa" },
+  { label: "ORGANIZING COMMITTEE", href: "#team-oc" },
 ];
 
 const FALLBACK_PHOTO = "/photos/mentors/mentor-01.webp";

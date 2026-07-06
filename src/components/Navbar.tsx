@@ -23,6 +23,7 @@ export default function Navbar({
     { label: "GALLERY", href: "/#gallery" },
     { label: "SPEAKERS", href: "/#talks" },
     { label: "INFO", href: "/#info" },
+    { label: "TEAM", href: "/#team" },
     { label: "CONTACT", href: "/contact" },
   ];
 
@@ -85,7 +86,23 @@ export default function Navbar({
       <ul className="nav-links" id="nav-links">
         {navLinks.map((link, i) => (
           <li key={i}>
-            <Link href={link.href} onClick={closeMenu}>
+            <Link
+              href={link.href}
+              onClick={(e) => {
+                closeMenu();
+              
+                if (link.href.startsWith("#")) {
+                  e.preventDefault();
+                
+                  document
+                    .getElementById(link.href.slice(1))
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }
+              }}
+            >
               {link.label}
             </Link>
           </li>

@@ -4,11 +4,8 @@ import PageHero from "@/components/PageHero";
 import ScrollRevealInit from "@/components/ScrollReveal";
 
 const galleryNavLinks = [
-  { label: "ABOUT", href: "/#about" },
+  { label: "HOME", href: "/" },
   // { label: "BUDDY", href: "/induction-buddies" },
-  { label: "INFO", href: "/#info" },
-
-  { label: "SPEAKERS", href: "/#talks" },
   { label: "CONTACT", href: "/contact" },
 ];
 
