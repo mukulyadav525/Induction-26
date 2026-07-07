@@ -17,7 +17,7 @@ import ConvenorsSection from "@/components/ConvenorsSection";
 export default function HomePage() {
   return (
     <>
-      <Navbar activeBtech={true} />
+      <Navbar activePg={true} />
       <HeroSection />
       <AboutSection />
       <ScheduleSection />
