@@ -5,7 +5,7 @@ export default function ContactCtaSection() {
     <section className="sec-contact-cta" id="contact">
       <div className="container contact-cta-inner">
         <div className="reveal">
-          <span className="sec-tag sec-tag--light">FILE: REACH US</span>
+          <span className="sec-tag">FILE: REACH US</span>
           <h2 className="sec-heading sec-heading--light">
             REACH THE
             <br />

@@ -30,7 +30,7 @@ export default function CampusSection() {
     <section className="sec-campus" id="campus">
       <div className="container">
         <div className="reveal">
-          <span className="sec-tag sec-tag--light">FILE: CAMPUS</span>
+          <span className="sec-tag">FILE: CAMPUS</span>
           <h2 className="sec-heading sec-heading--light">
             IIIT DELHI
             <br />
