@@ -6,6 +6,45 @@
   padding: 0;
 }
 
+.shared-canvas {
+  position: relative;
+}
+
+.shared-canvas-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--paper);
+  background-image: url("/photos/campus/academic.webp");
+  opacity: 0.3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shared-canvas .container,
+.shared-canvas .gallery-inner,
+.shared-canvas .info-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+}
+
+.shared-canvas .container::before,
+.shared-canvas .gallery-inner::before,
+.shared-canvas .info-inner::before {
+  content: "";
+  position: absolute;
+  inset: -32px;
+  z-index: -1;
+  background: rgba(244, 240, 232, 0.85);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .12);
+}
+
 :root {
   --sidebar-width: 240px;
   --paper: #f4f0e8;
@@ -249,7 +288,7 @@ body {
   pointer-events: none;
   background-size: cover;
   background-position: center;
-  opacity: .25;
+  opacity: .35;
   filter: blur(1.5px) saturate(.85);
   -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 35%, transparent 78%);
   mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 35%, transparent 78%);
@@ -723,7 +762,7 @@ body {
 
 section {
   padding: 96px 40px;
-  border-bottom: 3px solid var(--lime);
+  background: transparent;
 }
 
 .sec-tag {
@@ -732,8 +771,8 @@ section {
   font-size: 9px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--orange);
-  border: 1px solid var(--orange);
+  /* color: var(--orange);
+  border: 1px solid var(--orange); */
   padding: 3px 10px;
   margin-bottom: 16px;
 }
@@ -887,10 +926,14 @@ section {
   background: var(--orange);
 }
 
+.sec-gallery .sec-tag--light {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
 .sec-gallery {
   padding: 0;
-  background: var(--ink);
-  border-bottom: 3px solid var(--lime);
+  background: transparent;
 }
 
 .sec-gallery.sched-page-body {
@@ -923,7 +966,7 @@ section {
   font-size: clamp(52px, 9vw, 120px);
   line-height: .9;
   letter-spacing: 1px;
-  color: var(--paper);
+  color: var(--ink);
   margin-top: 14px;
   margin-bottom: 0;
 }
@@ -932,7 +975,7 @@ section {
   font-family: var(--ff-mono);
   font-size: 10px;
   letter-spacing: 2.5px;
-  color: #888;
+  color: var(--grey);
   margin-top: 14px;
   max-width: 440px;
 }
@@ -941,9 +984,9 @@ section {
   font-family: var(--ff-mono);
   font-size: 10px;
   letter-spacing: 2px;
-  color: var(--lime);
+  color: var(--ink);
   text-decoration: none;
-  border: 1px solid var(--lime);
+  border: 1px solid var(--ink);
   padding: 12px 24px;
   transition: all .15s;
   white-space: nowrap;
@@ -952,8 +995,8 @@ section {
 }
 
 .gallery-view-all:hover {
-  background: var(--lime);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--lime);
 }
 
 .gallery-grid {
@@ -1211,13 +1254,22 @@ section {
 }
 
 .sec-campus {
-  background: var(--ink);
+  background: transparent;
+}
+
+.sec-campus .sec-tag--light {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.sec-campus .sec-heading--light {
+  color: var(--ink);
 }
 
 .campus-sub {
   font-family: var(--ff-ser);
   font-size: 16px;
-  color: #888;
+  color: var(--grey);
   max-width: 600px;
   margin-bottom: 48px;
   line-height: 1.8;
@@ -1282,7 +1334,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0;
-  border: 1px solid #2a2a2a;
+  border: 2px solid var(--ink);
   flex-wrap: wrap;
 }
 
@@ -1298,7 +1350,7 @@ section {
 
 .ca-divider {
   width: 1px;
-  background: #2a2a2a;
+  background: rgba(26, 26, 26, .2);
   align-self: stretch;
 }
 
@@ -1306,22 +1358,21 @@ section {
   font-family: var(--ff-mono);
   font-size: 8px;
   letter-spacing: 3px;
-  color: var(--lime);
+  color: var(--orange);
   text-transform: uppercase;
 }
 
 .ca-text {
   font-family: var(--ff-mono);
   font-size: 12px;
-  color: #bbb;
+  color: var(--grey);
   line-height: 1.7;
   letter-spacing: .5px;
 }
 
 .sec-info {
   padding: 0;
-  background: var(--paper);
-  border-bottom: 3px solid var(--lime);
+  background: transparent;
 }
 
 .info-inner {
@@ -1508,7 +1559,7 @@ section {
 }
 
 .sec-contact-cta {
-  background: var(--paper);
+  background: transparent;
   color: var(--ink);
 }
 
@@ -3644,7 +3695,7 @@ section {
 
 .sec-convenors {
   padding: 100px 0;
-  background: var(--paper);
+  background: transparent;
 }
 
 .convenors-grid {

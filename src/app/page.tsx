@@ -13,21 +13,35 @@ import InfoSection from "@/components/InfoSection";
 // import MentorSection from "@/components/MentorsSection";
 import ContactCtaSection from "@/components/ContactCtaSection";
 import ConvenorsSection from "@/components/ConvenorsSection";
+import { useEffect } from "react";
+import Lenis from "lenis";
 
 export default function HomePage() {
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   return (
     <>
       <Navbar activePg={true} />
       <HeroSection />
-      <AboutSection />
-      <ScheduleSection />
-      <GallerySection />
-      <TalksSection />
-      <CampusSection />
-      <InfoSection />
-      {/* <MentorSection /> */}
-      <ConvenorsSection />
-      <ContactCtaSection />
+      <div className="shared-canvas">
+        <div className="shared-canvas-bg" />
+        <AboutSection />
+        <ScheduleSection />
+        <GallerySection />
+        <TalksSection />
+        <CampusSection />
+        <InfoSection />
+        {/* <MentorSection /> */}
+        <ConvenorsSection />
+        <ContactCtaSection />
+      </div>
       <Footer
         stripItems={[
           "INDUCTION 2026",

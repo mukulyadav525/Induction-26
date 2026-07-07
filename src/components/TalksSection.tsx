@@ -17,6 +17,18 @@ const speakers = [
     photo: "photos/speakers/speaker-3.webp",
     badge: "ALUMNI",
   },
+  // {
+  //   name: "Saumya Singh",
+  //   role: "Tech Influencer",
+  //   photo: "photos/speakers/speaker-4.webp",
+  //   badge: "KEYNOTE",
+  // },
+  // {
+  //   name: "Ankur Warikoo",
+  //   role: "",
+  //   photo: "photos/speakers/speaker-5.webp",
+  //   badge: "KEYNOTE",
+  // },
 ];
 
 export default function TalksSection() {

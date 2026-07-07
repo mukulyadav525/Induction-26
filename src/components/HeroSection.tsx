@@ -48,11 +48,11 @@ export default function HeroSection() {
 
   return (
     <section className="hero" id="hero">
-      <div
+      {/* <div
         className="hero-bg-photo"
         aria-hidden="true"
         style={{ backgroundImage: "url('/photos/hero/images.webp')" }}
-      />
+      /> */}
       <div className="hero-inner">
         <div className="hero-content">
           <div className="hero-title-row">
