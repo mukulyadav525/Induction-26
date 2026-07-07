@@ -1,15 +1,15 @@
 const infoCards = [
   {
     letter: "A",
-    title: "REGISTRATION",
+    title:"STUDENT SUPPORT",
     code: "INF-A",
-    text: "Report to the registration desk in the Atrium on Day 01 at 09:00 to collect your induction kit and complete the registration process.",
+    text:"Wellbeing, mentorship, and academic support desks are open throughout induction week. The Student Counselling Cell, Academic Affairs Office, and Hostel Management Office are all present and available on-site at the Atrium.",
   },
   {
     letter: "B",
-    title: "DOCUMENTS TO CARRY",
+    title:"EMERGENCY INFORMATION",
     code: "INF-B",
-    text: "Just carry your ID card (along with your personal belongings) and enjoy the induction! :)",
+    text: "Medical, security, and on-call contacts are posted at every block. Students can access medical assistance through the college's infirmary. In case of an emergency, contact the induction help desk or call the security office directly.",
   },
   {
     letter: "C",
@@ -25,15 +25,15 @@ const infoCards = [
   },
   {
     letter: "E",
-    title: "STUDENT SUPPORT",
+    title: "REGISTRATION",
     code: "INF-E",
-    text: "Wellbeing, mentorship, and academic support desks are open throughout induction week. The Student Counselling Cell, Academic Affairs Office, and Hostel Management Office are all present and available on-site at the Atrium.",
+    text: "Report to the registration desk in the Atrium on Day 01 at 09:00 to collect your induction kit and complete the registration process.",
   },
   {
     letter: "F",
-    title: "EMERGENCY INFORMATION",
+    title: "DOCUMENTS TO CARRY",
     code: "INF-F",
-    text: "Medical, security, and on-call contacts are posted at every block. Students can access medical assistance through the college's infirmary. In case of an emergency, contact the induction help desk or call the security office directly.",
+    text: "Just carry your ID card (along with your personal belongings) and enjoy the induction! :)",
   },
 ];
 
