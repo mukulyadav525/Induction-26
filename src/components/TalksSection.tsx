@@ -4,18 +4,21 @@ const speakers = [
     role: "Founding Director of IIIT-Delhi",
     photo: "photos/speakers/speaker-1.webp",
     badge: "KEYNOTE",
+    linkedin: "https://www.linkedin.com/in/pankaj-jalote-0924782/",
   },
   {
     name: "Dr. RAJDEEP MUKHERJEE",
     role: "Applied Scientist II @ Amazon",
     photo: "photos/speakers/speaker-2.webp",
     badge: "ALUMNI",
+    linkedin: "https://www.linkedin.com/in/rajdeepmukherjee89/",
   },
   {
     name: "Mimansha Das",
     role: "AI Engineer @ Trademo",
     photo: "photos/speakers/speaker-3.webp",
     badge: "ALUMNI",
+    linkedin: "https://www.linkedin.com/in/mimansha-das-6963951ab/",
   },
   // {
   //   name: "Saumya Singh",
@@ -59,7 +62,19 @@ export default function TalksSection() {
               <div className="speaker-info">
                 <p className="speaker-name">{speaker.name}</p>
                 <p className="speaker-role">{speaker.role}</p>
-                <span className="speaker-badge">{speaker.badge}</span>
+
+                <div className="speaker-footer">
+                  <span className="speaker-badge">{speaker.badge}</span>
+                
+                  <a
+                    href={speaker.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="speaker-linkedin"
+                  >
+                    LinkedIn ↗
+                  </a>
+                </div>
               </div>
             </div>
           ))}
