@@ -20,10 +20,17 @@ const speakers = [
     badge: "ALUMNI",
     linkedin: "https://www.linkedin.com/in/mimansha-das-6963951ab/",
   },
+  {
+    name: "Anshuman Tripathi",
+    role: "Member, National Security Advisory Board",
+    photo: "photos/speakers/speaker-4.webp",
+    badge: "KEYNOTE",
+    linkedin: null,
+  },
   // {
   //   name: "Saumya Singh",
   //   role: "Tech Influencer",
-  //   photo: "photos/speakers/speaker-4.webp",
+  //   photo: "photos/speakers/speaker-6.webp",
   //   badge: "KEYNOTE",
   // },
   // {
@@ -65,15 +72,16 @@ export default function TalksSection() {
 
                 <div className="speaker-footer">
                   <span className="speaker-badge">{speaker.badge}</span>
-                
-                  <a
-                    href={speaker.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="speaker-linkedin"
-                  >
-                    LinkedIn ↗
-                  </a>
+                  {speaker.linkedin && (
+                    <a
+                      href={speaker.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="speaker-linkedin"
+                    >
+                      LinkedIn ↗
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
