@@ -27,6 +27,13 @@ const speakers = [
     badge: "KEYNOTE",
     linkedin: null,
   },
+    {
+    name: "Tilak Mishra",
+    role: "Tech Consultant and Advisor",
+    photo: "photos/speakers/speaker-5.webp",
+    badge: "KEYNOTE",
+    linkedin: null,
+  }
   // {
   //   name: "Saumya Singh",
   //   role: "Tech Influencer",
@@ -36,7 +43,7 @@ const speakers = [
   // {
   //   name: "Ankur Warikoo",
   //   role: "",
-  //   photo: "photos/speakers/speaker-5.webp",
+  //   photo: "photos/speakers/speaker-7.webp",
   //   badge: "KEYNOTE",
   // },
 ];
