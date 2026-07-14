@@ -50,7 +50,7 @@
   --paper: #f4f0e8;
   --ink: #1a1a1a;
   --lime: #c8f135;
-  --orange: #e57632;
+  --orange: #008080;
   --grey: #6b6b6b;
   --border: 2px solid #1a1a1a;
 
@@ -467,6 +467,7 @@ body {
   padding: 1px 5px;
   line-height: 1;
   flex-shrink: 0;
+  border-radius: 3px;
 }
 
 .sidebar-inst-name {
@@ -575,6 +576,7 @@ body {
   margin-top: 12px;
   align-items: center;
   padding: 18px 0;
+  border-radius: 3px;
 }
 
 .countdown-left {
@@ -598,6 +600,7 @@ body {
   color: var(--lime);
   flex-shrink: 0;
   text-transform: uppercase;
+  border-radius: 3px;
 }
 
 .cd-timer {
@@ -814,6 +817,7 @@ section {
   border: 2px solid var(--ink);
   margin-bottom: 52px;
   overflow: hidden;
+  border-radius: 3px;
 }
 
 .astat {
@@ -860,6 +864,7 @@ section {
   position: relative;
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
+  border-radius: 3px;
 }
 
 .track-card:hover {
@@ -900,6 +905,7 @@ section {
   padding: 5px 14px;
   border: 1px solid var(--ink);
   margin-bottom: 20px;
+  border-radius: 3px;
 }
 
 .track-card p {
@@ -1199,6 +1205,7 @@ section {
   border: 2px solid var(--ink);
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
+  border-radius: 3px;
 }
 
 .speaker-card:hover {
@@ -1332,6 +1339,7 @@ section {
   background-size: cover;
   background-position: center;
   transition: opacity .25s;
+  border-radius: 3px;
 }
 
 .campus-photo:hover .cp-inner {
@@ -1364,6 +1372,7 @@ section {
   gap: 0;
   border: 2px solid var(--ink);
   flex-wrap: wrap;
+  border-radius: 3px;
 }
 
 .ca-left,
@@ -3738,6 +3747,7 @@ section {
   border: 2px solid var(--ink);
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
+  border-radius: 3px;
 }
 
 .convenor-card:hover {
@@ -5012,7 +5022,7 @@ section {
   .hero-sidebar {
     display: flex;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 24px 20px 18px;
     margin: 24px 28px 0;
     box-shadow: 0 10px 28px rgba(0, 0, 0, .14);
@@ -5198,6 +5208,27 @@ section {
   background: transparent;
   color: var(--paper);
   border: 1px solid var(--paper);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: #17837d;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {

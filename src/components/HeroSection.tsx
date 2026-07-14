@@ -76,7 +76,6 @@ export default function HeroSection() {
           <div className="hero-lower">
             <div className="hero-year">&apos;26</div>
             <div className="hero-tagline-block">
-              <div className="tagline-rule" />
               <h2 className="hero-tagline">
                 A NEW FILE
                 <br />

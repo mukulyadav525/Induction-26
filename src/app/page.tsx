@@ -13,6 +13,7 @@ import InfoSection from "@/components/InfoSection";
 // import MentorSection from "@/components/MentorsSection";
 import ContactCtaSection from "@/components/ContactCtaSection";
 import ConvenorsSection from "@/components/ConvenorsSection";
+import BackToTop from "@/components/BackToTop";
 import { useEffect } from "react";
 import Lenis from "lenis";
 
@@ -78,6 +79,7 @@ export default function HomePage() {
         ]}
       />
       <ScrollRevealInit />
+      <BackToTop/>
     </>
   );
 }
