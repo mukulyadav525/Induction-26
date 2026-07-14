@@ -50,33 +50,7 @@ export default function HomePage() {
           "IIIT DELHI",
           "A NEW FILE HAS BEEN OPENED",
         ]}
-        navColumns={[
-          {
-            label: "SECTIONS",
-            links: [
-              { text: "ABOUT", href: "/#about" },
-              { text: "SCHEDULE", href: "/#schedule" },
-              { text: "GALLERY", href: "/#gallery" },
-            ],
-          },
-          {
-            label: "MORE",
-            links: [
-              { text: "SPEAKERS", href: "/#talks" },
-              { text: "DIRECTIONS", href: "/#campus" },
-              { text: "INFO", href: "/#info" },
-            ],
-          },
-          {
-            label: "SUPPORT",
-            links: [
-              { text: "FAQ", href: "/#faq" },
-              { text: "CONTACT ↗", href: "/contact" },
-              { text: "B.TECH SCHEDULE", href: "/schedule-btech" },
-              { text: "PG SCHEDULE", href: "/schedule-pg" },
-            ],
-          },
-        ]}
+        showFaqAccordion
       />
       <ScrollRevealInit />
       <BackToTop/>

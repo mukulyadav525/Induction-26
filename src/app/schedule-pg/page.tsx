@@ -69,27 +69,6 @@ export default function SchedulePgPage() {
         ]}
         bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
         bottomRight="DOC ID: IND26-2028 · PG TRACK · CONFIDENTIAL WHEN PRINTED"
-        navColumns={[
-          {
-            label: "SECTIONS",
-            links: [
-              { text: "MAIN PAGE", href: "/" },
-              { text: "ABOUT", href: "/#about" },
-              { text: "GALLERY", href: "/#gallery" },
-            ],
-          },
-          {
-            label: "MORE",
-            links: [
-              { text: "INFO", href: "/#info" },
-              { text: "B.TECH SCHEDULE ↗", href: "/schedule-btech" },
-            ],
-          },
-          {
-            label: "SUPPORT",
-            links: [{ text: "CONTACT ↗", href: "/contact" }],
-          },
-        ]}
       />
     </>
   );

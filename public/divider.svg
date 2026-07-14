@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 24" fill="none">
+  <path
+    d="M8 14
+       C30 10, 48 18, 72 13
+       C110 11, 155 15, 205 14
+       C260 13, 320 15, 390 14
+       C470 13, 550 15, 635 14
+       C710 13, 785 15, 855 14
+       C885 13, 902 15, 912 14"
+    stroke="#111111"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- left brush flourish -->
+  <path
+    d="M0 15
+       C4 11, 10 10, 16 11
+       C10 13, 12 16, 20 16
+       C15 17, 9 18, 2 16"
+    stroke="#111111"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- right brush taper -->
+  <path
+    d="M912 14
+       C916 14, 918 13, 920 12"
+    stroke="#111111"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+</svg>

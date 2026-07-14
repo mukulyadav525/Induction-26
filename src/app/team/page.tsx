@@ -341,13 +341,6 @@ export default function TeamPage() {
         ]}
         bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
         bottomRight="DOC ID: IND26-TEAM · FILE / ORGANIZING COMMITTEE · CONFIDENTIAL WHEN PRINTED"
-        simpleNavLinks={[
-          { text: "MAIN PAGE", href: "/" },
-          { text: "ABOUT", href: "/#about" },
-          { text: "TEAM", href: "/team" },
-          { text: "ALL MEMBERS", href: "/team/all-members" },
-          { text: "CONTACT", href: "/contact" },
-        ]}
       />
       <ScrollRevealInit />
     </>

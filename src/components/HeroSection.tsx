@@ -53,6 +53,7 @@ export default function HeroSection() {
         aria-hidden="true"
         style={{ backgroundImage: "url('/photos/hero/images.webp')" }}
       /> */}
+
       <div className="hero-inner">
         <div className="hero-content">
           <div className="hero-title-row">
@@ -63,7 +64,12 @@ export default function HeroSection() {
                 className="sticker-orange-bg"
               />
             </div>
-            <h1 className="hero-heading">INDUCTION</h1>
+            <img
+              className="hero-heading"
+              src="/induction-txt.svg"
+              alt="INDUCTION"
+              width={560}
+            />
             <div className="sticker sticker-lime">
               <img
                 src="/lime-sticker.svg"
@@ -72,7 +78,7 @@ export default function HeroSection() {
               />
             </div>
           </div>
-
+          <img src="/divider.svg" alt="INDUCTION" />
           <div className="hero-lower">
             <div className="hero-year">&apos;26</div>
             <div className="hero-tagline-block">

@@ -72,13 +72,6 @@ export default function GalleryPage() {
         ]}
         bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
         bottomRight="DOC ID: IND26-2028 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
-        simpleNavLinks={[
-          { text: "MAIN PAGE", href: "/" },
-          { text: "ABOUT", href: "/#about" },
-          { text: "CONTACT", href: "/contact" },
-          { text: "B.TECH SCHEDULE ↗", href: "/schedule-btech" },
-          { text: "PG SCHEDULE ↗", href: "/schedule-pg" },
-        ]}
       />
       <ScrollRevealInit />
     </>

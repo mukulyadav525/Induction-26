@@ -338,14 +338,6 @@ export default function ContactPage() {
         ]}
         bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
         bottomRight="DOC ID: IND26-2028 · FILE / CONTACT · CONFIDENTIAL WHEN PRINTED"
-        simpleNavLinks={[
-          { text: "MAIN PAGE", href: "/" },
-          { text: "ABOUT", href: "/#about" },
-          // { text: "BUDDY", href: "/induction-buddies" },
-          { text: "DIRECTIONS", href: "/contact#directions" },
-          { text: "B.TECH SCHEDULE ↗", href: "/schedule-btech" },
-          { text: "PG SCHEDULE ↗", href: "/schedule-pg" },
-        ]}
       />
       <ScrollRevealInit />
     </>
