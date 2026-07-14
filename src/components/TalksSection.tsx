@@ -7,6 +7,20 @@ const speakers = [
     linkedin: "https://www.linkedin.com/in/pankaj-jalote-0924782/",
   },
   {
+    name: "Anshuman Tripathi",
+    role: "Member, National Security Advisory Board",
+    photo: "photos/speakers/speaker-4.webp",
+    badge: "KEYNOTE",
+    linkedin: null,
+  },
+  {
+    name: "Tilak Mishra",
+    role: "Tech Consultant and Advisor",
+    photo: "photos/speakers/speaker-5.webp",
+    badge: "KEYNOTE",
+    linkedin: null,
+  },
+  {
     name: "Dr. RAJDEEP MUKHERJEE",
     role: "Applied Scientist II @ Amazon",
     photo: "photos/speakers/speaker-2.webp",
@@ -19,21 +33,8 @@ const speakers = [
     photo: "photos/speakers/speaker-3.webp",
     badge: "ALUMNI",
     linkedin: "https://www.linkedin.com/in/mimansha-das-6963951ab/",
-  },
-  {
-    name: "Anshuman Tripathi",
-    role: "Member, National Security Advisory Board",
-    photo: "photos/speakers/speaker-4.webp",
-    badge: "KEYNOTE",
-    linkedin: null,
-  },
-    {
-    name: "Tilak Mishra",
-    role: "Tech Consultant and Advisor",
-    photo: "photos/speakers/speaker-5.webp",
-    badge: "KEYNOTE",
-    linkedin: null,
   }
+  
   // {
   //   name: "Saumya Singh",
   //   role: "Tech Influencer",
