@@ -202,7 +202,7 @@ export default function TeamPage() {
 
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={teamNavLinks} activePg={true}/>
+      <Navbar isScrolledByDefault={true} links={teamNavLinks}/>
 
       <section
         className="sec-talks sched-page-body team-page-body"

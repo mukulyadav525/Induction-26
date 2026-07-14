@@ -1,6 +1,6 @@
 const speakers = [
   {
-    name: "Dr. PANKAJ JALOTE",
+    name: "Dr. Pankaj Jalote",
     role: "Founding Director of IIIT-Delhi",
     photo: "photos/speakers/speaker-1.webp",
     badge: "KEYNOTE",
@@ -21,7 +21,7 @@ const speakers = [
     linkedin: null,
   },
   {
-    name: "Dr. RAJDEEP MUKHERJEE",
+    name: "Dr. Rajdeep Mukherjee",
     role: "Applied Scientist II @ Amazon",
     photo: "photos/speakers/speaker-2.webp",
     badge: "ALUMNI",

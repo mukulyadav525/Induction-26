@@ -3,22 +3,22 @@ import Link from "next/link";
 
 const convenors = [
   {
-    name: "ANOUSHKA MALIK",
+    name: "Anoushka Malik",
     role: "Convenor",
     photo: "/photos/team/CONVENOR/ANOUSHKA_MALIK.webp",
   },
   {
-    name: "ADITYA KUMAR GIRI",
+    name: "Aditya Kumar Giri",
     role: "Convenor",
     photo: "/photos/team/CONVENOR/ADITYA_GIRI.webp",
   },
   {
-    name: "ABHINAV ARORA",
+    name: "Abhinav Arora",
     role: "Treasurer",
     photo: "/photos/team/TREASURER/ABHINAV_ARORA.webp",
   },
   {
-    name: "YUVRAJ SINGH",
+    name: "Yuvraj Singh",
     role: "General Secretary",
     photo: "/photos/team/GENERAL_SECRETARY/YUVRAJ_SINGH.webp",
   },

@@ -27,7 +27,7 @@ const allGalleryPhotos = [
 export default function GalleryPage() {
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={galleryNavLinks} />
+      <Navbar isScrolledByDefault={true} links={galleryNavLinks}/>
 
       <PageHero
         title={

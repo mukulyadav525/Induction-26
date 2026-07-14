@@ -54,9 +54,12 @@
   --grey: #6b6b6b;
   --border: 2px solid #1a1a1a;
 
-  --ff-disp: 'Bebas Neue', sans-serif;
+  /* --ff-disp: 'Bebas Neue', sans-serif;
   --ff-mono: 'Space Mono', monospace;
-  --ff-ser: 'IBM Plex Serif', serif;
+  --ff-ser: 'IBM Plex Serif', serif; */
+  --ff-disp: 'Heading Now Trial', sans-serif;
+  --ff-mono: 'Onterion', sans-serif;
+  --ff-ser: 'Onterion', sans-serif;
 }
 
 html {
@@ -327,7 +330,8 @@ button{
 }
 
 .hero-heading {
-  font-family: var(--ff-disp);
+  /* font-family: var(--ff-disp); */
+  font-family:'Bebas Neue', sans-serif;
   font-size: clamp(160px, 14vw, 300px);
   line-height: 0.84;
   letter-spacing: 2px;
