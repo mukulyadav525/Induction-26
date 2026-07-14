@@ -390,6 +390,7 @@ button {
   min-width: 120px;
   border: 2px solid var(--ink);
   box-shadow: 3px 3px 0 rgba(0, 0, 0, .15);
+  left:-50px;
 }
 
 .sticker-bar-wrap {
@@ -2571,7 +2572,7 @@ section {
   margin-bottom: 0;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1270px) {
   .hero-sidebar {
     display: none;
   }
@@ -5256,7 +5257,7 @@ section {
 }
 
 .footer-inner {
-  padding: 88px 60px 72px;
+  padding: 50px 60px 50px;
   gap: 48px;
 }
 
