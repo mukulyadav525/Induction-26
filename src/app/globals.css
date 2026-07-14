@@ -50,7 +50,7 @@
   --paper: #f4f0e8;
   --ink: #1a1a1a;
   --lime: #c8f135;
-  --orange: #008080;
+  --teal: #008080;
   --grey: #6b6b6b;
   --border: 2px solid #1a1a1a;
 
@@ -194,13 +194,13 @@ button{
   right: 0;
   bottom: -3px;
   height: 1px;
-  background: var(--orange);
+  background: var(--teal);
   transform: scaleX(0);
   transition: transform .2s;
 }
 
 .nav-links a:hover {
-  color: var(--orange);
+  color: var(--teal);
 }
 
 .nav-links a:hover::after {
@@ -566,7 +566,7 @@ button{
 
 .sb-confidential {
   font-size: 7.5px;
-  color: var(--orange);
+  color: var(--teal);
   font-weight: 700;
   letter-spacing: 1.5px;
   text-align: center;
@@ -784,8 +784,8 @@ section {
   font-size: 9px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  /* color: var(--orange);
-  border: 1px solid var(--orange); */
+  color: var(--teal);
+  border: 1px solid var(--teal);
   padding: 3px 10px;
   margin-bottom: 16px;
 }
@@ -887,7 +887,7 @@ section {
 }
 
 .card-pg {
-  border-left: 8px solid var(--orange);
+  border-left: 8px solid var(--teal);
 }
 
 .track-card-num {
@@ -939,12 +939,12 @@ section {
 }
 
 .track-go-btn:hover {
-  background: var(--orange);
+  background: var(--teal);
 }
 
 .sec-gallery .sec-tag--light {
-  /*color: var(--orange);
-  border-color: var(--orange); */
+  /*color: var(--teal);
+  border-color: var(--teal); */
 }
 
 .sec-gallery {
@@ -1306,8 +1306,8 @@ section {
 }
 
 .sec-campus .sec-tag--light {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--teal);
+  border-color: var(--teal);
 }
 
 .sec-campus .sec-heading--light {
@@ -1408,7 +1408,7 @@ section {
   font-family: var(--ff-mono);
   font-size: 8px;
   letter-spacing: 3px;
-  color: var(--orange);
+  color: var(--teal);
   text-transform: uppercase;
 }
 
@@ -1443,7 +1443,7 @@ section {
   font-family: var(--ff-mono);
   font-size: 9px;
   letter-spacing: 3px;
-  color: var(--orange);
+  color: var(--teal);
   text-transform: uppercase;
 }
 
@@ -1475,14 +1475,14 @@ section {
 }
 
 .info-card {
-  background: #101010;
+  background: var(--paper);
   padding: 36px 28px 44px;
   transition: background .2s;
 }
 
-.info-card:hover {
+/* .info-card:hover {
   background: #141414;
-}
+} */
 
 .info-card:nth-child(5),
 .info-card:nth-child(6) {
@@ -1500,7 +1500,7 @@ section {
   font-family: var(--ff-disp);
   font-size: 80px;
   line-height: 1;
-  color: var(--lime);
+  color: var(--teal);
   flex-shrink: 0;
 }
 
@@ -1524,7 +1524,7 @@ section {
   font-family: var(--ff-mono);
   font-size: 8px;
   letter-spacing: 2px;
-  color: var(--lime);
+  color: var(--teal);
   border: 1px solid #2a2a2a;
   padding: 2px 8px;
   background: rgba(200, 241, 53, .06);
@@ -1533,7 +1533,7 @@ section {
 
 .ic-rule {
   height: 1px;
-  background: repeating-linear-gradient(90deg, #2a2a2a 0 5px, transparent 5px 10px);
+  background: #1e1e1e;
   margin-bottom: 18px;
 }
 
@@ -1629,8 +1629,8 @@ section {
 }
 
 .sec-contact-cta .sec-tag--light {
-  /*color: var(--orange);*/
-  border-color: var(--orange);
+  /*color: var(--teal);*/
+  border-color: var(--teal);
 }
 
 .sec-contact-cta .sec-heading--light {
@@ -1708,7 +1708,7 @@ section {
 }
 
 .c-icon {
-  color: var(--orange);
+  color: var(--teal);
   flex-shrink: 0;
 }
 
@@ -1765,7 +1765,7 @@ section {
   font-family: var(--ff-mono);
   font-size: 9px;
   letter-spacing: 3px;
-  color: var(--orange);
+  color: var(--teal);
   text-transform: uppercase;
 }
 
@@ -1787,7 +1787,7 @@ section {
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  border-color: var(--orange);
+  border-color: var(--teal);
   background: rgba(232, 93, 4, .04);
 }
 
@@ -1857,7 +1857,7 @@ section {
 }
 
 .form-result.is-error {
-  color: var(--orange);
+  color: var(--teal);
 }
 
 .contact-map-wrap {
@@ -2129,7 +2129,7 @@ section {
 }
 
 .sched-page-hero--pg {
-  border-bottom-color: var(--orange);
+  border-bottom-color: var(--teal);
 }
 
 .sched-page-hero-inner {
@@ -2436,11 +2436,11 @@ section {
 }
 
 .blocks-pending.is-error {
-  border-color: var(--orange);
+  border-color: var(--teal);
 }
 
 .blocks-pending.is-error .cs-title {
-  color: var(--orange);
+  color: var(--teal);
 }
 
 .sched-loader {
@@ -2569,7 +2569,7 @@ section {
 }
 
 .dir-steps li::marker {
-  color: var(--orange);
+  color: var(--teal);
   font-weight: 700;
 }
 
@@ -3900,7 +3900,7 @@ section {
   font-size: clamp(20px, 2.5vw, 32px);
   font-style: italic;
   font-weight: 400;
-  color: var(--orange);
+  color: var(--teal);
   display: block;
   letter-spacing: 0px;
   line-height: 1.2;
@@ -4227,9 +4227,9 @@ section {
 }
 
 .team-member-tag--orange {
-  background: var(--orange);
+  background: var(--teal);
   color: var(--ink);
-  border-color: var(--orange);
+  border-color: var(--teal);
 }
 
 .team-member-mail-btn {
@@ -4323,7 +4323,7 @@ section {
   font-family: var(--ff-ser);
   font-size: 12px;
   font-style: italic;
-  color: var(--orange);
+  color: var(--teal);
   letter-spacing: 0.3px;
   margin-bottom: 6px;
   display: block;
@@ -4508,7 +4508,7 @@ section {
   font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--teal);
   margin-top: 10px;
 }
 
