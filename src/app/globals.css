@@ -5588,3 +5588,60 @@ section {
     width: 100%;
   }
 }
+
+@media (max-width: 900px) {
+  .footer-sticky-shell {
+    height: auto !important;
+  }
+
+  .site-footer {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: unset;
+  }
+
+  .astat {
+    border: 1px solid var(--ink);
+    min-width: 0;
+  }
+
+  .astat-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .campus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+.speaker-footer {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.hero-subtext {
+  color: var(--ink);
+  font-weight: 700;
+}
