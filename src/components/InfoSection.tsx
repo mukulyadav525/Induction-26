@@ -1,13 +1,13 @@
 const infoCards = [
   {
     letter: "A",
-    title:"STUDENT SUPPORT",
+    title: "STUDENT SUPPORT",
     code: "INF-A",
-    text:"Wellbeing, mentorship, and academic support desks are open throughout induction week. The Student Counselling Cell, Academic Affairs Office, and Hostel Management Office are all present and available on-site at the Atrium.",
+    text: "Wellbeing, mentorship, and academic support desks are open throughout induction week. The Student Counselling Cell, Academic Affairs Office, and Hostel Management Office are all present and available on-site at the Atrium.",
   },
   {
     letter: "B",
-    title:"EMERGENCY INFORMATION",
+    title: "EMERGENCY INFORMATION",
     code: "INF-B",
     text: "Medical, security, and on-call contacts are posted at every block. Students can access medical assistance through the college's infirmary. In case of an emergency, contact the induction help desk or call the security office directly.",
   },
@@ -54,10 +54,15 @@ export default function InfoSection() {
         <div className="info-grid">
           {infoCards.map((card) => (
             <div className="info-card reveal" key={card.code}>
+              <span className="ic-watermark" aria-hidden="true">
+                {card.letter}
+              </span>
               <div className="ic-top">
-                <span className="ic-letter">{card.letter}</span>
                 <div className="ic-title-row">
-                  <span className="ic-title">{card.title}</span>
+                  <div className="ic-title-mark">
+                    <span className="ic-tab"></span>
+                    <span className="ic-title">{card.title}</span>
+                  </div>
                   <span className="ic-code">{card.code}</span>
                 </div>
               </div>

@@ -1463,48 +1463,63 @@ section {
 }
 
 .info-card {
+  position: relative;
   background: var(--paper);
   padding: 36px 28px 44px;
+  overflow: hidden;
   transition: background .2s;
 }
-
-/* .info-card:hover {
-  background: #141414;
-} */
 
 .info-card:nth-child(5),
 .info-card:nth-child(6) {
   grid-column: span 2;
 }
 
-.ic-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 14px;
-}
-
-.ic-letter {
+.ic-watermark {
+  position: absolute;
+  top: -18px;
+  right: 8px;
   font-family: var(--ff-disp);
-  font-size: 80px;
+  font-size: 128px;
   line-height: 1;
   color: var(--teal);
-  flex-shrink: 0;
+  opacity: .07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ic-top {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 14px;
 }
 
 .ic-title-row {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 6px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.ic-title-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ic-tab {
+  width: 4px;
+  align-self: stretch;
+  background: var(--teal);
+  flex-shrink: 0;
 }
 
 .ic-title {
   font-family: var(--ff-disp);
-  font-size: 22px;
-  letter-spacing: 1.5px;
-  color: var(--paper);
-  line-height: 1.1;
+  font-size: 34px;
+  letter-spacing: .5px;
+  color: var(--ink);
+  line-height: 1.05;
 }
 
 .ic-code {
@@ -1516,7 +1531,7 @@ section {
   border: 1px solid #2a2a2a;
   padding: 2px 8px;
   background: rgba(200, 241, 53, .06);
-  align-self: flex-start;
+  flex-shrink: 0;
 }
 
 .ic-rule {
@@ -1559,20 +1574,48 @@ section {
   justify-content: space-between;
   align-items: center;
   padding: 22px 0;
-  font-family: var(--ff-mono);
-  font-size: 14px;
-  letter-spacing: .3px;
-  line-height: 1.5;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
-  color: var(--paper);
   gap: 20px;
 }
 
-.faq-q:hover {
+.faq-q-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.faq-tab {
+  width: 4px;
+  align-self: stretch;
+  background: var(--lime);
+  flex-shrink: 0;
+}
+
+.faq-question-text {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  letter-spacing: .3px;
+  line-height: 1.5;
+  color: var(--paper);
+}
+
+.faq-q:hover .faq-question-text {
   color: var(--lime);
+}
+
+.faq-code {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--lime);
+  border: 1px solid rgba(244, 240, 232, .25);
+  padding: 2px 8px;
+  flex-shrink: 0;
 }
 
 .faq-icon {
