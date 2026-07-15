@@ -11,14 +11,14 @@ const speakers = [
     role: "Member, National Security Advisory Board",
     photo: "photos/speakers/speaker-4.webp",
     badge: "KEYNOTE",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/anshuman-tripathi-5594bb65/",
   },
   {
     name: "Tilak Mishra",
     role: "Tech Consultant and Advisor",
     photo: "photos/speakers/speaker-5.webp",
     badge: "KEYNOTE",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/mishratilak/",
   },
   {
     name: "Dr. Rajdeep Mukherjee",
