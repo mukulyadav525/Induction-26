@@ -27,7 +27,7 @@ const infoCards = [
     letter: "E",
     title: "REGISTRATION",
     code: "INF-E",
-    text: "Report to the registration desk in the Atrium on Day 01 at 09:00 to collect your induction kit and complete the registration process.",
+    text: "Report to the registration desk in the Atrium on Day 01 at 09:30 to collect your induction kit and complete the registration process.",
   },
   {
     letter: "F",
