@@ -89,6 +89,35 @@ function dayLabelToIndex(label: string): number {
   return match ? parseInt(match[0], 10) - 1 : 0;
 }
 
+function parseClockTimeToMinutes(timeText: string): number | null {
+  const match = timeText.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i);
+  if (!match) return null;
+  const [, hourText, minuteText, meridiem] = match;
+  let hour = parseInt(hourText, 10);
+  const minute = parseInt(minuteText, 10);
+  if (meridiem) {
+    const isPM = meridiem.toUpperCase() === "PM";
+    if (hour === 12) hour = 0;
+    if (isPM) hour += 12;
+  }
+  return hour * 60 + minute;
+}
+
+function formatMinutesToClockTime(totalMinutes: number): string {
+  const wrappedMinutes = ((totalMinutes % 1440) + 1440) % 1440;
+  const hour24 = Math.floor(wrappedMinutes / 60);
+  const minute = wrappedMinutes % 60;
+  const meridiem = hour24 >= 12 ? "PM" : "AM";
+  const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
+  return `${hour12}:${String(minute).padStart(2, "0")} ${meridiem}`;
+}
+
+function shiftClockTime(timeText: string, minutesToAdd: number): string {
+  const parsedMinutes = parseClockTimeToMinutes(timeText);
+  if (parsedMinutes === null) return timeText;
+  return formatMinutesToClockTime(parsedMinutes + minutesToAdd);
+}
+
 function Field({
   label,
   hint,
@@ -127,6 +156,14 @@ export default function SupersecretPanel() {
   const [saveBusy, setSaveBusy] = useState(false);
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [delayDay, setDelayDay] = useState("");
+  const [delayTrack, setDelayTrack] = useState<"ALL" | "BTECH" | "PG">("ALL");
+  const [delayAfterEventId, setDelayAfterEventId] = useState<number | "">("");
+  const [delayMinutesText, setDelayMinutesText] = useState("30");
+  const [delayBusy, setDelayBusy] = useState(false);
+  const [delayError, setDelayError] = useState("");
+  const [delaySuccess, setDelaySuccess] = useState("");
 
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
@@ -302,6 +339,76 @@ export default function SupersecretPanel() {
     }
   }
 
+  async function updateEventTime(
+    id: number,
+    time: string,
+    end_time: string,
+  ): Promise<DbEvent | null> {
+    const res = await fetch("/api/ssp/events", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, time, end_time, password }),
+    });
+    const data = await res.json();
+    return res.ok && data.event ? data.event : null;
+  }
+
+  async function applyDelay() {
+    setDelayBusy(true);
+    setDelayError("");
+    setDelaySuccess("");
+    const delayMinutes = resolvedDelayMinutes;
+    try {
+      const anchorEvent = delayAfterEventId
+        ? events.find((ev) => ev.id === delayAfterEventId)
+        : null;
+      const anchorMinutes = anchorEvent
+        ? parseClockTimeToMinutes(anchorEvent.time)
+        : null;
+
+      const resolvedDelayDay =
+        delayDay || (filterDay !== "ALL" ? filterDay : (allDays[0] ?? ""));
+      const eventsOnDay = events.filter(
+        (ev) => ev.day_label === resolvedDelayDay,
+      );
+      const eventsToDelay = eventsOnDay.filter((ev) => {
+        const trackMatch = delayTrack === "ALL" || ev.track === delayTrack;
+        if (!trackMatch) return false;
+        if (anchorMinutes === null) return true;
+        const eventMinutes = parseClockTimeToMinutes(ev.time);
+        return eventMinutes !== null && eventMinutes > anchorMinutes;
+      });
+
+      if (eventsToDelay.length === 0) {
+        setDelayError("No events matched. Check the day and reference event.");
+        return;
+      }
+
+      const updatedEvents: DbEvent[] = [];
+      for (const ev of eventsToDelay) {
+        const newTime = shiftClockTime(ev.time, delayMinutes);
+        const newEndTime = ev.end_time
+          ? shiftClockTime(ev.end_time, delayMinutes)
+          : ev.end_time;
+        const updated = await updateEventTime(ev.id, newTime, newEndTime);
+        if (updated) updatedEvents.push(updated);
+      }
+
+      setEvents((prev) =>
+        prev.map(
+          (ev) => updatedEvents.find((updated) => updated.id === ev.id) ?? ev,
+        ),
+      );
+      setDelaySuccess(
+        `Shifted ${updatedEvents.length} event${updatedEvents.length === 1 ? "" : "s"} by ${delayMinutes} minutes.`,
+      );
+    } catch {
+      setDelayError("Network error while shifting events.");
+    } finally {
+      setDelayBusy(false);
+    }
+  }
+
   const allDays = Array.from(new Set(events.map((ev) => ev.day_label))).sort();
 
   const filteredEvents = events.filter((ev) => {
@@ -316,6 +423,15 @@ export default function SupersecretPanel() {
         .includes(searchQuery.toLowerCase());
     return trackMatch && dayMatch && searchMatch;
   });
+
+  const activeDelayDay =
+    delayDay || (filterDay !== "ALL" ? filterDay : (allDays[0] ?? ""));
+  const resolvedDelayMinutes = parseInt(delayMinutesText, 10) || 0;
+  const eventsOnSelectedDelayDay = events.filter(
+    (ev) =>
+      ev.day_label === activeDelayDay &&
+      (delayTrack === "ALL" || ev.track === delayTrack),
+  );
 
   const isFormDisabled = saveBusy || !formState.event || !formState.day_label;
 
@@ -647,6 +763,108 @@ export default function SupersecretPanel() {
                 className="ssp-input ssp-search-input"
               />
             </div>
+
+            {allDays.length > 0 && (
+              <div className="ssp-card">
+                <h2 className="ssp-form-title">Delay a day&apos;s schedule</h2>
+                <div className="ssp-form-fields">
+                  <div className="ssp-grid-2">
+                    <Field label="Day" hint="Which day are we delaying?">
+                      <select
+                        value={activeDelayDay}
+                        onChange={(e) => {
+                          setDelayDay(e.target.value);
+                          setDelayAfterEventId("");
+                        }}
+                        className="ssp-select"
+                      >
+                        {allDays.map((day) => (
+                          <option key={day} value={day}>
+                            {day}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+
+                    <Field
+                      label="Delay by (minutes)"
+                      hint="30 = half hour later, 60 = hour later, -30 = half hour earlier"
+                    >
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={delayMinutesText}
+                        onChange={(e) => setDelayMinutesText(e.target.value)}
+                        className="ssp-input"
+                      />
+                    </Field>
+                  </div>
+
+                  <div className="ssp-grid-2">
+                    <Field
+                      label="Who does this apply to?"
+                      hint="Shared events only shift under 'All tracks'"
+                    >
+                      <select
+                        value={delayTrack}
+                        onChange={(e) => {
+                          setDelayTrack(
+                            e.target.value as "ALL" | "BTECH" | "PG",
+                          );
+                          setDelayAfterEventId("");
+                        }}
+                        className="ssp-select"
+                      >
+                        <option value="ALL">All tracks</option>
+                        <option value="BTECH">B.Tech only</option>
+                        <option value="PG">PG only</option>
+                      </select>
+                    </Field>
+
+                    <Field
+                      label="Only shift events after"
+                      hint="Leave as 'Whole day' to shift every matching event"
+                    >
+                      <select
+                        value={delayAfterEventId}
+                        onChange={(e) =>
+                          setDelayAfterEventId(
+                            e.target.value ? Number(e.target.value) : "",
+                          )
+                        }
+                        className="ssp-select"
+                      >
+                        <option value="">Whole day</option>
+                        {eventsOnSelectedDelayDay.map((ev) => (
+                          <option key={ev.id} value={ev.id}>
+                            {ev.time || "—"} · {ev.event}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+                  </div>
+                </div>
+
+                {delayError && (
+                  <div className="ssp-alert ssp-alert-error">{delayError}</div>
+                )}
+                {delaySuccess && (
+                  <div className="ssp-alert ssp-alert-success">
+                    ✓ {delaySuccess}
+                  </div>
+                )}
+
+                <button
+                  onClick={applyDelay}
+                  disabled={
+                    delayBusy || !activeDelayDay || !resolvedDelayMinutes
+                  }
+                  className={`ssp-btn ssp-btn-primary ssp-mt ${delayBusy || !activeDelayDay || !resolvedDelayMinutes ? "ssp-btn-disabled" : ""}`}
+                >
+                  {delayBusy ? "Shifting..." : "Apply delay"}
+                </button>
+              </div>
+            )}
 
             {eventsError && (
               <div className="ssp-alert ssp-alert-error">{eventsError}</div>
