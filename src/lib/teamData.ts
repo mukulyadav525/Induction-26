@@ -247,13 +247,6 @@ export const ocSubsections: OcSubsection[] = [
     adjective: "Obsessive",
     members: [
       {
-        name: "Utkarsh Arora",
-        role: "Web Development OC",
-        department: "WEB DEV",
-        photo: "/photos/team/WEBDEV/UTKARSH_ARORA.webp",
-        email: "utkarsh24595@iiitd.ac.in",
-      },
-      {
         name: "Vasu Mehta",
         role: "Web Development OC",
         department: "WEB DEV",

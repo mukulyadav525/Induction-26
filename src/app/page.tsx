@@ -29,7 +29,7 @@ export default function HomePage() {
   }, []);
   return (
     <>
-      <Navbar activePg={true} />
+      <Navbar activeBtech={true} />
       <HeroSection />
       <div className="shared-canvas">
         <div className="shared-canvas-bg" />
@@ -53,7 +53,7 @@ export default function HomePage() {
         showFaqAccordion
       />
       <ScrollRevealInit />
-      <BackToTop/>
+      <BackToTop />
     </>
   );
 }

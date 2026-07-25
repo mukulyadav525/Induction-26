@@ -1,7 +1,6 @@
 "use client";
 
 export default function AboutSection() {
-
   return (
     <section className="sec-about" id="about">
       <div className="container">
@@ -34,7 +33,7 @@ export default function AboutSection() {
           </div>
           <div className="astat-divider"></div>
           <div className="astat">
-            <span className="astat-n">250+</span>
+            <span className="astat-n">650+</span>
             <span className="astat-l">NEW STUDENTS</span>
           </div>
           <div className="astat-divider"></div>

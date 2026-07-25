@@ -235,7 +235,7 @@ export default function HeroSection() {
               </div>
               <div className="sm-text">
                 <dt>LAST UPDATED:</dt>
-                <dd>17 June 2026</dd>
+                <dd>25 July 2026</dd>
               </div>
             </div>
             <div className="sm-row">
