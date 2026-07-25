@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SCHEDULE_CONFIG, pad } from "@/lib/scheduleEngine";
+import Link from "next/link";
 
 type CountdownValues = {
   days: string;
@@ -73,7 +74,7 @@ export default function HeroSection() {
             <div className="sticker sticker-lime">
               <img
                 src="/lime-sticker.svg"
-                alt="Class of 2028, 17 & 18 July 2026"
+                alt="Class of 2030, 03 - 05 Aug 2026"
                 className="sticker-lime-bg"
               />
             </div>
@@ -90,10 +91,10 @@ export default function HeroSection() {
               <div className="tagline-rule" />
               <p className="hero-subtext">
                 THIS ARCHIVE DOCUMENTS THE ARRIVAL OF A NEW GENERATION AT IIIT
-                DELHI — 2 DAYS THAT INTRODUCE YOU TO THE PEOPLE, THE PLACES, AND
+                DELHI. 5 DAYS THAT INTRODUCE YOU TO THE PEOPLE, THE PLACES, AND
                 THE TRADITIONS THAT WILL SHAPE THE NEXT FOUR YEARS. WHAT FOLLOWS
                 IS NOT JUST AN EVENT. IT IS A DELIBERATE TRANSFER OF CURIOSITY,
-                COMMUNITY, AND CULTURE — FROM THOSE WHO CAME BEFORE YOU, TO YOU.
+                COMMUNITY, AND CULTURE FROM THOSE WHO CAME BEFORE YOU, TO YOU.
               </p>
             </div>
           </div>
@@ -129,7 +130,7 @@ export default function HeroSection() {
               </div>
               <div className="sm-text">
                 <dt>DOCUMENT ID:</dt>
-                <dd>IND26-2028</dd>
+                <dd>IND26-2030</dd>
               </div>
             </div>
             <div className="sm-row">
@@ -255,15 +256,13 @@ export default function HeroSection() {
               </div>
               <div className="sm-text">
                 <dt>CLASS SIZE:</dt>
-                <dd>~250</dd>
+                <dd>~650</dd>
               </div>
             </div>
           </dl>
           <div className="sb-barcode-block">
             <div className="barcode-visual" aria-hidden="true" />
             <div className="barcode-label">INDUCTION 2026</div>
-            <div className="barcode-num">2 02620 30260 5</div>
-            <div className="barcode-batch">——— BATCH 2026-2028 ———</div>
             <div className="barcode-batch">——— BATCH 2026-2030 ———</div>
           </div>
           <div className="sb-confidential">CONFIDENTIAL WHEN PRINTED</div>
@@ -272,7 +271,7 @@ export default function HeroSection() {
 
       <div className="countdown-strip">
         <div className="countdown-left">
-          <span className="cd-label">PG INDUCTION BEGINS IN</span>
+          <span className="cd-label">UG INDUCTION BEGINS IN</span>
           <div className="cd-timer">
             {isLive ? (
               <span className="countdown-live-label">INDUCTION IS LIVE ●</span>
@@ -302,7 +301,9 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="countdown-right">
-          <div className="cd-track-pill">PG TRACK</div>
+          <Link href={"/schedule-btech"}>
+            <div className="cd-track-pill ">UG TRACK</div>
+          </Link>
         </div>
       </div>
     </section>

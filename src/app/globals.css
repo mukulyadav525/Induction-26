@@ -390,7 +390,7 @@ button {
   min-width: 120px;
   border: 2px solid var(--ink);
   box-shadow: 3px 3px 0 rgba(0, 0, 0, .15);
-  left:-50px;
+  left: -50px;
 }
 
 .sticker-bar-wrap {
@@ -604,7 +604,6 @@ button {
 .countdown-right {
   display: flex;
   justify-content: center;
-  /* try flex-start if you want it at the left edge */
   align-items: center;
 }
 
