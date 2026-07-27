@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SCHEDULE_CONFIG, pad } from "@/lib/scheduleEngine";
 import Link from "next/link";
-import HeroAdvisoryStrip from "@/components/HeroAdvisoryStrip";
+// import HeroAdvisoryStrip from "@/components/HeroAdvisoryStrip";
 
 type CountdownValues = {
   days: string;
@@ -270,7 +270,7 @@ export default function HeroSection() {
         </aside>
       </div>
 
-      <HeroAdvisoryStrip />
+{/* <HeroAdvisoryStrip /> */}
 
       <div className="countdown-strip">
         <div className="countdown-left">
