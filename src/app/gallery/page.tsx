@@ -70,8 +70,8 @@ export default function GalleryPage() {
           "IIIT DELHI",
           "FILE / ARCHIVE PHOTOGRAPHS",
         ]}
-        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
-        bottomRight="DOC ID: IND26-2028 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
+        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2030"
+        bottomRight="DOC ID: IND26-2030 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
       />
       <ScrollRevealInit />
     </>

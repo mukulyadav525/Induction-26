@@ -13,7 +13,7 @@ interface NavbarProps {
 
 export default function Navbar({
   isScrolledByDefault = false,
-  activeBtech = false,
+  activeBtech = true,
   activePg = false,
   links,
 }: NavbarProps) {

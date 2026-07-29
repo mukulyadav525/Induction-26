@@ -69,7 +69,7 @@ export default function TalksSection() {
             SESSIONS
           </h2>
           <p className="talks-sub">
-            Distinguished voices who will address the incoming class of 2028.
+            Distinguished voices who will address the incoming class of 2030.
             Full lineup to be announced as induction approaches.
           </p>
         </div>

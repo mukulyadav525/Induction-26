@@ -335,11 +335,11 @@ export default function TeamPage() {
       <Footer
         stripItems={[
           "INDUCTION 2026",
-          "CLASS OF 2028",
+          "CLASS OF 2030",
           "IIIT DELHI",
           "FILE / TEAM",
         ]}
-        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
+        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2030"
         bottomRight="DOC ID: IND26-TEAM · FILE / ORGANIZING COMMITTEE · CONFIDENTIAL WHEN PRINTED"
       />
       <ScrollRevealInit />

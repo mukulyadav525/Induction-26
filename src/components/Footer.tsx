@@ -29,7 +29,7 @@ const FOOTER_PAGE_LINKS = [
 export default function Footer({
   stripItems = [
     "INDUCTION 2026",
-    "CLASS OF 2028",
+    "CLASS OF 2030",
     "IIIT DELHI",
     "A NEW FILE HAS BEEN OPENED",
   ],
