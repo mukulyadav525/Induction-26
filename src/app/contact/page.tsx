@@ -91,7 +91,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={contactNavLinks} />
+      <Navbar isScrolledByDefault={true} links={contactNavLinks} activeBtech={true}/>
 
       <PageHero
         title={
@@ -332,12 +332,12 @@ export default function ContactPage() {
       <Footer
         stripItems={[
           "INDUCTION 2026",
-          "CLASS OF 2028",
+          "CLASS OF 2030",
           "IIIT DELHI",
           "FILE / CONTACT",
         ]}
-        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
-        bottomRight="DOC ID: IND26-2028 · FILE / CONTACT · CONFIDENTIAL WHEN PRINTED"
+        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2030"
+        bottomRight="DOC ID: IND26-2030 · FILE / CONTACT · CONFIDENTIAL WHEN PRINTED"
       />
       <ScrollRevealInit />
     </>
