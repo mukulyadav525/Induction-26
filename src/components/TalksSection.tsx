@@ -42,13 +42,6 @@ const speakers = [
     linkedin: "https://www.linkedin.com/in/shradha-khapra/",
   },
   {
-    name: "Ankur Warikoo",
-    role: "Entrepreneur",
-    photo: "photos/speakers/speaker-3.webp",
-    badge: "KEYNOTE",
-    linkedin: "https://www.linkedin.com/in/warikoo/",
-  },
-  {
     name: "Saumya Singh",
     role: "Tech Influencer",
     photo: "photos/speakers/speaker-4.webp",
