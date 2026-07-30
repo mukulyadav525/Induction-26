@@ -35,11 +35,11 @@ const speakers = [
   //   linkedin: "https://www.linkedin.com/in/mimansha-das-6963951ab/",
   // },
   {
-    name: "Shradha Khapra",
+    name: "Ankur Warikoo",
     role: "Entrepreneur",
-    photo: "photos/speakers/speaker-2.webp",
-    badge: "INDUSTRY GUEST",
-    linkedin: "https://www.linkedin.com/in/shradha-khapra/",
+    photo: "photos/speakers/speaker-3.webp",
+    badge: "KEYNOTE",
+    linkedin: "https://www.linkedin.com/in/warikoo/",
   },
   {
     name: "Saumya Singh",
