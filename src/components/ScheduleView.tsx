@@ -10,21 +10,30 @@ import {
 } from "@/lib/scheduleEngine";
 import { Track } from "@/lib/scheduleEngine";
 import { FetchScheduleResult } from "@/lib/fetchScheduleRows";
+
 const TYPE_COLORS: Record<string, { bg: string; fg: string }> = {
-  TALK: { bg: "#c8f135", fg: "#1a1a1a" },
-  KEYNOTE: { bg: "#c8f135", fg: "#1a1a1a" },
-  WORKSHOP: { bg: "#e85d04", fg: "#ffffff" },
-  CULTURAL: { bg: "#9d4edd", fg: "#ffffff" },
-  ADMIN: { bg: "#3a86ff", fg: "#1a1a1a" },
-  ORIENTATION: { bg: "#3a86ff", fg: "#ffffff" },
-  SPORTS: { bg: "#06d6a0", fg: "#1a1a1a" },
-  MEAL: { bg: "#fb5607", fg: "#ffffff" },
-  BREAK: { bg: "#444444", fg: "#ffffff" },
-  TOUR: { bg: "#118ab2", fg: "#ffffff" },
-  LECTURE: { bg: "#c8f135", fg: "#1a1a1a" },
-  CEREMONY: { bg: "#9d4edd", fg: "#ffffff" },
+  TALK: { bg: "#B5FF37", fg: "#121212" },
+  KEYNOTE: { bg: "#B5FF37", fg: "#121212" },
+  WORKSHOP: { bg: "#FF530D", fg: "#ffffff" },
+  CULTURAL: { bg: "#A000D3", fg: "#ffffff" },
+  ADMIN: { bg: "#4765FF", fg: "#ffffff" },
+  ORIENTATION: { bg: "#4765FF", fg: "#ffffff" },
+  SPORTS: { bg: "#008A8A", fg: "#ffffff" },
+  MEAL: { bg: "#FF530D", fg: "#ffffff" },
+  BREAK: { bg: "#666666", fg: "#ffffff" },
+  TOUR: { bg: "#008A8A", fg: "#ffffff" },
+  LECTURE: { bg: "#B5FF37", fg: "#121212" },
+  CEREMONY: { bg: "#A000D3", fg: "#ffffff" },
 };
-const DEFAULT_TYPE_COLOR = { bg: "#555555", fg: "#ffffff" };
+const DEFAULT_TYPE_COLOR = { bg: "#888888", fg: "#ffffff" };
+
+const POSTIT_COLORS = [
+  { bg: "#B5FF37", fg: "#121212" },
+  { bg: "#FF530D", fg: "#ffffff" },
+  { bg: "#4765FF", fg: "#ffffff" },
+  { bg: "#A000D3", fg: "#ffffff" },
+  { bg: "#008A8A", fg: "#ffffff" },
+];
 
 function typeColor(type: string) {
   return TYPE_COLORS[type?.toUpperCase()?.trim()] || DEFAULT_TYPE_COLOR;
@@ -79,14 +88,37 @@ function parseEventTime(timeStr: string, dateObj: Date | null): Date | null {
   );
 }
 
+function getDefaultDayIndex(days: ParsedDay[]): number {
+  if (days.length === 0) return 0;
+  const labels = days.map((d) => d.dayLabel);
+  const todayStr = new Date().toDateString();
+
+  const todayMatch = days.find((day) => {
+    const dateObj = dayLabelToDate(day.dayLabel, labels);
+    return dateObj && dateObj.toDateString() === todayStr;
+  });
+  if (todayMatch) return todayMatch.dayIndex;
+
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  const upcoming = days.find((day) => {
+    const dateObj = dayLabelToDate(day.dayLabel, labels);
+    return dateObj && dateObj >= startOfToday;
+  });
+  if (upcoming) return upcoming.dayIndex;
+
+  return days[0].dayIndex;
+}
+
 interface EventRowProps {
   event: ParsedEvent;
   allDayLabels: string[];
   dayLabel: string;
   now: Date;
+  index: number;
 }
 
-function EventRow({ event, allDayLabels, dayLabel, now }: EventRowProps) {
+function EventRow({ event, allDayLabels, dayLabel, now, index }: EventRowProps) {
   const dateObj = dayLabelToDate(dayLabel, allDayLabels);
   const startTime = parseEventTime(event.time, dateObj);
   const endTime = event.endTime
@@ -97,62 +129,52 @@ function EventRow({ event, allDayLabels, dayLabel, now }: EventRowProps) {
 
   const isCurrentlyLive =
     startTime && endTime && startTime <= now && now < endTime;
-  const isTBA = !event.time || /^tba$/i.test(event.time.trim());
   const hasNoEvent = !event.event || /^tba$/i.test(event.event.trim());
 
   const tc = event.type ? typeColor(event.type) : null;
 
-  let badgeClass = "dbe-badge--open";
-  let badgeText = "OPEN";
-  if (
-    event.status === "CONFIRMED" ||
-    event.type === "KEYNOTE" ||
-    event.type === "ORIENTATION"
-  ) {
-    badgeClass = "dbe-badge--confirmed";
-    badgeText = "CONFIRMED";
-  } else if (event.status === "TENTATIVE" || event.status === "TBD") {
-    badgeClass = "dbe-badge--tentative";
-    badgeText = "TENTATIVE";
-  }
-  if (isCurrentlyLive) {
-    badgeClass = "dbe-badge--live";
-    badgeText = "● LIVE";
-  }
+  let badgeText = "CONFIRMED";
+  if (isCurrentlyLive) badgeText = "● LIVE NOW";
+  else if (event.status === "TENTATIVE" || event.status === "TBD") badgeText = "TENTATIVE";
+  else if (event.status === "OPEN") badgeText = "OPEN";
 
-  const leftBorderColor = isCurrentlyLive
-    ? "#c8f135"
-    : tc
-      ? tc.bg
-      : "transparent";
+  const accentColor = tc ? tc.bg : "#888888";
 
   return (
     <div
-      className={`dbe-row${hasNoEvent ? " is-pending" : ""}${isCurrentlyLive ? " is-live-row" : ""}`}
-      style={{ borderLeft: `4px solid ${leftBorderColor}` }}
+      className={`cream-row-item${isCurrentlyLive ? " is-live-entry" : ""}`}
+      style={{
+        borderLeft: `6px solid ${accentColor}`,
+        paddingLeft: "1.25rem",
+        animationDelay: `${index * 0.03}s`,
+      }}
     >
-      <div className={`dbe-time${isTBA ? " is-tba" : ""}`}>
+      <div className="cream-time">
         {formatTimeDisplay(event.time) || "—"}
       </div>
-      <div className="dbe-info">
+
+      <div className="cream-content">
         {tc && event.type && (
           <span
-            className="dbe-type-chip"
+            className="cream-type-chip"
             style={{ background: tc.bg, color: tc.fg }}
           >
             {event.type}
           </span>
         )}
-        <div className={`dbe-name${hasNoEvent ? " is-tba" : ""}`}>
+        <div className="cream-event-name">
           {hasNoEvent ? "Details to be announced" : event.event}
         </div>
         {event.venue && (
-          <div className="dbe-venue">
-            {[event.venue, event.speaker].filter(Boolean).join(" · ")}
+          <div className="cream-meta">
+            ▸ {[event.venue, event.speaker].filter(Boolean).join(" · ")}
           </div>
         )}
       </div>
-      <div className={`dbe-badge ${badgeClass}`}>{badgeText}</div>
+
+      <div className="cream-status-badge">
+        {badgeText}
+      </div>
     </div>
   );
 }
@@ -219,7 +241,9 @@ export default function ScheduleView({
   });
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [now, setNow] = useState<Date>(new Date());
-  const [csTime, setCsTime] = useState<string>("");
+  const [activeDayIndex, setActiveDayIndex] = useState<number>(() =>
+    getDefaultDayIndex(initialDays),
+  );
 
   const refreshIconRef = useRef<HTMLSpanElement>(null);
   const doRefreshRef = useRef<() => Promise<void>>(() => Promise.resolve());
@@ -232,11 +256,14 @@ export default function ScheduleView({
   }, []);
 
   useEffect(() => {
-    const timeNow = new Date();
-    setCsTime(
-      `${pad(timeNow.getHours())}:${pad(timeNow.getMinutes())}:${pad(timeNow.getSeconds())} IST`,
+    if (scheduleDays.length === 0) return;
+    const stillExists = scheduleDays.some(
+      (d) => d.dayIndex === activeDayIndex,
     );
-  }, [scheduleDays]);
+    if (!stillExists) {
+      setActiveDayIndex(scheduleDays[0].dayIndex);
+    }
+  }, [scheduleDays, activeDayIndex]);
 
   const doRefresh = useCallback(async () => {
     if (isRefreshing) return;
@@ -316,6 +343,13 @@ export default function ScheduleView({
     );
   }
 
+  const activeDay =
+    scheduleDays.find((d) => d.dayIndex === activeDayIndex) ??
+    scheduleDays[0] ??
+    null;
+
+  const activePalette = POSTIT_COLORS[activeDayIndex % POSTIT_COLORS.length] || POSTIT_COLORS[0];
+
   return (
     <>
       <div
@@ -333,85 +367,108 @@ export default function ScheduleView({
         </div>
       </div>
 
-      <section
-        className="sec-schedule sched-page-body sched-blocks-body"
-        id="schedule"
-      >
-        <div className="container">
+      <section className="sec-schedule sched-page-body" id="schedule">
+        <div className="container" style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 1rem" }}>
           <div
-            className="sched-page-meta-row"
-            style={{ margin: 10, padding: 10 }}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              margin: "10px 0 1.25rem 0",
+              fontFamily: "var(--ff-mono)",
+              fontSize: "0.8rem",
+              color: "#555555",
+            }}
           >
-            <span className="spm-badge">LIVE SYNC</span>
-            <span className="spm-text">
-              Schedule syncs automatically from the master sheet · Last
-              refreshed: <span>{lastRefreshed}</span>
-            </span>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span className="spm-badge-cream">LIVE SYNC</span>
+              <span>
+                Schedule syncs automatically from the master sheet · Last refreshed:{" "}
+                <strong style={{ color: "#121212" }}>{lastRefreshed}</strong>
+              </span>
+            </div>
             <button
-              className="refresh-btn"
+              className="refresh-btn brutal-sync-btn"
               onClick={doRefresh}
               disabled={isRefreshing}
-              title="Pull latest from Google Sheet"
             >
-              <span ref={refreshIconRef}>↻</span>&nbsp;SYNC
+              <span ref={refreshIconRef}>↻</span> SYNC
             </button>
           </div>
 
-          <div id="schedule-body">
-            {fetchError ? (
-              <div className="blocks-pending is-error">
-                <div className="cs-icon">⚠</div>
-                <div className="cs-title">CONNECTION ISSUE</div>
-                <div className="cs-text">
-                  Could not reach the archive. Check that the Google Sheet is
-                  published to web as CSV.
+          <div className="notebook-outer-container">
+            <main id="schedule-body" className="cream-page-body" key={activeDay?.dayLabel ?? "empty"}>
+              {fetchError ? (
+                <div style={{ color: "#FF530D", padding: "2rem", fontWeight: 700, fontFamily: "var(--ff-mono)" }}>
+                  Connection issue — could not reach schedule.
                 </div>
-              </div>
-            ) : scheduleDays.length === 0 ? (
-              <div className="blocks-pending">
-                <div className="cs-icon">∅</div>
-                <div className="cs-title">SCHEDULE PENDING</div>
-                <div className="cs-text">
-                  The induction team is finalising the programme. This page
-                  syncs automatically — check back soon.
+              ) : scheduleDays.length === 0 || !activeDay ? (
+                <div style={{ color: "#666666", padding: "2rem", fontWeight: 700, fontFamily: "var(--ff-mono)" }}>
+                  Schedule pending...
                 </div>
-                <div className="cs-meta">
-                  Last checked: <span id="cs-time">{csTime}</span>
-                </div>
-                <button className="cs-refresh" onClick={doRefresh}>
-                  ↻ CHECK AGAIN
-                </button>
-              </div>
-            ) : (
-              <div className="day-blocks-grid">
-                {scheduleDays.map((day) => (
-                  <div className="day-block" key={day.dayLabel}>
-                    <div className="day-block-hdr">
-                      <span className="day-block-num">
-                        DAY {String(day.dayIndex + 1).padStart(2, "0")}
-                      </span>
-                      <span className="day-block-date">
-                        {dates[day.dayIndex]}
-                      </span>
-                    </div>
-                    <div className="day-block-events">
-                      {day.events.length === 0 ? (
-                        <div className="dbe-empty">NO EVENTS LISTED YET</div>
-                      ) : (
-                        day.events.map((event, eventIndex) => (
-                          <EventRow
-                            key={eventIndex}
-                            event={event}
-                            allDayLabels={allDayLabels}
-                            dayLabel={day.dayLabel}
-                            now={now}
-                          />
-                        ))
-                      )}
-                    </div>
+              ) : (
+                <>
+                  <div
+                    className="cream-header-banner"
+                    style={{
+                      background: activePalette.bg,
+                      color: activePalette.fg,
+                    }}
+                  >
+                    <span className="cream-day-title">
+                      DAY {String((activeDay?.dayIndex ?? 0) + 1).padStart(2, "0")}
+                    </span>
+                    <span className="cream-day-date">
+                      {dates[activeDay?.dayIndex ?? 0]}
+                    </span>
                   </div>
-                ))}
-              </div>
+
+                  <div className="cream-entries-list">
+                    {activeDay.events.length === 0 ? (
+                      <div style={{ color: "#666666", padding: "1.25rem 1.75rem", fontWeight: 700, fontFamily: "var(--ff-mono)" }}>
+                        NO EVENTS LISTED YET
+                      </div>
+                    ) : (
+                      activeDay.events.map((event, eventIndex) => (
+                        <EventRow
+                          key={eventIndex}
+                          index={eventIndex}
+                          event={event}
+                          allDayLabels={allDayLabels}
+                          dayLabel={activeDay.dayLabel}
+                          now={now}
+                        />
+                      ))
+                    )}
+                  </div>
+                </>
+              )}
+            </main>
+
+            {scheduleDays.length > 0 && (
+              <aside className="side-postit-stack" role="tablist" aria-label="Select Day Bookmark">
+                {scheduleDays.map((day, idx) => {
+                  const isActive = day.dayIndex === activeDayIndex;
+                  const palette = POSTIT_COLORS[idx % POSTIT_COLORS.length];
+
+                  return (
+                    <button
+                      key={day.dayLabel}
+                      role="tab"
+                      aria-selected={isActive}
+                      className={`postit-side-btn${isActive ? " is-active" : ""}`}
+                      onClick={() => setActiveDayIndex(day.dayIndex)}
+                      style={{
+                        background: palette.bg,
+                        color: palette.fg,
+                      }}
+                    >
+                      <span>DAY {String(day.dayIndex + 1).padStart(2, "0")}</span>
+                      <span className="postit-btn-date">{dates[day.dayIndex]}</span>
+                    </button>
+                  );
+                })}
+              </aside>
             )}
           </div>
         </div>
