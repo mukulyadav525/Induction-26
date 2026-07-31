@@ -1,3 +1,5 @@
+import LandingSectionCard from "@/components/LandingSectionCard";
+
 const infoCards = [
   {
     letter: "A",
@@ -39,39 +41,37 @@ const infoCards = [
 
 export default function InfoSection() {
   return (
-    <section className="sec-info" id="info">
-      <div className="info-inner">
-        <span className="sec-tag sec-tag--dark">FILE: NOTICES</span>
-        <h2 className="info-title">
-          IMPORTANT
-          <br />
-          INFORMATION
-        </h2>
-        <p className="info-subtitle">
-          READ BEFORE ARRIVAL · ALL NOTICES SUBJECT TO REVISION
-        </p>
-
-        <div className="info-grid">
-          {infoCards.map((card) => (
-            <div className="info-card reveal" key={card.code}>
-              <span className="ic-watermark" aria-hidden="true">
-                {card.letter}
-              </span>
-              <div className="ic-top">
-                <div className="ic-title-row">
-                  <div className="ic-title-mark">
-                    <span className="ic-tab"></span>
-                    <span className="ic-title">{card.title}</span>
-                  </div>
-                  <span className="ic-code">{card.code}</span>
+    <LandingSectionCard
+      sectionId="info"
+      sectionClassName="sec-info"
+      containerClassName="info-inner"
+      tagText="FILE: NOTICES"
+      tagClassName="sec-tag sec-tag--dark"
+      title="IMPORTANT INFORMATION"
+      titleClassName="info-title"
+      subtitle="READ BEFORE ARRIVAL · ALL NOTICES SUBJECT TO REVISION"
+      subtitleClassName="info-subtitle"
+    >
+      <div className="info-grid">
+        {infoCards.map((card) => (
+          <div className="info-card reveal" key={card.code}>
+            <span className="ic-watermark" aria-hidden="true">
+              {card.letter}
+            </span>
+            <div className="ic-top">
+              <div className="ic-title-row">
+                <div className="ic-title-mark">
+                  <span className="ic-tab"></span>
+                  <span className="ic-title">{card.title}</span>
                 </div>
+                <span className="ic-code">{card.code}</span>
               </div>
-              <div className="ic-rule"></div>
-              <p className="ic-text">{card.text}</p>
             </div>
-          ))}
-        </div>
+            <div className="ic-rule"></div>
+            <p className="ic-text">{card.text}</p>
+          </div>
+        ))}
       </div>
-    </section>
+    </LandingSectionCard>
   );
 }

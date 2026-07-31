@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { SCHEDULE_CONFIG, pad } from "@/lib/scheduleEngine";
-import Link from "next/link";
-// import HeroAdvisoryStrip from "@/components/HeroAdvisoryStrip";
+import HeroNoticeButton from "@/components/HeroNoticeButton";
 
 type CountdownValues = {
   days: string;
@@ -20,17 +20,21 @@ const INITIAL_COUNTDOWN: CountdownValues = {
 };
 
 export default function HeroSection() {
+  const heroSectionContainerRef = useRef<HTMLElement>(null);
+  const mainTitleStickerRef = useRef<HTMLImageElement>(null);
+  const bottomThreeQuotesRef = useRef<HTMLImageElement>(null);
+  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(
+    null,
+  );
   const [countdown, setCountdown] =
     useState<CountdownValues>(INITIAL_COUNTDOWN);
   const [isLive, setIsLive] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     function tick() {
       const difference = SCHEDULE_CONFIG.INDUCTION_START.getTime() - Date.now();
       if (difference <= 0) {
         setIsLive(true);
-        if (intervalRef.current) clearInterval(intervalRef.current);
         return;
       }
       setCountdown({
@@ -42,272 +46,115 @@ export default function HeroSection() {
     }
 
     tick();
-    intervalRef.current = setInterval(tick, 1000);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    const intervalId = setInterval(tick, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    const animationTimeline = gsap.timeline({
+      defaults: { ease: "power3.out" },
+    });
+    setIsMobileViewport(window.innerWidth <= 640);
+    const threeQuotesOffscreenX = window.innerWidth * -0.186;
+    const threeQuotesRestingX = window.innerWidth * -0.065;
+
+    animationTimeline.fromTo(
+      mainTitleStickerRef.current,
+      { opacity: 0, scale: 0, y: -120, rotate: 359 },
+      {
+        opacity: 1,
+        scale: 1,
+        y: window.innerWidth <= 640 ? 75 : 0,
+        duration: 0.9,
+        rotate: 0,
+      },
+    );
+
+    animationTimeline.fromTo(
+      bottomThreeQuotesRef.current,
+      { opacity: 0, x: threeQuotesOffscreenX },
+      { opacity: 1, x: threeQuotesRestingX, duration: 0.7 },
+      "-=0.6",
+    );
   }, []);
 
   return (
-    <section className="hero" id="hero">
-      {/* <div
-        className="hero-bg-photo"
-        aria-hidden="true"
-        style={{ backgroundImage: "url('/photos/hero/images.webp')" }}
-      /> */}
+    <section ref={heroSectionContainerRef} className="grunge-hero-section">
+      <img
+        src="/assets/hero/hero_bg.png"
+        alt="Induction Background Wallpaper"
+        className="grunge-hero-wallpaper"
+      />
+      <div className="landing">
+        <HeroNoticeButton />
 
-      <div className="hero-inner">
-        <div className="hero-content">
-          <div className="hero-title-row">
-            <div className="sticker sticker-orange">
+        <div className="grunge-main-sticker-box">
+          <img
+            ref={mainTitleStickerRef}
+            src="/assets/hero/hero_sticker.png"
+            alt="Induction 26 Main Title Banner"
+            className="grunge-main-sticker-img"
+          />
+        </div>
+
+        <div
+          className={`grunge-countdown-box ${isMobileViewport ? "grunge-top-margin" : ""}`}
+        >
+          <span className="grunge-countdown-label">
+            {isLive ? "INDUCTION IS LIVE ●" : "INDUCTION BEGINS IN"}
+          </span>
+          {!isLive && (
+            <div className="grunge-countdown-card">
               <img
-                src="/orange-sticker.svg"
-                alt="Handle with care. The future is fragile. IND26-0001"
-                className="sticker-orange-bg"
+                src="/assets/hero/hero_bottom_sticker.png"
+                alt=""
+                className="grunge-countdown-card-bg"
               />
+              <div className="grunge-countdown-timer">
+                <div className="grunge-countdown-unit">
+                  <span className="grunge-countdown-num">{countdown.days}</span>
+                  <span className="grunge-countdown-lbl">DAYS</span>
+                </div>
+                <span className="grunge-countdown-sep">:</span>
+                <div className="grunge-countdown-unit">
+                  <span className="grunge-countdown-num">
+                    {countdown.hours}
+                  </span>
+                  <span className="grunge-countdown-lbl">HRS</span>
+                </div>
+                <span className="grunge-countdown-sep">:</span>
+                <div className="grunge-countdown-unit">
+                  <span className="grunge-countdown-num">{countdown.mins}</span>
+                  <span className="grunge-countdown-lbl">MIN</span>
+                </div>
+                <span className="grunge-countdown-sep">:</span>
+                <div className="grunge-countdown-unit">
+                  <span className="grunge-countdown-num">{countdown.secs}</span>
+                  <span className="grunge-countdown-lbl">SEC</span>
+                </div>
+              </div>
             </div>
+          )}
+        </div>
+
+        <footer className="grunge-footer-area">
+          <div className="grunge-three-quotes-box">
             <img
-              className="hero-heading"
-              src="/induction-txt.svg"
-              alt="INDUCTION"
-              width={560}
+              ref={bottomThreeQuotesRef}
+              src="/assets/hero/hero_three_quotes.png"
+              alt="New People New Experiences Endless Possibilities"
+              className="grunge-three-quotes-img"
             />
-            <div className="sticker sticker-lime">
-              <img
-                src="/lime-sticker.svg"
-                alt="Class of 2030, 03 - 05 Aug 2026"
-                className="sticker-lime-bg"
-              />
-            </div>
           </div>
-          <img src="/divider.svg" alt="INDUCTION" />
-          <div className="hero-lower">
-            <div className="hero-year">&apos;26</div>
-            <div className="hero-tagline-block">
-              <h2 className="hero-tagline">
-                A NEW FILE
-                <br />
-                HAS BEEN OPENED.
-              </h2>
-              <div className="tagline-rule" />
-              <p className="hero-subtext">
-                THIS ARCHIVE DOCUMENTS THE ARRIVAL OF A NEW GENERATION AT IIIT
-                DELHI. 5 DAYS THAT INTRODUCE YOU TO THE PEOPLE, THE PLACES, AND
-                THE TRADITIONS THAT WILL SHAPE THE NEXT FOUR YEARS. WHAT FOLLOWS
-                IS NOT JUST AN EVENT. IT IS A DELIBERATE TRANSFER OF CURIOSITY,
-                COMMUNITY, AND CULTURE FROM THOSE WHO CAME BEFORE YOU, TO YOU.
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <aside className="hero-sidebar">
-          <div className="sidebar-top">
-            <div className="sidebar-iiid">IIITD</div>
-            <div className="sidebar-inst-name">
-              INDRAPRASTHA INSTITUTE OF
-              <br />
-              INFORMATION TECHNOLOGY, DELHI
-            </div>
+          <div className="grunge-smiley-box">
+            <img
+              src="/assets/hero/hero_smilie_badge.png"
+              alt="Induction 26 IIIT Delhi Smiley Seal Badge"
+              className="grunge-smiley-img"
+            />
           </div>
-          <div className="sb-rule" />
-          <dl className="sidebar-meta">
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <path d="M13 2v6h6" />
-                  <path d="M8 13h8" />
-                  <path d="M8 17h8" />
-                  <path d="M8 9h2" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>DOCUMENT ID:</dt>
-                <dd>IND26-2030</dd>
-              </div>
-            </div>
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="4" width="18" height="18" rx="2" />
-                  <path d="M16 2v4" />
-                  <path d="M8 2v4" />
-                  <path d="M3 10h18" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>GENERATION:</dt>
-                <dd>2026</dd>
-              </div>
-            </div>
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 16v-4" />
-                  <path d="M12 8h.01" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>STATUS:</dt>
-                <dd className="status-blink">CONFIRMED</dd>
-              </div>
-            </div>
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 21s-8-7.58-8-12a8 8 0 1 1 16 0c0 4.42-8 12-8 12z" />
-                  <circle cx="12" cy="9" r="3" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>LOCATION:</dt>
-                <dd>IIIT DELHI</dd>
-              </div>
-            </div>
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M22 12h-4" />
-                  <path d="M6 12H2" />
-                  <path d="M12 6V2" />
-                  <path d="M12 22v-4" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>COORDINATES:</dt>
-                <dd>
-                  28.5445 N,
-                  <br />
-                  77.2710 E
-                </dd>
-              </div>
-            </div>
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>LAST UPDATED:</dt>
-                <dd>25 July 2026</dd>
-              </div>
-            </div>
-            <div className="sm-row">
-              <div className="sm-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <div className="sm-text">
-                <dt>CLASS SIZE:</dt>
-                <dd>~650</dd>
-              </div>
-            </div>
-          </dl>
-          <div className="sb-barcode-block">
-            <div className="barcode-visual" aria-hidden="true" />
-            <div className="barcode-label">INDUCTION 2026</div>
-            <div className="barcode-batch">——— BATCH 2026-2030 ———</div>
-          </div>
-          <div className="sb-confidential">CONFIDENTIAL WHEN PRINTED</div>
-        </aside>
-      </div>
-
-{/* <HeroAdvisoryStrip /> */}
-
-      <div className="countdown-strip">
-        <div className="countdown-left">
-          <span className="cd-label">UG INDUCTION BEGINS IN</span>
-          <div className="cd-timer">
-            {isLive ? (
-              <span className="countdown-live-label">INDUCTION IS LIVE ●</span>
-            ) : (
-              <>
-                <div className="cd-unit">
-                  <span>{countdown.days}</span>
-                  <span className="cd-lbl">DAYS</span>
-                </div>
-                <span className="cd-sep">:</span>
-                <div className="cd-unit">
-                  <span>{countdown.hours}</span>
-                  <span className="cd-lbl">HRS</span>
-                </div>
-                <span className="cd-sep">:</span>
-                <div className="cd-unit">
-                  <span>{countdown.mins}</span>
-                  <span className="cd-lbl">MIN</span>
-                </div>
-                <span className="cd-sep">:</span>
-                <div className="cd-unit">
-                  <span>{countdown.secs}</span>
-                  <span className="cd-lbl">SEC</span>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-        <div className="countdown-right">
-          <Link href={"/schedule-btech"}>
-            <div className="cd-track-pill ">UG TRACK</div>
-          </Link>
-        </div>
+        </footer>
       </div>
     </section>
   );

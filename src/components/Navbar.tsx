@@ -12,7 +12,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  isScrolledByDefault = false,
+  isScrolledByDefault = true,
   activeBtech = false,
   activePg = false,
   links,
@@ -90,16 +90,14 @@ export default function Navbar({
               href={link.href}
               onClick={(e) => {
                 closeMenu();
-              
+
                 if (link.href.startsWith("#")) {
                   e.preventDefault();
-                
-                  document
-                    .getElementById(link.href.slice(1))
-                    ?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
+
+                  document.getElementById(link.href.slice(1))?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 }
               }}
             >
