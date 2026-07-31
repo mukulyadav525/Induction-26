@@ -5435,19 +5435,19 @@ section {
 }
 
 .sticky-card-sticky-wrapper:nth-child(5) {
-  top: 35.2px;
+  top: 30.2px;
 }
 
 .sticky-card-sticky-wrapper:nth-child(6) {
-  top: 44px;
+  top: 36px;
 }
 
 .sticky-card-sticky-wrapper:nth-child(7) {
-  top: 52.8px;
+  top: 42.8px;
 }
 
 .sticky-card-sticky-wrapper:nth-child(8) {
-  top: 61.6px;
+  top: 51.6px;
 }
 
 @media (max-width: 860px) {
@@ -5578,4 +5578,3 @@ section {
   letter-spacing: 1px;
   text-align: right;
 }
-
