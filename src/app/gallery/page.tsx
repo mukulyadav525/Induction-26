@@ -43,7 +43,7 @@ export default function GalleryPage() {
           </>
         }
         subtitles={[
-          "MOUSE-SCALED ARCHIVE ROWS · MOVE ACROSS EACH PAIR TO REBALANCE THE FRAME",
+          "THE FULL PHOTO ARCHIVE · A LOOK BACK AT THE YEAR THAT CAME BEFORE YOURS",
           "CAPTURED BY TASVEER, THE MEDIA SOCIETY",
         ]}
       />
@@ -61,8 +61,8 @@ export default function GalleryPage() {
           "IIIT DELHI",
           "FILE / ARCHIVE PHOTOGRAPHS",
         ]}
-        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
-        bottomRight="DOC ID: IND26-2028 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
+        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2030"
+        bottomRight="DOC ID: IND26-2030 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
       />
       <ScrollRevealInit />
     </>
