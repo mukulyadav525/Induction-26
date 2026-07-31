@@ -9,13 +9,6 @@ const speakers = [
     linkedin: "https://www.linkedin.com/in/pankaj-jalote-0924782/",
   },
   {
-    name: "Shradha Khapra",
-    role: "Entrepreneur",
-    photo: "photos/speakers/speaker-2.webp",
-    badge: "INDUSTRY GUEST",
-    linkedin: "https://www.linkedin.com/in/shradha-khapra/",
-  },
-  {
     name: "Ankur Warikoo",
     role: "Entrepreneur",
     photo: "photos/speakers/speaker-3.webp",
