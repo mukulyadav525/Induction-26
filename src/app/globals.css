@@ -5579,6 +5579,12 @@ section {
   text-align: right;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body, 
 .sched-page-body {
   background-color: #F5F4E8 !important;
@@ -5636,7 +5642,7 @@ body,
   letter-spacing: normal;
 }
 
-/* Outer Card Container */
+/* Main Outer Container */
 .cream-page-body {
   flex: 1;
   position: relative;
@@ -5648,10 +5654,10 @@ body,
   padding: 0;
   min-height: 550px;
   animation: fadeIn 0.25s ease forwards;
-  overflow: hidden; /* Clips corners flush against the 2px border */
+  overflow: hidden; /* Guarantees accent lines clip flush inside the outer border */
 }
 
-/* Header Banner - Fixed border collision */
+/* Banner Header */
 .cream-header-banner {
   display: flex;
   justify-content: space-between;
@@ -5659,7 +5665,7 @@ body,
   padding: 1.15rem 1.75rem;
   border-bottom: 2px solid #121212;
   margin: 0;
-  box-sizing: border-box;
+  width: 100%;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -5683,9 +5689,10 @@ body,
 .cream-entries-list {
   padding: 0 1.75rem 0 0;
   margin: 0;
+  width: 100%;
 }
 
-/* Row Item with flush left border flush to container edge */
+/* Table Row - Fixed Attachment */
 .cream-row-item {
   display: flex;
   align-items: center;
@@ -5693,7 +5700,7 @@ body,
   border-bottom: 1px solid #D4D1C5;
   position: relative;
   transition: background-color 0.15s ease;
-  box-sizing: border-box;
+  width: 100%;
 }
 
 .cream-row-item:first-child {
@@ -5809,43 +5816,61 @@ body,
   }
 }
 
+/* Mobile Responsive Fixes */
 @media (max-width: 768px) {
   .notebook-outer-container {
     flex-direction: column;
   }
+
   .side-postit-stack {
-    flex-direction: row;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     margin-left: 0;
-    margin-bottom: 0.5rem;
+    margin-top: 1.25rem;
     width: 100%;
-    scrollbar-width: none;
+    gap: 0.5rem;
   }
-  .side-postit-stack::-webkit-scrollbar {
-    display: none;
-  }
+
   .postit-side-btn {
-    border: 2px solid #121212;
-    border-radius: 8px;
-    white-space: nowrap;
-    min-width: auto;
-    padding: 0.6rem 1rem;
+    min-width: 0;
+    padding: 0.55rem 0.35rem;
     font-size: 1.1rem;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0px #121212;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  .postit-side-btn.is-active {
+    box-shadow: 4px 4px 0px #121212;
+  }
+
+  .postit-btn-date {
+    font-size: 0.625rem;
+    margin-top: 0.15rem;
+  }
+
   .cream-header-banner {
     padding: 0.85rem 1rem;
   }
+
   .cream-entries-list {
-    padding: 0.85rem 1rem;
+    padding: 0 1rem 0 0;
   }
+
   .cream-row-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.4rem;
   }
+
   .cream-content {
     padding: 0;
   }
+
   .cream-status-badge {
     align-self: flex-start;
   }
