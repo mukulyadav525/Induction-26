@@ -6163,3 +6163,113 @@ section {
     text-align: center;
   }
 }
+
+.mouse-scale-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 0 24px;
+}
+
+.mouse-scale-row {
+  --left-width: 66%;
+  --right-width: 34%;
+  --left-height: clamp(280px, 36vw, 460px);
+  --right-height: clamp(240px, 30vw, 380px);
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  width: 100%;
+  min-height: 0;
+  overflow: visible;
+}
+
+.mouse-scale-row.is-reversed {
+  --left-width: 34%;
+  --right-width: 66%;
+}
+
+.mouse-scale-panel {
+  position: relative;
+  flex: 0 0 var(--left-width);
+  height: var(--left-height);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(26, 26, 26, .16);
+  background: #111;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .12);
+  border-radius: 28px;
+  transition: flex-basis .08s linear, height .18s ease;
+}
+
+.mouse-scale-panel:last-child {
+  flex-basis: var(--right-width);
+  height: var(--right-height);
+}
+
+.mouse-scale-panel-left {
+  align-self: flex-start;
+}
+
+.mouse-scale-panel-right {
+  align-self: flex-end;
+}
+
+.mouse-scale-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  transition: transform .45s ease, filter .45s ease;
+  filter: saturate(.95) contrast(1.05);
+}
+
+.mouse-scale-row:hover .mouse-scale-media {
+  transform: scale(1.08);
+}
+
+.mouse-scale-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .12) 52%, rgba(0, 0, 0, .02) 100%),
+    linear-gradient(135deg, rgba(200, 241, 53, .08), transparent 40%);
+  pointer-events: none;
+}
+
+.mouse-scale-meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+  color: var(--paper);
+}
+
+.mouse-scale-meta span {
+  flex-shrink: 0;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--lime);
+}
+
+.mouse-scale-meta p {
+  margin: 0;
+  margin-left: auto;
+  max-width: 72%;
+  font-family: var(--ff-disp);
+  font-size: clamp(28px, 3.3vw, 48px);
+  line-height: .9;
+  letter-spacing: 1px;
+  text-align: right;
+}
+

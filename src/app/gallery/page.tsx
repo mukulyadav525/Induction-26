@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import ScrollRevealInit from "@/components/ScrollReveal";
+import MouseScaleGallery from "@/components/MouseScaleGallery";
 
 const galleryNavLinks = [
   { label: "HOME", href: "/" },
@@ -10,24 +11,28 @@ const galleryNavLinks = [
 ];
 
 const allGalleryPhotos = [
-  { src: "photos/gallery/gallery-1.webp", label: "OPENING CEREMONY" },
-  { src: "photos/gallery/gallery-2.webp", label: "RAVI GUPTA" },
-  { src: "photos/gallery/gallery-3.webp", label: "BATCH PHOTOGRAPHS" },
-  { src: "photos/gallery/gallery-4.webp", label: "SUFI NIGHT" },
-  { src: "photos/gallery/gallery-5.webp", label: "MENTOR CONNECT" },
-  { src: "photos/gallery/gallery-6.webp", label: "CLUB FAIR" },
-  { src: "photos/gallery/gallery-7.webp", label: "INDUCTION NIGHT" },
-  { src: "photos/gallery/gallery-8.webp", label: "CULTURAL NIGHT" },
-  { src: "photos/gallery/gallery-9.webp", label: "DESI ADDA" },
-  { src: "photos/gallery/gallery-10.webp", label: "KEYNOTE SESSION" },
-  { src: "photos/gallery/gallery-11.webp", label: "SELF DEFENCE SESSION" },
-  { src: "photos/gallery/gallery-12.webp", label: "TALENT NIGHT" },
+  { src: "/photos/gallery/gallery-7.webp", label: "INDUCTION NIGHT" },
+  {
+    src: "/photos/gallery/gallery-2.webp",
+    label: "RAVI GUPTA",
+    focalPosition: "center 18%",
+  },
+  { src: "/photos/gallery/gallery-3.webp", label: "BATCH PHOTOGRAPHS" },
+  { src: "/photos/gallery/gallery-4.webp", label: "SUFI NIGHT" },
+  { src: "/photos/gallery/gallery-5.webp", label: "MENTOR CONNECT" },
+  { src: "/photos/gallery/gallery-6.webp", label: "CLUB FAIR" },
+  { src: "/photos/gallery/gallery-1.webp", label: "OPENING CEREMONY" },
+  { src: "/photos/gallery/gallery-8.webp", label: "CULTURAL NIGHT" },
+  { src: "/photos/gallery/gallery-9.webp", label: "DESI ADDA" },
+  { src: "/photos/gallery/gallery-10.webp", label: "KEYNOTE SESSION" },
+  { src: "/photos/gallery/gallery-11.webp", label: "SELF DEFENCE SESSION" },
+  { src: "/photos/gallery/gallery-12.webp", label: "TALENT NIGHT" },
 ];
 
 export default function GalleryPage() {
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={galleryNavLinks} activeBtech={true}/>
+      <Navbar isScrolledByDefault={true} links={galleryNavLinks} />
 
       <PageHero
         title={
@@ -38,28 +43,14 @@ export default function GalleryPage() {
           </>
         }
         subtitles={[
-          "THE FULL PHOTO ARCHIVE · A LOOK BACK AT THE YEAR THAT CAME BEFORE YOURS",
+          "MOUSE-SCALED ARCHIVE ROWS · MOVE ACROSS EACH PAIR TO REBALANCE THE FRAME",
           "CAPTURED BY TASVEER, THE MEDIA SOCIETY",
         ]}
       />
 
       <section className="sec-gallery sched-page-body" id="gallery-archive">
         <div className="container">
-          <div className="gallery-archive-grid reveal">
-            {allGalleryPhotos.map((photo, i) => (
-              <div
-                key={i}
-                className="gallery-photo"
-                style={{
-                  backgroundImage: `url('${photo.src}'), url('photos/gallery/images.webp')`,
-                }}
-              >
-                <div className="gp-overlay">
-                  <span className="gp-label">{photo.label}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <MouseScaleGallery photos={allGalleryPhotos} />
         </div>
       </section>
 
@@ -70,8 +61,8 @@ export default function GalleryPage() {
           "IIIT DELHI",
           "FILE / ARCHIVE PHOTOGRAPHS",
         ]}
-        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2030"
-        bottomRight="DOC ID: IND26-2030 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
+        bottomLeft="INDUCTION 2026 — IIIT DELHI — BATCH 2026-2028"
+        bottomRight="DOC ID: IND26-2028 · FILE / ARCHIVE PHOTOGRAPHS · CONFIDENTIAL WHEN PRINTED"
       />
       <ScrollRevealInit />
     </>
