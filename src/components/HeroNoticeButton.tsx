@@ -92,7 +92,7 @@ export default function HeroNoticeButton() {
       >
         <img
           ref={loudspeakerImgRef}
-          src="/assets/hero/hero_notice_loudspeaker.png"
+          src="/assets/hero/hero_notice_loudspeaker.webp"
           alt=""
           className="hero-notice-btn-img"
         />

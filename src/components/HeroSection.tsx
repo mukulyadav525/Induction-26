@@ -81,7 +81,7 @@ export default function HeroSection() {
   return (
     <section ref={heroSectionContainerRef} className="grunge-hero-section">
       <img
-        src="/assets/hero/hero_bg.png"
+        src="/assets/hero/hero_bg.webp"
         alt="Induction Background Wallpaper"
         className="grunge-hero-wallpaper"
       />
@@ -91,7 +91,7 @@ export default function HeroSection() {
         <div className="grunge-main-sticker-box">
           <img
             ref={mainTitleStickerRef}
-            src="/assets/hero/hero_sticker.png"
+            src="/assets/hero/hero_sticker.webp"
             alt="Induction 26 Main Title Banner"
             className="grunge-main-sticker-img"
           />
@@ -106,7 +106,7 @@ export default function HeroSection() {
           {!isLive && (
             <div className="grunge-countdown-card">
               <img
-                src="/assets/hero/hero_bottom_sticker.png"
+                src="/assets/hero/hero_bottom_sticker.webp"
                 alt=""
                 className="grunge-countdown-card-bg"
               />
@@ -141,7 +141,7 @@ export default function HeroSection() {
           <div className="grunge-three-quotes-box">
             <img
               ref={bottomThreeQuotesRef}
-              src="/assets/hero/hero_three_quotes.png"
+              src="/assets/hero/hero_three_quotes.webp"
               alt="New People New Experiences Endless Possibilities"
               className="grunge-three-quotes-img"
             />
@@ -149,7 +149,7 @@ export default function HeroSection() {
 
           <div className="grunge-smiley-box">
             <img
-              src="/assets/hero/hero_smilie_badge.png"
+              src="/assets/hero/hero_smilie_badge.webp"
               alt="Induction 26 IIIT Delhi Smiley Seal Badge"
               className="grunge-smiley-img"
             />
