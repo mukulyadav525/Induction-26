@@ -1,3 +1,5 @@
+import LandingSectionCard from "@/components/LandingSectionCard";
+
 const campusPhotos = [
   {
     className: "campus-photo cp-tall",
@@ -27,64 +29,28 @@ const campusPhotos = [
 
 export default function CampusSection() {
   return (
-    <section className="sec-campus" id="campus">
-      <div className="container">
-        <div className="reveal">
-          <span className="sec-tag">FILE: CAMPUS</span>
-          <h2 className="sec-heading sec-heading--light">
-            IIIT DELHI
-            <br />
-            CAMPUS
-          </h2>
-          <p className="campus-sub">
-            A compact, vibrant campus in South Delhi — everything within walking
-            distance, everyone within reach.
-          </p>
-        </div>
-
-        <div className="campus-grid reveal">
-          {campusPhotos.map((photo, index) => (
-            <div key={index} className={photo.className}>
-              <div
-                className="cp-inner"
-                style={{
-                  backgroundImage: `url('${photo.src}'), url('${photo.fallback}')`,
-                }}
-              ></div>
-              <span className="cp-label">{photo.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="campus-address reveal">
-          <div className="ca-left">
-            <span className="ca-label">ADDRESS</span>
-            <span className="ca-text">
-              Okhla Industrial Area Phase III,
-              <br />
-              New Delhi, Delhi — 110020
-            </span>
+    <LandingSectionCard
+      sectionId="campus"
+      sectionClassName="sec-campus"
+      tagText="FILE: CAMPUS"
+      title="IIIT DELHI CAMPUS"
+      titleClassName="sec-heading sec-heading--light"
+      subtitle="A compact, vibrant campus in South Delhi — everything within walking distance, everyone within reach."
+      subtitleClassName="campus-sub"
+    >
+      <div className="campus-grid reveal">
+        {campusPhotos.map((photo, index) => (
+          <div key={index} className={photo.className}>
+            <div
+              className="cp-inner"
+              style={{
+                backgroundImage: `url('${photo.src}'), url('${photo.fallback}')`,
+              }}
+            ></div>
+            <span className="cp-label">{photo.label}</span>
           </div>
-          <div className="ca-divider"></div>
-          <div className="ca-right">
-            <span className="ca-label">NEAREST METRO</span>
-            <span className="ca-text">
-              Govindpuri Station
-              <br />
-              Violet Line
-            </span>
-          </div>
-          <div className="ca-divider"></div>
-          <div className="ca-right">
-            <span className="ca-label">COORDINATES</span>
-            <span className="ca-text">
-              28.5445° N,
-              <br />
-              77.2710° E
-            </span>
-          </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </LandingSectionCard>
   );
 }

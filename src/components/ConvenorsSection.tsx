@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LandingSectionCard from "@/components/LandingSectionCard";
 
 const convenors = [
   {
@@ -26,43 +27,37 @@ const convenors = [
 
 export default function ConvenorsSection() {
   return (
-    <section className="sec-convenors" id="team">
-      <div className="container">
-        <div className="reveal">
-          <span className="sec-tag">FILE: TEAM</span>
-          <h2 className="sec-heading">
-            MEET THE
-            <br />
-            TEAM
-          </h2>
-        </div>
-
-        <div className="convenors-grid reveal">
-          {convenors.map((c, i) => (
-            <div key={i} className="convenor-card">
-              <div className="convenor-photo-wrap">
-                <Image
-                  src={c.photo}
-                  alt={c.name}
-                  fill
-                  className="convenor-photo-img"
-                  sizes="(max-width: 520px) 50vw, (max-width: 900px) 25vw, 260px"
-                />
-              </div>
-              <div className="convenor-info">
-                <div className="convenor-name">{c.name}</div>
-                <div className="convenor-role">{c.role}</div>
-              </div>
+    <LandingSectionCard
+      sectionId="team"
+      sectionClassName="sec-convenors"
+      tagText="FILE: TEAM"
+      title="MEET THE TEAM"
+    >
+      <div className="convenors-grid reveal">
+        {convenors.map((convenor, index) => (
+          <div key={index} className="convenor-card">
+            <div className="convenor-photo-wrap">
+              <Image
+                src={convenor.photo}
+                alt={convenor.name}
+                fill
+                className="convenor-photo-img"
+                sizes="(max-width: 520px) 50vw, (max-width: 900px) 25vw, 260px"
+              />
             </div>
-          ))}
-        </div>
-
-        <div className="convenors-cta reveal">
-          <Link href="/team" className="convenors-btn">
-            MEET COMPLETE TEAM →
-          </Link>
-        </div>
+            <div className="convenor-info">
+              <div className="convenor-name">{convenor.name}</div>
+              <div className="convenor-role">{convenor.role}</div>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      <div className="convenors-cta reveal">
+        <Link href="/team" className="convenors-btn">
+          MEET COMPLETE TEAM →
+        </Link>
+      </div>
+    </LandingSectionCard>
   );
 }

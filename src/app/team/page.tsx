@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealInit from "@/components/ScrollReveal";
+import OcParallaxGrid from "@/components/OcParallaxGrid";
 import {
   ocSubsections,
   saOfficeMembers,
@@ -202,7 +203,7 @@ export default function TeamPage() {
 
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={teamNavLinks} activeBtech={true}/>
+      <Navbar isScrolledByDefault={true} links={teamNavLinks} />
 
       <section
         className="sec-talks sched-page-body team-page-body"
@@ -273,7 +274,7 @@ export default function TeamPage() {
         className="sec-talks sched-page-body team-page-body team-page-body--ink"
         id="team-oc"
       >
-        <div className="container">
+        <div className="container oc-parallax-container">
           <div className="reveal">
             <span className="sec-tag sec-tag--light">
               FILE: Organizing Committee
@@ -282,9 +283,7 @@ export default function TeamPage() {
               <span className="team-adjective team-adjective--light">
                 Tireless
               </span>
-              ORGANIZING
-              <br />
-              COMMITTEE
+              ORGANIZING COMMITTEE
             </h2>
             <p className="talks-sub team-talks-sub--light">
               {allOcMembers.length} members across {ocSubsections.length}{" "}
@@ -292,44 +291,7 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <div className="oc-grid">
-            {allOcMembers.map((member) => (
-              <div className="oc-card" key={member.name}>
-                <div
-                  className="oc-card-photo"
-                  style={{
-                    backgroundImage: `url('${member.photo ?? FALLBACK_PHOTO}')`,
-                  }}
-                />
-                <div className="oc-card-info">
-                  <p className="oc-card-name">{member.name}</p>
-                  <p className="oc-card-role">{member.role}</p>
-                  <div className="oc-card-tag-row">
-                    <span className="team-member-tag">{member.department}</span>
-                    {member.email ? (
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="team-member-mail-btn team-member-mail-btn--light"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          width="14"
-                          height="14"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <rect x="2" y="4" width="20" height="16" rx="2" />
-                          <path d="m2 7 10 6 10-6" />
-                        </svg>
-                      </a>
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <OcParallaxGrid members={allOcMembers} />
         </div>
       </section>
       <Footer

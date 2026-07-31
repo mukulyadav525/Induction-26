@@ -1,3 +1,5 @@
+import LandingSectionCard from "@/components/LandingSectionCard";
+
 const speakers = [
   {
     name: "Dr. Pankaj Jalote",
@@ -6,34 +8,6 @@ const speakers = [
     badge: "KEYNOTE",
     linkedin: "https://www.linkedin.com/in/pankaj-jalote-0924782/",
   },
-  // {
-  //   name: "Anshuman Tripathi",
-  //   role: "Member, National Security Advisory Board",
-  //   photo: "photos/speakers/speaker-4.webp",
-  //   badge: "KEYNOTE",
-  //   linkedin: "https://www.linkedin.com/in/anshuman-tripathi-5594bb65/",
-  // },
-  // {
-  //   name: "Tilak Mishra",
-  //   role: "Tech Consultant and Advisor",
-  //   photo: "photos/speakers/speaker-5.webp",
-  //   badge: "KEYNOTE",
-  //   linkedin: "https://www.linkedin.com/in/mishratilak/",
-  // },
-  // {
-  //   name: "Dr. Rajdeep Mukherjee",
-  //   role: "Applied Scientist II @ Amazon",
-  //   photo: "photos/speakers/speaker-2.webp",
-  //   badge: "ALUMNI",
-  //   linkedin: "https://www.linkedin.com/in/rajdeepmukherjee89/",
-  // },
-  // {
-  //   name: "Mimansha Das",
-  //   role: "AI Engineer @ Trademo",
-  //   photo: "photos/speakers/speaker-3.webp",
-  //   badge: "ALUMNI",
-  //   linkedin: "https://www.linkedin.com/in/mimansha-das-6963951ab/",
-  // },
   {
     name: "Ankur Warikoo",
     role: "Entrepreneur",
@@ -52,51 +26,43 @@ const speakers = [
 
 export default function TalksSection() {
   return (
-    <section className="sec-talks" id="talks">
-      <div className="container">
-        <div className="reveal">
-          <span className="sec-tag">FILE: SPEAKERS</span>
-          <h2 className="sec-heading">
-            TALKS &amp;
-            <br />
-            SESSIONS
-          </h2>
-          <p className="talks-sub">
-            Distinguished voices who will address the incoming class of 2030.
-            Full lineup to be announced as induction approaches.
-          </p>
-        </div>
-        <div className="speakers-grid" id="speakers-grid">
-          {speakers.map((speaker, index) => (
-            <div key={index} className="speaker-card is-placeholder reveal">
-              <div
-                className="speaker-photo"
-                style={{
-                  backgroundImage: `url('${speaker.photo}'), url('photos/speakers/images.webp')`,
-                }}
-              ></div>
-              <div className="speaker-info">
-                <p className="speaker-name">{speaker.name}</p>
-                <p className="speaker-role">{speaker.role}</p>
-
-                <div className="speaker-footer">
-                  <span className="speaker-badge">{speaker.badge}</span>
-                  {speaker.linkedin && (
-                    <a
-                      href={speaker.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="speaker-linkedin"
-                    >
-                      LinkedIn ↗
-                    </a>
-                  )}
-                </div>
+    <LandingSectionCard
+      sectionId="talks"
+      sectionClassName="sec-talks"
+      tagText="FILE: SPEAKERS"
+      title="TALKS & SESSIONS"
+      subtitle="Distinguished voices who will address the incoming class of 2028. Full lineup to be announced as induction approaches."
+      subtitleClassName="talks-sub"
+    >
+      <div className="speakers-grid" id="speakers-grid">
+        {speakers.map((speaker, index) => (
+          <div key={index} className="speaker-card is-placeholder reveal">
+            <div
+              className="speaker-photo"
+              style={{
+                backgroundImage: `url('${speaker.photo}'), url('photos/speakers/images.webp')`,
+              }}
+            ></div>
+            <div className="speaker-info">
+              <p className="speaker-name">{speaker.name}</p>
+              <p className="speaker-role">{speaker.role}</p>
+              <div className="speaker-footer">
+                <span className="speaker-badge">{speaker.badge}</span>
+                {speaker.linkedin ? (
+                  <a
+                    href={speaker.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="speaker-linkedin"
+                  >
+                    LinkedIn ↗
+                  </a>
+                ) : null}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </LandingSectionCard>
   );
 }

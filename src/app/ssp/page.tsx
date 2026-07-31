@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import SspField from "@/components/SspField";
+import NoticesManager from "@/components/NoticesManager";
 
 type Track = "BTECH" | "PG" | "ALL";
 
@@ -118,23 +120,7 @@ function shiftClockTime(timeText: string, minutesToAdd: number): string {
   return formatMinutesToClockTime(parsedMinutes + minutesToAdd);
 }
 
-function Field({
-  label,
-  hint,
-  children,
-}: {
-  label: string;
-  hint?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="ssp-field">
-      <label className="ssp-field-label">{label}</label>
-      {hint && <span className="ssp-field-hint">{hint}</span>}
-      {children}
-    </div>
-  );
-}
+const Field = SspField;
 
 export default function SupersecretPanel() {
   const [password, setPassword] = useState("");
@@ -145,6 +131,10 @@ export default function SupersecretPanel() {
   const [events, setEvents] = useState<DbEvent[]>([]);
   const [eventsLoading, setEventsLoading] = useState(false);
   const [eventsError, setEventsError] = useState("");
+
+  const [resourceView, setResourceView] = useState<"schedule" | "notices">(
+    "schedule",
+  );
 
   const [activeTab, setActiveTab] = useState<"list" | "add" | "edit">("list");
   const [editingEvent, setEditingEvent] = useState<DbEvent | null>(null);
@@ -171,11 +161,13 @@ export default function SupersecretPanel() {
     passwordInputRef.current?.focus();
   }, []);
 
-  const loadEvents = useCallback(async () => {
+  const loadEvents = useCallback(async (panelPassword: string) => {
     setEventsLoading(true);
     setEventsError("");
     try {
-      const res = await fetch("/api/ssp/events");
+      const res = await fetch(
+        `/api/ssp/events?password=${encodeURIComponent(panelPassword)}`,
+      );
       const data = await res.json();
       if (data.events) setEvents(data.events);
       else setEventsError(data.error ?? "Failed to load events.");
@@ -199,7 +191,7 @@ export default function SupersecretPanel() {
       const data = await res.json();
       if (data.ok) {
         setAuthenticated(true);
-        loadEvents();
+        loadEvents(password);
       } else {
         setAuthError("Wrong password. Try again.");
         setPassword("");
@@ -707,7 +699,21 @@ export default function SupersecretPanel() {
           </div>
         </header>
 
-        {activeTab === "list" && (
+        <div className="ssp-filter-group ssp-mt ssp-border">
+          {(["schedule", "notices"] as const).map((view) => (
+            <button
+              key={view}
+              onClick={() => setResourceView(view)}
+              className={`ssp-pill ${resourceView === view ? "ssp-pill-active" : ""}`}
+            >
+              {view === "schedule" ? "Schedule" : "Notices"}
+            </button>
+          ))}
+        </div>
+
+        {resourceView === "notices" && <NoticesManager password={password} />}
+
+        {resourceView === "schedule" && activeTab === "list" && (
           <div className="ssp-list-wrap">
             <div className="ssp-list-top">
               <div>
@@ -962,7 +968,9 @@ export default function SupersecretPanel() {
           </div>
         )}
 
-        {(activeTab === "add" || activeTab === "edit") && formPanel}
+        {resourceView === "schedule" &&
+          (activeTab === "add" || activeTab === "edit") &&
+          formPanel}
       </div>
     </>
   );

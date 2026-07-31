@@ -16,8 +16,13 @@ async function guardedRequest(request: NextRequest): Promise<string | null> {
   return JSON.stringify(body);
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const password = request.nextUrl.searchParams.get("password") ?? "";
+    const valid = await verifyPanelPassword(password);
+    if (!valid)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const events = await getAllEvents();
     return NextResponse.json({ events });
   } catch (err) {
@@ -31,7 +36,8 @@ export async function POST(request: NextRequest) {
     const body = JSON.parse(rawBody);
     const password = typeof body.password === "string" ? body.password : "";
     const valid = await verifyPanelPassword(password);
-    if (!valid) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!valid)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const data: Omit<DbEvent, "id" | "created_at" | "updated_at"> = {
       track: body.track ?? "ALL",
@@ -60,13 +66,27 @@ export async function PUT(request: NextRequest) {
     const body = JSON.parse(rawBody);
     const password = typeof body.password === "string" ? body.password : "";
     const valid = await verifyPanelPassword(password);
-    if (!valid) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!valid)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const id = Number(body.id);
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
-    const allowedFields = ["track","day_label","day_index","time","end_time","event","venue","speaker","status","type","sort_order"];
-    const updates: Partial<Omit<DbEvent, "id" | "created_at" | "updated_at">> = {};
+    const allowedFields = [
+      "track",
+      "day_label",
+      "day_index",
+      "time",
+      "end_time",
+      "event",
+      "venue",
+      "speaker",
+      "status",
+      "type",
+      "sort_order",
+    ];
+    const updates: Partial<Omit<DbEvent, "id" | "created_at" | "updated_at">> =
+      {};
     for (const field of allowedFields) {
       if (field in body) {
         (updates as Record<string, unknown>)[field] = body[field];
@@ -74,7 +94,8 @@ export async function PUT(request: NextRequest) {
     }
 
     const updated = await updateEvent(id, updates);
-    if (!updated) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    if (!updated)
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
     return NextResponse.json({ event: updated });
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
@@ -87,13 +108,15 @@ export async function DELETE(request: NextRequest) {
     const body = JSON.parse(rawBody);
     const password = typeof body.password === "string" ? body.password : "";
     const valid = await verifyPanelPassword(password);
-    if (!valid) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!valid)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const id = Number(body.id);
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
     const deleted = await deleteEvent(id);
-    if (!deleted) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    if (!deleted)
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
     return NextResponse.json({ ok: true });
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
