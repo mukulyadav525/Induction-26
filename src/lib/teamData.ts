@@ -283,11 +283,11 @@ export const ocSubsections: OcSubsection[] = [
         email: "apoorv24097@iiitd.ac.in",
       },
       {
-        name: "Deepanshu",
+        name: "Dipanshu",
         role: "Mentor OC",
         department: "MENTOR",
         photo: "/photos/team/BUDDY/DEEPANSHU.webp",
-        email: "apoorv24097@iiitd.ac.in",
+        email: "dipanshu24196@iiitd.ac.in",
       },
     ],
   },
