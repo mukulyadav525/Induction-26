@@ -5928,3 +5928,24 @@ section {
     font-size: 14px;
   }
 }
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sec-contact,
+.sec-contact-icc,
+.sec-directions,
+.sec-faq {
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+.icc-block {
+  margin-top: 0;
+}
+
+.contact-map-wrap {
+  margin-top: 56px;
+}
