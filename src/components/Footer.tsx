@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
 import FooterFaqIndex from "@/components/FooterFaqIndex";
 
 interface FooterProps {
@@ -38,29 +38,29 @@ export default function Footer({
   showFaqAccordion = false,
 }: FooterProps) {
   const pathname = usePathname();
-  const footerContentRef = useRef<HTMLDivElement>(null);
-  const [footerHeight, setFooterHeight] = useState(0);
 
   const footerLinks = FOOTER_PAGE_LINKS.filter(
     (link) =>
       link.matchPath !== pathname && !(showFaqAccordion && link.text === "FAQ"),
   );
 
-  useLayoutEffect(() => {
-    const contentEl = footerContentRef.current;
-    if (!contentEl) return;
-
-    const updateFooterHeight = () => setFooterHeight(contentEl.offsetHeight);
-    updateFooterHeight();
-
-    const resizeObserver = new ResizeObserver(updateFooterHeight);
-    resizeObserver.observe(contentEl);
-    return () => resizeObserver.disconnect();
-  }, [pathname, showFaqAccordion]);
-
   return (
-    <div className="footer-sticky-shell" style={{ height: footerHeight }}>
-      <footer className="site-footer" ref={footerContentRef}>
+    <div className="footer-wrap">
+      <Image
+        src="/assets/stack-deco/washi-tape.svg"
+        alt=""
+        width={110}
+        height={38}
+        className="footer-tape footer-tape--left"
+      />
+      <Image
+        src="/assets/stack-deco/washi-tape.svg"
+        alt=""
+        width={110}
+        height={38}
+        className="footer-tape footer-tape--right"
+      />
+      <footer className="site-footer">
         <div className="footer-top-strip">
           {stripItems.map((item, i) => (
             <span key={i}>
