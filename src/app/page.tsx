@@ -12,7 +12,6 @@ import CampusSection from "@/components/CampusSection";
 import InfoSection from "@/components/InfoSection";
 import ContactCtaSection from "@/components/ContactCtaSection";
 import ConvenorsSection from "@/components/ConvenorsSection";
-import BackToTop from "@/components/BackToTop";
 import StackCardPin from "@/components/StackCardPin";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -146,7 +145,6 @@ export default function HomePage() {
         showFaqAccordion
       />
       <ScrollRevealInit />
-      <BackToTop />
     </>
   );
 }

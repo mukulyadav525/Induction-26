@@ -4058,27 +4058,6 @@ section {
   border: 1px solid var(--paper);
 }
 
-.back-to-top {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 52px;
-  height: 52px;
-  border: none;
-  border-radius: 50%;
-  background: #17837d;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 1000;
-}
-
-.back-to-top:hover {
-  transform: translateY(-2px);
-}
-
 @media (max-width: 900px) {
   .oc-parallax-grid {
     flex-wrap: wrap;

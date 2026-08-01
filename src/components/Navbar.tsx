@@ -86,13 +86,23 @@ export default function Navbar({
       track === "BTECH" ? "/schedule-btech" : "/schedule-pg";
   }
 
+  function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (window.location.pathname !== "/") return;
+
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <nav
       className={`site-nav${isScrolledByDefault ? " is-scrolled" : ""}`}
       id="site-nav"
     >
       <div className="nav-brand">
-        <Link href={"/"}>
+        <Link href="/" onClick={handleLogoClick} aria-label="Back to top">
           <Image
             src="/iiitd-logo.webp"
             alt="IIIT Delhi Logo"
