@@ -94,9 +94,18 @@ export default function Navbar({
                 if (link.href.startsWith("#")) {
                   e.preventDefault();
 
-                  document.getElementById(link.href.slice(1))?.scrollIntoView({
+                  const targetSectionElement = document.getElementById(
+                    link.href.slice(1),
+                  );
+                  if (!targetSectionElement) return;
+
+                  const targetAbsoluteScrollY =
+                    window.scrollY +
+                    targetSectionElement.getBoundingClientRect().top;
+
+                  window.scrollTo({
+                    top: targetAbsoluteScrollY,
                     behavior: "smooth",
-                    block: "start",
                   });
                 }
               }}

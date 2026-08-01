@@ -131,7 +131,7 @@ export default function HeroNoticeButton() {
             </p>
           </div>
 
-          {activeNotices.length > 0 && (
+          {activeNotices.length > 0 ? (
             <div className="modal-dossier-grid">
               {activeNotices.map((notice) => (
                 <div
@@ -147,6 +147,12 @@ export default function HeroNoticeButton() {
                   </div>
                 </div>
               ))}
+            </div>
+          ) : (
+            <div className="dossier-memo-box notice-empty-state">
+              <p className="answer-content">
+                No notices right now. Enjoy Induction 2026!
+              </p>
             </div>
           )}
 
