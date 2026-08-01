@@ -46,6 +46,15 @@ export default function Footer({
 
   return (
     <div className="footer-wrap">
+      <div className="footer-torn-edge">
+        <Image
+          src="/assets/footer/footer_bg.webp"
+          alt=""
+          loading="eager"
+          fill
+          className="footer-torn-edge-img"
+        />
+      </div>
       <Image
         src="/assets/stack-deco/washi-tape.svg"
         alt=""
@@ -91,8 +100,17 @@ export default function Footer({
           </div>
           {showFaqAccordion && (
             <>
-              <div className="footer-divider" />
-              <FooterFaqIndex />
+              <div className="footer-stitch-divider" />
+              <div className="footer-faq-cluster">
+                <Image
+                  src="/assets/stack-deco/coffee-ring.svg"
+                  alt=""
+                  width={140}
+                  height={140}
+                  className="footer-coffee-stain"
+                />
+                <FooterFaqIndex />
+              </div>
             </>
           )}
         </div>
@@ -119,15 +137,22 @@ export default function Footer({
               </a>{" "}
               and{" "}
               <a
-                href="https://linkedin.com/in/yuvrajj-singhh"
+                href="https://linkedin.com/in/paramveer504"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Yuvraj Singh
+                Paramveer Oberoi
               </a>
             </span>
           )}
         </div>
+        <Image
+          src="/assets/stack-deco/stamp-induction.svg"
+          alt=""
+          width={275}
+          height={100}
+          className="footer-stamp"
+        />
       </footer>
     </div>
   );
