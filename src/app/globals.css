@@ -4082,18 +4082,41 @@ section {
   }
 }
 
-.footer-sticky-shell {
+.footer-wrap {
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .site-footer {
   background: var(--ink);
   color: var(--paper);
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: relative;
   width: 100%;
+  padding-top: 34px;
+  clip-path: polygon(0% 2px, 3% 22px, 6% 6px, 9% 28px, 12% 4px, 15% 18px, 18% 1px, 21% 24px,
+      24% 8px, 27% 30px, 30% 3px, 33% 16px, 36% 0, 39% 26px, 42% 10px, 45% 20px,
+      48% 2px, 51% 29px, 54% 6px, 57% 14px, 60% 1px, 63% 27px, 66% 9px, 69% 18px,
+      72% 3px, 75% 24px, 78% 7px, 81% 12px, 84% 0, 87% 28px, 90% 5px, 93% 19px,
+      96% 2px, 100% 24px,
+      100% 100%, 0% 100%);
+  filter: drop-shadow(0 -1.3px 0 var(--lime));
+}
+
+.footer-tape {
+  position: absolute;
+  top: 4px;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.18));
+}
+
+.footer-tape--left {
+  left: 8%;
+  transform: rotate(-4deg);
+}
+
+.footer-tape--right {
+  right: 10%;
+  transform: rotate(5deg);
 }
 
 .footer-top-strip {
@@ -4436,16 +4459,6 @@ section {
 
   .footer-faq-list-item {
     width: 100%;
-  }
-}
-
-@media (max-width: 900px) {
-  .footer-sticky-shell {
-    height: auto !important;
-  }
-
-  .site-footer {
-    position: static;
   }
 }
 
@@ -5285,7 +5298,7 @@ section {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 4vh 0 100vh;
+  padding: 4vh 0 6vh;
   overflow-anchor: none;
 }
 

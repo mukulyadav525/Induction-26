@@ -103,13 +103,13 @@ export default function HeroSection() {
           <span className="grunge-countdown-label">
             {isLive ? "INDUCTION IS LIVE ●" : "INDUCTION BEGINS IN"}
           </span>
-          {!isLive && (
-            <div className="grunge-countdown-card">
-              <img
-                src="/assets/hero/hero_bottom_sticker.webp"
-                alt=""
-                className="grunge-countdown-card-bg"
-              />
+          <div className="grunge-countdown-card">
+            <img
+              src="/assets/hero/hero_bottom_sticker.webp"
+              alt=""
+              className="grunge-countdown-card-bg"
+            />
+            {!isLive && (
               <div className="grunge-countdown-timer">
                 <div className="grunge-countdown-unit">
                   <span className="grunge-countdown-num">{countdown.days}</span>
@@ -133,8 +133,14 @@ export default function HeroSection() {
                   <span className="grunge-countdown-lbl">SEC</span>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+            {isLive && (
+              <div className="grunge-countdown-timer grunge-countdown-num">
+                {" "}
+                Induction is Live!
+              </div>
+            )}
+          </div>
         </div>
 
         <footer className="grunge-footer-area">
