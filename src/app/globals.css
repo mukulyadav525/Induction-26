@@ -6068,10 +6068,12 @@ section {
   }
 
   .side-postit-stack {
+  order: -1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-left: 0;
-    margin-top: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1.75rem; /* Space between toggles and table top */
     width: 100%;
     gap: 0.5rem;
   }
