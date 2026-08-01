@@ -505,7 +505,9 @@ section {
   margin-bottom: 16px;
 }
 
-.sec-tag--light {
+.sec-tag--light,
+.sec-faq .sec-tag,
+.refresh-btn:hover {
   color: var(--lime);
   border-color: var(--lime);
 }
@@ -617,7 +619,11 @@ section {
   border-radius: 3px;
 }
 
-.track-card:hover {
+.track-card:hover,
+.speaker-card:hover,
+.mentor-card:hover,
+.convenor-card:hover,
+.team-member-card:hover {
   transform: translateY(-5px);
   box-shadow: 6px 6px 0 var(--ink);
 }
@@ -680,11 +686,6 @@ section {
 
 .track-go-btn:hover {
   background: var(--teal);
-}
-
-.sec-gallery .sec-tag--light {
-  /*color: var(--teal);
-  border-color: var(--teal); */
 }
 
 .sec-gallery.sched-page-body {
@@ -800,8 +801,6 @@ section {
   aspect-ratio: 4 / 3;
 }
 
-.sec-mentorship {}
-
 .mentorship-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -864,7 +863,9 @@ section {
   transition: background .15s, color .15s, transform .1s;
 }
 
-.mentor-groups-btn:hover {
+.mentor-groups-btn:hover,
+.contact-cta-btn:hover,
+.convenors-btn:hover {
   background: var(--ink);
   color: var(--lime);
   transform: translateY(-2px);
@@ -927,16 +928,12 @@ section {
   gap: 24px;
 }
 
-.speaker-card {
+.speaker-card,
+.convenor-card {
   border: 2px solid var(--ink);
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
   border-radius: 3px;
-}
-
-.speaker-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 6px 6px 0 var(--ink);
 }
 
 .speaker-photo {
@@ -1203,10 +1200,6 @@ section {
   background: var(--ink);
 }
 
-.sec-faq .sec-tag {
-  color: var(--lime);
-  border-color: var(--lime);
-}
 
 .sec-faq .sec-heading {
   color: var(--paper);
@@ -1325,11 +1318,6 @@ section {
   transition: background .15s, color .15s, transform .1s;
 }
 
-.contact-cta-btn:hover {
-  background: var(--ink);
-  color: var(--lime);
-  transform: translateY(-2px);
-}
 
 .contact-card-body {
   display: flex;
@@ -1672,11 +1660,6 @@ section {
   transition: transform .2s, box-shadow .2s;
 }
 
-.mentor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 6px 6px 0 var(--ink);
-}
-
 .mentor-photo {
   height: 240px;
   background-image: repeating-linear-gradient(45deg, #e0ddd5, #e0ddd5 10px, #d4d1c9 10px, #d4d1c9 20px);
@@ -1985,7 +1968,6 @@ section {
   font-size: 7.5px;
   letter-spacing: 1.5px;
   padding: 2px 7px;
-  border-radius: 1px;
   margin-bottom: 5px;
   font-weight: 700;
   text-transform: uppercase;
@@ -2120,10 +2102,7 @@ section {
   transition: all .15s;
 }
 
-.refresh-btn:hover {
-  border-color: var(--lime);
-  color: var(--lime);
-}
+
 
 .sec-directions {
   background: var(--paper);
@@ -3430,11 +3409,6 @@ section {
   border-radius: 3px;
 }
 
-.convenor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 6px 6px 0 var(--ink);
-}
-
 .convenor-photo-wrap {
   position: relative;
   height: 240px;
@@ -3485,12 +3459,6 @@ section {
   padding: 18px 40px;
   transition: background .15s, color .15s, transform .1s;
   border-radius: 3px;
-}
-
-.convenors-btn:hover {
-  background: var(--ink);
-  color: var(--lime);
-  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {
@@ -3674,11 +3642,6 @@ section {
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
   background: var(--paper);
-}
-
-.team-member-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 6px 6px 0 var(--ink);
 }
 
 .team-member-card--light {
@@ -5580,16 +5543,9 @@ section {
   text-align: right;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body, 
-.sched-page-body {
-  background-color: #F5F4E8 !important;
-  color: #121212 !important;
+.schedule-notebook-page-body {
+  background-color: #F5F4E8;
+  color: #121212;
   font-family: var(--ff-ser);
 }
 
@@ -5655,7 +5611,8 @@ body,
   padding: 0;
   min-height: 550px;
   animation: fadeIn 0.25s ease forwards;
-  overflow: hidden; /* Guarantees accent lines clip flush inside the outer border */
+  overflow: hidden;
+  /* Guarantees accent lines clip flush inside the outer border */
 }
 
 /* Banner Header */
@@ -5812,6 +5769,7 @@ body,
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -5959,6 +5917,7 @@ body,
   .day-tab {
     padding: 8px 14px;
   }
+
   .day-tab-num {
     font-size: 14px;
   }

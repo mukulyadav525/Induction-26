@@ -34,78 +34,6 @@ const teamNavLinks = [
 
 const FALLBACK_PHOTO = "/photos/mentors/mentor-01.webp";
 
-function MemberCard({
-  member,
-  tagLabel,
-  tagColorClass,
-  isLight = false,
-}: {
-  member: TeamMember;
-  tagLabel: string;
-  tagColorClass?: string;
-  isLight?: boolean;
-}) {
-  const resolvedPhoto = member.photo ?? FALLBACK_PHOTO;
-  return (
-    <div
-      className={`team-member-card${isLight ? " team-member-card--light" : ""}`}
-    >
-      <div className="team-member-photo">
-        <Image
-          src={resolvedPhoto}
-          alt={member.name}
-          fill
-          sizes="(max-width: 900px) 240px, 300px"
-          style={{ objectFit: "cover", objectPosition: "center top" }}
-        />
-      </div>
-      <div
-        className={`team-member-info${isLight ? " team-member-info--light" : ""}`}
-      >
-        <p
-          className={`team-member-dept${isLight ? " team-member-dept--light" : ""}`}
-        >
-          {member.department}
-        </p>
-        <p
-          className={`team-member-name${isLight ? " team-member-name--light" : ""}`}
-        >
-          {member.name}
-        </p>
-        <p
-          className={`team-member-role${isLight ? " team-member-role--light" : ""}`}
-        >
-          {member.role}
-        </p>
-        <span
-          className={`team-member-tag${tagColorClass ? ` ${tagColorClass}` : ""}`}
-        >
-          {tagLabel}
-        </span>
-        {member.email ? (
-          <a
-            href={`mailto:${member.email}`}
-            className={`team-member-mail-btn${isLight ? " team-member-mail-btn--light" : ""}`}
-            aria-label={`Email ${member.name}`}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              width="14"
-              height="14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m2 7 10 6 10-6" />
-            </svg>
-          </a>
-        ) : null}
-      </div>
-    </div>
-  );
-}
-
 function buildRowColumns(
   sectionId: string,
   tag: string,
@@ -183,22 +111,6 @@ export default function TeamPage() {
       "OC",
       undefined,
     ),
-  );
-
-  const allOcTrackColumns = [
-    ...convenorColumns,
-    ...overallMentorColumns,
-    ...ocColumns,
-  ];
-
-  const leadColumns = buildRowColumns(
-    "col-leads",
-    "File: Team Leaders",
-    "Team Leads",
-    "Roaring",
-    allLeads,
-    "TEAM LEAD",
-    "team-member-tag--lime",
   );
 
   return (
