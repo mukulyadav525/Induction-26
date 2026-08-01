@@ -5400,14 +5400,34 @@ section {
 }
 
 @media (max-width: 860px) {
+  .shared-canvas .container,
+  .shared-canvas .gallery-inner,
+  .shared-canvas .info-inner,
+  .shared-canvas .landing-card-container {
+    min-height: auto;
+    justify-content: flex-start;
+    gap: 18px;
+    scale: 1;
+  }
+
+  .shared-canvas .container::before,
+  .shared-canvas .gallery-inner::before,
+  .shared-canvas .landing-card-container::before {
+    inset: -18px;
+  }
+
+  .landing-card-header {
+    margin-bottom: 12px;
+  }
+
   .sticky-card-stack {
-    padding: 6vh 0 0;
+    padding: 2vh 0 0;
   }
 
   .sticky-card-sticky-wrapper {
     position: static;
     min-height: auto;
-    margin-bottom: 32px;
+    margin-bottom: 18px;
   }
 
   .sticky-card-item {
