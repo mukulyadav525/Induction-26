@@ -25,6 +25,231 @@
   --team-column-width: 300px;
 }
 
+html[data-theme="dark"] {
+  --paper: #141412;
+  --ink: #f4f0e8;
+  --grey: #b5ad9f;
+  --teal: #53b2ad;
+  --orange: #f09a52;
+  --border: 2px solid #f4f0e8;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] .shared-canvas-bg {
+  opacity: 0.2;
+  filter: saturate(0.7) contrast(1.05);
+}
+
+html[data-theme="dark"] .shared-canvas .container::before,
+html[data-theme="dark"] .shared-canvas .gallery-inner::before,
+html[data-theme="dark"] .shared-canvas .landing-card-container::before {
+  background-color: rgba(22, 22, 19, 0.94);
+  border-color: rgba(244, 240, 232, 0.18);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .ic-rule {
+  background: rgba(244, 240, 232, 0.34);
+}
+
+html[data-theme="dark"] .ic-text,
+html[data-theme="dark"] .dir-intro,
+html[data-theme="dark"] .dir-card-body p,
+html[data-theme="dark"] .dir-steps,
+html[data-theme="dark"] .blocks-pending .cs-text,
+html[data-theme="dark"] .dbe-name.is-tba,
+html[data-theme="dark"] .live-meta {
+  color: #d7cec0;
+}
+
+html[data-theme="dark"] .blocks-pending .cs-meta,
+html[data-theme="dark"] .refresh-btn {
+  color: #b7aa99;
+}
+
+html[data-theme="dark"] .track-btn:hover:not(.active) {
+  background: rgba(244, 240, 232, 0.14);
+}
+
+html[data-theme="dark"] .hero-notice-dialog .advisory-modal-card {
+  background: #1c1b18;
+  color: var(--ink);
+  border-color: rgba(244, 240, 232, 0.25);
+}
+
+html[data-theme="dark"] .site-footer {
+  background: #171714;
+  color: #f4f0e8;
+  filter: drop-shadow(0 -1.3px 0 var(--lime));
+}
+
+html[data-theme="dark"] .site-footer .footer-inner {
+  border-bottom-color: rgba(244, 240, 232, 0.2);
+}
+
+html[data-theme="dark"] .site-footer .footer-divider {
+  background: rgba(244, 240, 232, 0.22);
+}
+
+html[data-theme="dark"] .footer-top-strip span {
+  color: rgba(244, 240, 232, 0.72);
+}
+
+html[data-theme="dark"] .footer-top-strip .mq-sep {
+  color: rgba(244, 240, 232, 0.42);
+}
+
+html[data-theme="dark"] .footer-name {
+  color: rgba(244, 240, 232, 0.78);
+}
+
+html[data-theme="dark"] .footer-col-label {
+  opacity: 0.82;
+}
+
+html[data-theme="dark"] .footer-nav a {
+  color: rgba(244, 240, 232, 0.86);
+}
+
+html[data-theme="dark"] .footer-nav a:hover {
+  color: var(--lime);
+}
+
+html[data-theme="dark"] .site-footer .footer-faq-list-question {
+  color: rgba(244, 240, 232, 0.78);
+}
+
+html[data-theme="dark"] .site-footer .footer-faq-answer-pane {
+  background: rgba(244, 240, 232, 0.08);
+  border-color: rgba(244, 240, 232, 0.25);
+}
+
+html[data-theme="dark"] .site-footer .footer-faq-answer-text {
+  color: #f4f0e8;
+}
+
+html[data-theme="dark"] .site-nav.is-scrolled {
+  background: #f4f0e8;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+html[data-theme="dark"] .site-nav .brand-short,
+html[data-theme="dark"] .site-nav .nav-links a,
+html[data-theme="dark"] .site-nav .track-btn,
+html[data-theme="dark"] .site-nav .theme-toggle-btn {
+  color: #1a1a1a;
+}
+
+html[data-theme="dark"] .site-nav .brand-full {
+  color: #6b6b6b;
+}
+
+html[data-theme="dark"] .site-nav .nav-links a::after {
+  background: #008080;
+}
+
+html[data-theme="dark"] .site-nav .track-toggle,
+html[data-theme="dark"] .site-nav .theme-toggle-btn {
+  border: 2px solid #1a1a1a;
+}
+
+html[data-theme="dark"] .site-nav .track-btn:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="dark"] .site-nav .track-btn.active,
+html[data-theme="dark"] .site-nav .theme-toggle-btn:hover,
+html[data-theme="dark"] .site-nav .theme-toggle-btn.is-dark {
+  background: #1a1a1a;
+  color: #f4f0e8;
+}
+
+html[data-theme="dark"] .site-nav .hamburger span {
+  background: #1a1a1a;
+}
+
+html[data-theme="dark"] .site-nav .nav-links.is-open {
+  background: #f4f0e8;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+html[data-theme="dark"] .team-page-body--ink {
+  background: #0f1113;
+  color: #f4f0e8;
+}
+
+html[data-theme="dark"] .team-page-body--ink .team-talks-sub--light {
+  color: #d0c6b7;
+}
+
+html[data-theme="dark"] .team-page-body--ink .oc-card-name,
+html[data-theme="dark"] .team-page-body--ink .team-member-name--light {
+  color: #f4f0e8;
+}
+
+html[data-theme="dark"] .team-page-body--ink .oc-card-role,
+html[data-theme="dark"] .team-page-body--ink .team-member-role--light {
+  color: #cbc1b4;
+}
+
+html[data-theme="dark"] .team-page-body--ink .team-member-dept--light {
+  color: #b3a998;
+}
+
+html[data-theme="dark"] .team-page-body--ink .oc-card-tag-row .team-member-tag {
+  color: #f4f0e8;
+  border-color: rgba(244, 240, 232, 0.72);
+  background: rgba(244, 240, 232, 0.05);
+}
+
+html[data-theme="dark"] .team-page-body--ink .team-member-mail-btn--light {
+  color: #f4f0e8;
+  border-color: rgba(244, 240, 232, 0.72);
+  background: transparent;
+}
+
+html[data-theme="dark"] .team-page-body--ink .team-member-mail-btn--light:hover {
+  background: #f4f0e8;
+  color: #11110f;
+}
+
+html[data-theme="dark"] .live-pill,
+html[data-theme="dark"] .track-dates-badge,
+html[data-theme="dark"] .speaker-badge,
+html[data-theme="dark"] .ic-code,
+html[data-theme="dark"] .contact-cta-btn,
+html[data-theme="dark"] .convenors-btn,
+html[data-theme="dark"] .mentor-tag,
+html[data-theme="dark"] .spm-badge,
+html[data-theme="dark"] .chip-lime,
+html[data-theme="dark"] .advisory-tab-btn.is-active,
+html[data-theme="dark"] .advisory-expand-btn,
+html[data-theme="dark"] .footer-faq-answer-tag {
+  color: #11110f;
+}
+
+html[data-theme="dark"] .live-pill,
+html[data-theme="dark"] .track-dates-badge,
+html[data-theme="dark"] .speaker-badge,
+html[data-theme="dark"] .ic-code,
+html[data-theme="dark"] .contact-cta-btn,
+html[data-theme="dark"] .convenors-btn,
+html[data-theme="dark"] .mentor-tag,
+html[data-theme="dark"] .spm-badge,
+html[data-theme="dark"] .chip-lime,
+html[data-theme="dark"] .advisory-tab-btn.is-active,
+html[data-theme="dark"] .advisory-expand-btn {
+  border-color: #11110f;
+}
+
+html[data-theme="dark"] .footer-bottom {
+  color: rgba(20, 20, 18, 0.92);
+}
+
+html[data-theme="dark"] .footer-bottom a {
+  color: #121212;
+}
+
 
 .shared-canvas {
   position: relative;
@@ -286,6 +511,25 @@ button {
 
 .track-btn:hover:not(.active) {
   background: rgba(0, 0, 0, .07);
+}
+
+.theme-toggle-btn {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  padding: 7px 12px;
+  background: transparent;
+  border: var(--border);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-radius: 3px;
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn.is-dark {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .hamburger {
@@ -2318,6 +2562,12 @@ section {
     font-size: 8.5px;
     padding: 5px 9px;
     letter-spacing: 1px;
+  }
+
+  .theme-toggle-btn {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+    padding: 5px 8px;
   }
 
   .nav-right {
@@ -5523,7 +5773,7 @@ section {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .12) 52%, rgba(0, 0, 0, .02) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, .92) 0%, rgba(0, 0, 0, .28) 56%, rgba(0, 0, 0, .06) 100%),
     linear-gradient(135deg, rgba(200, 241, 53, .08), transparent 40%);
   pointer-events: none;
 }
@@ -5548,6 +5798,7 @@ section {
   font-size: 10px;
   letter-spacing: 3px;
   color: var(--lime);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
 }
 
 .mouse-scale-meta p {
@@ -5559,6 +5810,10 @@ section {
   line-height: .9;
   letter-spacing: 1px;
   text-align: right;
+  color: #fff;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.92),
+    0 0 1px rgba(0, 0, 0, 0.8);
 }
 
 .schedule-notebook-page-body {

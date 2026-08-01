@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,6 +9,7 @@ interface NavbarProps {
   activeBtech?: boolean;
   activePg?: boolean;
   links?: Array<{ label: string; href: string }>;
+  showThemeToggle?: boolean;
 }
 
 export default function Navbar({
@@ -16,7 +17,10 @@ export default function Navbar({
   activeBtech = false,
   activePg = false,
   links,
+  showThemeToggle = true,
 }: NavbarProps) {
+  const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
+
   const defaultLinks = [
     { label: "ABOUT", href: "#about" },
     { label: "SCHEDULE", href: "#schedule" },
@@ -67,6 +71,20 @@ export default function Navbar({
     return () => window.removeEventListener("scroll", onScroll);
   }, [isScrolledByDefault]);
 
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("induction-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const resolvedTheme =
+      savedTheme === "dark" || savedTheme === "light"
+        ? savedTheme
+        : prefersDark
+          ? "dark"
+          : "light";
+
+    setThemeMode(resolvedTheme);
+    document.documentElement.setAttribute("data-theme", resolvedTheme);
+  }, []);
+
   function toggleMenu() {
     const links = document.getElementById("nav-links");
     const hb = document.getElementById("hamburger");
@@ -84,6 +102,13 @@ export default function Navbar({
   function openSchedulePage(track: string) {
     window.location.href =
       track === "BTECH" ? "/schedule-btech" : "/schedule-pg";
+  }
+
+  function toggleThemeMode() {
+    const nextTheme = themeMode === "dark" ? "light" : "dark";
+    setThemeMode(nextTheme);
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    window.localStorage.setItem("induction-theme", nextTheme);
   }
 
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
@@ -151,6 +176,16 @@ export default function Navbar({
       </ul>
 
       <div className="nav-right">
+        {showThemeToggle && (
+          <button
+            className={`theme-toggle-btn${themeMode === "dark" ? " is-dark" : ""}`}
+            onClick={toggleThemeMode}
+            aria-label={`Switch to ${themeMode === "dark" ? "light" : "dark"} mode`}
+            type="button"
+          >
+            {themeMode === "dark" ? "LIGHT" : "DARK"}
+          </button>
+        )}
         <div className="track-toggle">
           <button
             className={`track-btn${activeBtech ? " active" : ""}`}

@@ -112,7 +112,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Navbar activeBtech={true} />
+      <Navbar activeBtech={true} showThemeToggle={true} />
       <HeroSection />
       <div className="shared-canvas">
         <div className="shared-canvas-bg" />
