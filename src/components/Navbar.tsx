@@ -29,6 +29,34 @@ export default function Navbar({
 
   const navLinks = links ?? defaultLinks;
 
+  function getSectionScrollY(targetSection: HTMLElement): number {
+    const stickyWrapper = targetSection.closest(
+      ".sticky-card-sticky-wrapper",
+    ) as HTMLElement | null;
+
+    if (!stickyWrapper || !stickyWrapper.parentElement) {
+      let runningTop = 0;
+      let currentElement: HTMLElement | null = targetSection;
+      while (currentElement) {
+        runningTop += currentElement.offsetTop;
+        currentElement = currentElement.offsetParent as HTMLElement | null;
+      }
+      return runningTop;
+    }
+
+    const stackContainer = stickyWrapper.parentElement;
+    const stackContainerTop =
+      window.scrollY + stackContainer.getBoundingClientRect().top;
+
+    let heightOfSectionsAbove = 0;
+    for (const wrapper of Array.from(stackContainer.children)) {
+      if (wrapper === stickyWrapper) break;
+      heightOfSectionsAbove += (wrapper as HTMLElement).offsetHeight;
+    }
+
+    return stackContainerTop + heightOfSectionsAbove;
+  }
+
   useEffect(() => {
     const nav = document.getElementById("site-nav");
     if (!nav || isScrolledByDefault) return;
@@ -94,17 +122,13 @@ export default function Navbar({
                 if (link.href.startsWith("#")) {
                   e.preventDefault();
 
-                  const targetSectionElement = document.getElementById(
+                  const targetSection = document.getElementById(
                     link.href.slice(1),
                   );
-                  if (!targetSectionElement) return;
-
-                  const targetAbsoluteScrollY =
-                    window.scrollY +
-                    targetSectionElement.getBoundingClientRect().top;
+                  if (!targetSection) return;
 
                   window.scrollTo({
-                    top: targetAbsoluteScrollY,
+                    top: getSectionScrollY(targetSection),
                     behavior: "smooth",
                   });
                 }
