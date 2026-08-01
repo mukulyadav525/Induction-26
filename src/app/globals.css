@@ -5687,6 +5687,19 @@ section {
   font-weight: 700;
   color: #121212;
   min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.2;
+}
+
+.cream-time-start {
+  font-size: 0.85rem;
+}
+
+.cream-time-end {
+  font-size: 0.72rem;
+  color: #555555;
 }
 
 .cream-content {

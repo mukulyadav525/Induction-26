@@ -88,6 +88,15 @@ function parseEventTime(timeStr: string, dateObj: Date | null): Date | null {
   );
 }
 
+function formatClockTime(date: Date | null): string {
+  if (!date) return "—";
+  const hour24 = date.getHours();
+  const minute = date.getMinutes();
+  const ampm = hour24 >= 12 ? "PM" : "AM";
+  const hour12 = hour24 % 12 || 12;
+  return `${hour12}:${pad(minute)} ${ampm}`;
+}
+
 function getDefaultDayIndex(days: ParsedDay[]): number {
   if (days.length === 0) return 0;
   const labels = days.map((d) => d.dayLabel);
@@ -150,7 +159,12 @@ function EventRow({ event, allDayLabels, dayLabel, now, index }: EventRowProps) 
       }}
     >
       <div className="cream-time">
-        {formatTimeDisplay(event.time) || "—"}
+        <span className="cream-time-start">
+          {formatTimeDisplay(event.time) || "—"}
+        </span>
+        <span className="cream-time-end">
+          {formatClockTime(endTime)}
+        </span>
       </div>
 
       <div className="cream-content">
