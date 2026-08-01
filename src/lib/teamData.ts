@@ -100,6 +100,50 @@ export const ocSubsections: OcSubsection[] = [
     ],
   },
   {
+    id: "oc-webdev",
+    tag: "FILE: Web Development",
+    heading: "WEB DEV",
+    adjective: "Obsessive",
+    members: [
+      {
+        name: "Vasu Mehta",
+        role: "Web Development OC",
+        department: "WEB DEV",
+        photo: "/photos/team/WEBDEV/VASU_MEHTA.webp",
+        email: "vasu24610@iiitd.ac.in",
+      },
+      {
+        name: "Mukul Yadav",
+        email: "mukul24360@iiitd.ac.in",
+        role: "Web Development OC",
+        department: "WEB DEV",
+        photo: "/photos/leads/WEBDEV/MUKUL.webp",
+      },
+    ],
+  },
+  {
+    id: "oc-sponsorship",
+    tag: "FILE: Sponsorship",
+    heading: "SPONSORSHIP",
+    adjective: "Persuasive",
+    members: [
+      {
+        name: "Garv Jain",
+        role: "Sponsorship OC",
+        department: "SPONSORSHIP",
+        photo: "/photos/team/SPONS/GARV_JAIN.webp",
+        email: "garv24216@iiitd.ac.in",
+      },
+      {
+        name: "Aashish Arya",
+        role: "Sponsorship OC",
+        department: "SPONSORSHIP",
+        photo: "/photos/team/SPONS/AASHISH.webp",
+        email: "aashish24011@iiitd.ac.in",
+      },
+    ],
+  },
+  {
     id: "oc-operations",
     tag: "FILE: Operations",
     heading: "OPERATIONS",
@@ -248,28 +292,6 @@ export const ocSubsections: OcSubsection[] = [
     ],
   },
   {
-    id: "oc-webdev",
-    tag: "FILE: Web Development",
-    heading: "WEB DEV",
-    adjective: "Obsessive",
-    members: [
-      {
-        name: "Vasu Mehta",
-        role: "Web Development OC",
-        department: "WEB DEV",
-        photo: "/photos/team/WEBDEV/VASU_MEHTA.webp",
-        email: "vasu24610@iiitd.ac.in",
-      },
-      {
-        name: "Mukul Yadav",
-        email: "mukul24360@iiitd.ac.in",
-        role: "Web Development OC",
-        department: "WEB DEV",
-        photo: "/photos/leads/WEBDEV/MUKUL.webp",
-      },
-    ],
-  },
-  {
     id: "oc-mentor",
     tag: "FILE: Mentor Coordination",
     heading: "MENTOR",
@@ -295,28 +317,6 @@ export const ocSubsections: OcSubsection[] = [
         department: "MENTOR",
         photo: "/photos/team/BUDDY/DEEPANSHU.webp",
         email: "dipanshu24196@iiitd.ac.in",
-      },
-    ],
-  },
-  {
-    id: "oc-sponsorship",
-    tag: "FILE: Sponsorship",
-    heading: "SPONSORSHIP",
-    adjective: "Persuasive",
-    members: [
-      {
-        name: "Garv Jain",
-        role: "Sponsorship OC",
-        department: "SPONSORSHIP",
-        photo: "/photos/team/SPONS/GARV_JAIN.webp",
-        email: "garv24216@iiitd.ac.in",
-      },
-      {
-        name: "Aashish Arya",
-        role: "Sponsorship OC",
-        department: "SPONSORSHIP",
-        photo: "/photos/team/SPONS/AASHISH.webp",
-        email: "aashish24011@iiitd.ac.in",
       },
     ],
   },
