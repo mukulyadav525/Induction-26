@@ -1,29 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealInit from "@/components/ScrollReveal";
 import OcParallaxGrid from "@/components/OcParallaxGrid";
-import {
-  ocSubsections,
-  saOfficeMembers,
-  convenorMembers,
-  allOcMembers,
-  type TeamMember,
-} from "@/lib/teamData";
+import { ocSubsections, saOfficeMembers, allOcMembers } from "@/lib/teamData";
 import { useEffect } from "react";
-
-interface ColumnDescriptor {
-  columnKey: string;
-  tag: string;
-  heading: string;
-  adjective: string;
-  topRowMember: TeamMember | null;
-  bottomRowMember: TeamMember | null;
-  tagLabel: string;
-  tagColorClass?: string;
-}
 
 const teamNavLinks = [
   { label: "HOME", href: "/" },
@@ -33,44 +15,6 @@ const teamNavLinks = [
 
 const FALLBACK_PHOTO = "/photos/mentors/mentor-01.webp";
 
-function buildRowColumns(
-  sectionId: string,
-  tag: string,
-  heading: string,
-  adjective: string,
-  members: TeamMember[],
-  tagLabel: string,
-  tagColorClass: string | undefined,
-  rowsPerColumn: number = 2,
-): ColumnDescriptor[] {
-  const paddedMembers: (TeamMember | null)[] = [...members];
-
-  if (rowsPerColumn === 2 && paddedMembers.length % 2 === 1) {
-    paddedMembers.push(null);
-  }
-
-  const columnCount = Math.ceil(paddedMembers.length / rowsPerColumn);
-  const columns: ColumnDescriptor[] = [];
-
-  for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-    const base = columnIndex * rowsPerColumn;
-
-    columns.push({
-      columnKey: `${sectionId}-col-${columnIndex}`,
-      tag,
-      heading,
-      adjective,
-      topRowMember: paddedMembers[base] ?? null,
-      bottomRowMember:
-        rowsPerColumn === 2 ? (paddedMembers[base + 1] ?? null) : null,
-      tagLabel,
-      tagColorClass,
-    });
-  }
-
-  return columns;
-}
-
 export default function TeamPage() {
   useEffect(() => {
     window.scrollTo({
@@ -79,38 +23,6 @@ export default function TeamPage() {
       behavior: "instant" as ScrollBehavior,
     });
   }, []);
-
-  const convenorColumns = buildRowColumns(
-    "col-convenors",
-    "FILE: Leadership",
-    "CONVENORS",
-    "Fearless",
-    convenorMembers.filter((m) => m.department === "CONVENOR"),
-    "CONVENOR",
-    "team-member-tag--lime",
-  );
-
-  const overallMentorColumns = buildRowColumns(
-    "col-overall-mentor",
-    "FILE: Leadership",
-    "OVERALL MENTOR",
-    "Guiding",
-    convenorMembers.filter((m) => m.department === "OVERALL MENTOR"),
-    "OVERALL MENTOR",
-    "team-member-tag--lime",
-  );
-
-  const ocColumns = ocSubsections.flatMap((subsection) =>
-    buildRowColumns(
-      subsection.id,
-      subsection.tag,
-      subsection.heading,
-      subsection.adjective,
-      subsection.members,
-      "OC",
-      undefined,
-    ),
-  );
 
   return (
     <>
