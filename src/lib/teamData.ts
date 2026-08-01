@@ -216,6 +216,13 @@ export const ocSubsections: OcSubsection[] = [
         photo: "/photos/team/PR/ESHAAN.webp",
         email: "eshaan24209@iiitd.ac.in",
       },
+      {
+        name: "Leelansh",
+        role: "PR OC",
+        department: "PUBLIC RELATIONS",
+        photo: "/photos/team/PR/LEELANSH.webp",
+        email: "leelansh24319@iiitd.ac.in",
+      },
     ],
   },
   {
@@ -319,47 +326,3 @@ export const allOcMembers: TeamMember[] = [
   ...convenorMembers,
   ...ocSubsections.flatMap((subsection) => subsection.members),
 ];
-
-export const allLeads: TeamLead[] = [
-  {
-    name: "Mukul Yadav",
-    email: "mukul24360@iiitd.ac.in",
-    department: "Web Development",
-    role: "WebDev Lead",
-    photo: "/photos/leads/WEBDEV/MUKUL.webp",
-  },
-  {
-    name: "Paramveer Oberoi",
-    email: "paramveer25356@iiitd.ac.in",
-    department: "Web Development",
-    role: "WebDev Lead",
-    photo: "/photos/leads/WEBDEV/PARAMVEER.webp",
-  },
-  ...Array.from({ length: 10 }, (_, i) => {
-    return {
-      name: `Placeholder name ${i}`,
-      email: "EMAIL",
-      department: "PR",
-      role: "ROLE: Placeholder",
-      photo: "/photos/mentors/mentor-01.webp",
-    } as TeamLead;
-  }),
-];
-
-export const allOTs: TeamLead[] = Array.from({ length: 10 }, (_, i) => {
-  return {
-    name: `Placeholder name ${i}`,
-    email: "EMAIL",
-    department: "Web Development",
-    role: "ROLE: Placeholder until I recieve more info",
-    photo: "/photos/mentors/mentor-01.webp",
-  };
-});
-
-export const wholeTeam: TeamMember[] = [
-  // ...convenorMembers,
-  // ...allOcMembers,
-  // ...allLeads,
-  ...allOTs,
-];
-// console.log(wholeTeam);

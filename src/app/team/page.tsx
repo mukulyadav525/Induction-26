@@ -11,7 +11,6 @@ import {
   convenorMembers,
   allOcMembers,
   type TeamMember,
-  allLeads,
 } from "@/lib/teamData";
 import { useEffect } from "react";
 
