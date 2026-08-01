@@ -2454,10 +2454,6 @@ section {
 
 
   .nav-links {
-    display: none;
-  }
-
-  .nav-links.is-open {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -2469,6 +2465,23 @@ section {
     padding: 20px 40px;
     gap: 20px;
     z-index: 999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    
+    transform: translateY(-20px); 
+    
+    transition: opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                visibility 0.5s;
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .hamburger {
@@ -6230,4 +6243,38 @@ section {
 
 .contact-map-wrap {
   margin-top: 56px;
+}
+
+.link-text-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.link-text-inner {
+  display: inline-block;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .link-text-inner {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+
+  @keyframes awwwardsSlideUp {
+    0% {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  #nav-links.is-open .link-text-inner {
+    animation: awwwardsSlideUp 0.65s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
 }

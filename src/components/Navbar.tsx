@@ -148,6 +148,7 @@ export default function Navbar({
           <li key={i}>
             <Link
               href={link.href}
+              className="menu-link-item"
               onClick={(e) => {
                 closeMenu();
 
@@ -166,7 +167,14 @@ export default function Navbar({
                 }
               }}
             >
-              {link.label}
+              <span className="link-text-wrapper">
+                <span 
+                  className="link-text-inner"
+                  style={{ animationDelay: `${i * 0.05}s` }}
+                >
+                  {link.label}
+                </span>
+              </span>
             </Link>
           </li>
         ))}
