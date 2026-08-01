@@ -77,11 +77,6 @@ html[data-theme="dark"] .hero-notice-dialog .advisory-modal-card {
   border-color: rgba(244, 240, 232, 0.25);
 }
 
-html[data-theme="dark"] .site-footer {
-  background: #171714;
-  color: #f4f0e8;
-  filter: drop-shadow(0 -1.3px 0 var(--lime));
-}
 
 html[data-theme="dark"] .site-footer .footer-inner {
   border-bottom-color: rgba(244, 240, 232, 0.2);
