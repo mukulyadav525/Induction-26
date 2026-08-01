@@ -102,8 +102,12 @@ html[data-theme="dark"] .footer-col-label {
   opacity: 0.82;
 }
 
-html[data-theme="dark"] .footer-nav a {
+html[data-theme="dark"] .footer-nav a .footer-col-label {
   color: rgba(244, 240, 232, 0.86);
+}
+
+html[data-theme="dark"] .footer-col-label {
+  color: var(--ink)
 }
 
 html[data-theme="dark"] .footer-nav a:hover {
