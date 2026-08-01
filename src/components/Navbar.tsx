@@ -73,13 +73,10 @@ export default function Navbar({
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("induction-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const resolvedTheme =
       savedTheme === "dark" || savedTheme === "light"
         ? savedTheme
-        : prefersDark
-          ? "dark"
-          : "light";
+        : "light";
 
     setThemeMode(resolvedTheme);
     document.documentElement.setAttribute("data-theme", resolvedTheme);
