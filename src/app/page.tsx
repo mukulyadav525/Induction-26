@@ -15,7 +15,6 @@ import ConvenorsSection from "@/components/ConvenorsSection";
 import BackToTop from "@/components/BackToTop";
 import StackCardPin from "@/components/StackCardPin";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Lenis from "lenis";
 
 const stackedCards = [
   AboutSection,
@@ -67,16 +66,6 @@ export default function HomePage() {
     measureCardBoxes();
     window.addEventListener("resize", measureCardBoxes);
     return () => window.removeEventListener("resize", measureCardBoxes);
-  }, []);
-
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
   }, []);
 
   const handleCardIntersection = useCallback(

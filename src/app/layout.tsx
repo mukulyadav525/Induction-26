@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CursorTrail from "@/components/CursorTrail";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Induction '26 — IIIT Delhi",
@@ -56,6 +57,7 @@ export default function RootLayout({
       </head>
       <body>
         <CursorTrail color="#fff" strokeWidth={2} points={24} delay={10} />{" "}
+        <SmoothScroll />
         {children}
       </body>
     </html>

@@ -13,6 +13,7 @@
   --ink: #1a1a1a;
   --lime: #c8f135;
   --teal: #008080;
+  --orange: #d97706;
   --grey: #6b6b6b;
   --border: 2px solid #1a1a1a;
   --ff-disp: "Bebas Neue", sans-serif;
@@ -3770,9 +3771,9 @@ section {
 }
 
 .team-member-tag--orange {
-  background: var(--teal);
+  background: var(--orange);
   color: var(--ink);
-  border-color: var(--teal);
+  border-color: var(--orange);
 }
 
 .team-member-mail-btn {
