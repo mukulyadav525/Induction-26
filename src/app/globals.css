@@ -6389,3 +6389,25 @@ section {
     animation: awwwardsSlideUp 0.65s cubic-bezier(0.76, 0, 0.24, 1) forwards;
   }
 }
+.footer-coffee-stain {
+  display: none;
+}
+
+.footer-stamp {
+  display: none;
+}
+
+.footer-faq-cluster {
+  padding-bottom: 0;
+}
+
+.footer-inner {
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.footer-links-col,
+.footer-faq-cluster {
+  height: 500px;
+  overflow: hidden;
+}
