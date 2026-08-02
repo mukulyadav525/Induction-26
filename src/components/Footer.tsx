@@ -97,13 +97,13 @@ export default function Footer({
               </span>
               <div className="footer-sponsors-list" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
                 <Image
-                  src="/assets/sponsors/sbi.svg" // Replace with your SBI logo path
+                  src="/assets/sponsors/sbi.webp" // Replace with your SBI logo path
                   alt="SBI Logo"
                   width={80}
                   height={30}
                 />
                 <Image
-                  src="/assets/sponsors/monster.svg" // Replace with your Monster logo path
+                  src="/assets/sponsors/monster.webp" // Replace with your Monster logo path
                   alt="Monster Logo"
                   width={80}
                   height={30}
