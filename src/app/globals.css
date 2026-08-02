@@ -5500,6 +5500,66 @@ section {
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.5));
 }
 
+.hero-live-badge-wrapper {
+  --badge-text-offset-x: 0px;
+  --badge-text-offset-y: 20px;
+  position: absolute;
+  top: clamp(110px, 13.5vh, 162px);
+  right: clamp(10px, 2vw, 24px);
+  z-index: 15;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(180px, 20vw, 280px);
+  pointer-events: none;
+}
+
+.hero-live-badge {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.55));
+}
+
+.hero-live-badge-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  transform: translate(var(--badge-text-offset-x), var(--badge-text-offset-y));
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.hero-live-badge-event {
+  font-family: var(--ff-disp);
+  font-size: clamp(9px, 1vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  max-width: 86%;
+  line-height: 1.1;
+  color: #fefefe;
+}
+
+.hero-live-badge-venue {
+  font-family: var(--ff-mono);
+  font-size: clamp(7px, 0.8vw, 10px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.96;
+  max-width: 84%;
+  line-height: 1.2;
+  color: #f5f5f5;
+}
+
 .grunge-main-sticker-box {
   position: relative;
   z-index: 10;
@@ -5593,6 +5653,12 @@ section {
 }
 
 @media (max-width: 640px) {
+  .hero-live-badge-wrapper {
+    top: clamp(96px, 11.5vh, 132px);
+    right: clamp(4px, 1.2vw, 10px);
+    width: clamp(112px, 28vw, 160px);
+  }
+
   .grunge-countdown-timer {
     gap: 6px;
   }
