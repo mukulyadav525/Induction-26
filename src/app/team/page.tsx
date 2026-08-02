@@ -26,7 +26,7 @@ export default function TeamPage() {
 
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={teamNavLinks} />
+      <Navbar isScrolledByDefault={true} links={teamNavLinks} activeBtech={true}/>
 
       <section
         className="sec-talks sched-page-body team-page-body"
