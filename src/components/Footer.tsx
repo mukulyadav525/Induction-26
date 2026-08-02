@@ -91,23 +91,85 @@ export default function Footer({
             </nav>
 
             {/* SPONSORS SECTION */}
-            <div className="footer-sponsors" style={{ marginTop: "24px" }}>
-              <span className="footer-col-label" style={{ display: "block", marginBottom: "8px" }}>
+            <div className="footer-sponsors" style={{ marginTop: "28px" }}>
+              <span
+                className="footer-col-label"
+                style={{ display: "block", marginBottom: "12px", opacity: 0.6 }}
+              >
                 SPONSORS
               </span>
-              <div className="footer-sponsors-list" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-                <Image
-                  src="/assets/sponsors/sbi.webp" // Replace with your SBI logo path
-                  alt="SBI Logo"
-                  width={80}
-                  height={30}
-                />
-                <Image
-                  src="/assets/sponsors/monster.webp" // Replace with your Monster logo path
-                  alt="Monster Logo"
-                  width={80}
-                  height={30}
-                />
+              <div
+                className="footer-sponsors-list"
+                style={{
+                  display: "flex",
+                  gap: "32px",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                {/* SBI Sponsor */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "6px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Image
+                    src="/assets/sponsors/sbi.webp"
+                    alt="State Bank of India"
+                    width={100}
+                    height={60}
+                    style={{
+                      objectFit: "contain",
+                      height: "auto",
+                      width: "auto",
+                      maxHeight: "50px",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "11px",
+                      letterSpacing: "0.05em",
+                      color: "#d1d5db",
+                    }}
+                  >
+                    STATE BANK OF INDIA
+                  </span>
+                </div>
+
+                {/* Monster Sponsor */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "6px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Image
+                    src="/assets/sponsors/monster.webp"
+                    alt="Monster Energy"
+                    width={120}
+                    height={60}
+                    style={{
+                      objectFit: "contain",
+                      height: "auto",
+                      width: "auto",
+                      maxHeight: "50px",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "11px",
+                      letterSpacing: "0.05em",
+                      color: "#d1d5db",
+                    }}
+                  >
+                    MONSTER ENERGY
+                  </span>
+                </div>
               </div>
             </div>
           </div>
