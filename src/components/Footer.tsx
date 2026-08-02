@@ -89,6 +89,27 @@ export default function Footer({
                 ))}
               </div>
             </nav>
+
+            {/* SPONSORS SECTION */}
+            <div className="footer-sponsors" style={{ marginTop: "24px" }}>
+              <span className="footer-col-label" style={{ display: "block", marginBottom: "8px" }}>
+                SPONSORS
+              </span>
+              <div className="footer-sponsors-list" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+                <Image
+                  src="/assets/sponsors/sbi.svg" // Replace with your SBI logo path
+                  alt="SBI Logo"
+                  width={80}
+                  height={30}
+                />
+                <Image
+                  src="/assets/sponsors/monster.svg" // Replace with your Monster logo path
+                  alt="Monster Logo"
+                  width={80}
+                  height={30}
+                />
+              </div>
+            </div>
           </div>
           {showFaqAccordion && (
             <>
