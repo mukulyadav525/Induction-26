@@ -2637,7 +2637,7 @@ section {
 
   .footer-inner {
     flex-direction: column;
-    gap: 28px;
+    gap: 15px;
   }
 
   .footer-nav {
@@ -4443,14 +4443,14 @@ section {
   padding: 50px 60px 50px;
   border-bottom: 1px solid rgba(244, 240, 232, .1);
   flex-wrap: wrap;
-  gap: 64px;
+  gap: 20px;
 }
 
 .footer-links-col {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 10%;
+  padding: 0 40px;
   padding-bottom: 0;
   flex: 0 0 auto;
 }
@@ -4471,15 +4471,29 @@ section {
     display: none;
   }
 
-  .footer-nav {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 20px 32px;
-  }
-
   .footer-links-col {
     padding: 24px 20px;
-    padding-top: 64px;
+    padding-top: 44px;
+    padding-bottom: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 24px;
+  }
+
+  .footer-brand {
+    flex: 1 0 100%;
+    margin-bottom: 12px;
+  }
+
+  .footer-nav {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .footer-sponsors {
+    flex: 1 1 0;
+    min-width: 0;
+    margin-top: 0;
   }
 
   .footer-faq-answer-pane {
@@ -4524,6 +4538,7 @@ section {
   flex: 1;
   min-width: 0;
   display: flex;
+  padding-left: 15px;
 }
 
 

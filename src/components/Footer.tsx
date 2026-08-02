@@ -91,7 +91,7 @@ export default function Footer({
             </nav>
 
             {/* SPONSORS SECTION */}
-            <div className="footer-sponsors" style={{ marginTop: "28px" }}>
+            <div className="footer-sponsors">
               <span
                 className="footer-col-label"
                 style={{ display: "block", marginBottom: "12px", opacity: 0.6 }}

@@ -30,14 +30,10 @@ export default function AboutSection() {
           </div>
           <div className="astat-divider"></div>
           <div className="astat">
-            <span className="astat-n">2 + 5</span>
+            <span className="astat-n">5</span>
             <span className="astat-l">INDUCTION DAYS</span>
           </div>
           <div className="astat-divider"></div>
-          <div className="astat">
-            <span className="astat-n">2</span>
-            <span className="astat-l">TRACKS</span>
-          </div>
         </div>
 
         <div className="about-features reveal">
