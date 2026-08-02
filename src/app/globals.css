@@ -214,6 +214,46 @@ html[data-theme="dark"] .team-page-body--ink .team-member-mail-btn--light:hover 
   color: #11110f;
 }
 
+html[data-theme="dark"] .form-field input,
+html[data-theme="dark"] .form-field select,
+html[data-theme="dark"] .form-field textarea {
+  background: rgba(244, 240, 232, 0.08);
+  border-color: rgba(244, 240, 232, 0.28);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .form-field input::placeholder,
+html[data-theme="dark"] .form-field textarea::placeholder {
+  color: rgba(244, 240, 232, 0.65);
+}
+
+html[data-theme="dark"] .form-field select option {
+  background: #141412;
+  color: #f4f0e8;
+}
+
+html[data-theme="dark"] .contact-map-wrap {
+  border-color: rgba(244, 240, 232, 0.24);
+}
+
+html[data-theme="dark"] .icc-table {
+  border-color: rgba(244, 240, 232, 0.2);
+}
+
+html[data-theme="dark"] .icc-row {
+  border-bottom-color: rgba(244, 240, 232, 0.16);
+}
+
+html[data-theme="dark"] .icc-row:hover {
+  background: rgba(244, 240, 232, 0.06);
+}
+
+html[data-theme="dark"] .icc-row:hover .icc-label,
+html[data-theme="dark"] .icc-row:hover .icc-value,
+html[data-theme="dark"] .icc-row:hover .icc-value strong {
+  color: var(--ink);
+}
+
 html[data-theme="dark"] .live-pill,
 html[data-theme="dark"] .track-dates-badge,
 html[data-theme="dark"] .speaker-badge,
@@ -733,6 +773,12 @@ button {
   padding: 5px 12px;
   letter-spacing: 1px;
   flex-shrink: 0;
+}
+
+html[data-theme="dark"] .live-time-badge {
+  color: #11110f;
+  background: #f4f0e8;
+  border: 1px solid #11110f;
 }
 
 section {
@@ -1448,12 +1494,19 @@ section {
 }
 
 .sec-faq {
-  background: var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
 }
 
+.sec-faq .sec-tag {
+  color: var(--teal);
+  border-color: var(--ink);
+}
 
 .sec-faq .sec-heading {
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .faq-list {
@@ -1461,7 +1514,7 @@ section {
 }
 
 .faq-item {
-  border-bottom: 1px solid rgba(244, 240, 232, .12);
+  border-bottom: 1px solid var(--ink);
 }
 
 .faq-q {
@@ -1475,6 +1528,7 @@ section {
   cursor: pointer;
   text-align: left;
   gap: 20px;
+  color: var(--ink);
 }
 
 .faq-q-mark {
@@ -1496,11 +1550,11 @@ section {
   font-size: 14px;
   letter-spacing: .3px;
   line-height: 1.5;
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .faq-q:hover .faq-question-text {
-  color: var(--lime);
+  color: var(--teal);
 }
 
 .faq-code {
@@ -1508,15 +1562,15 @@ section {
   font-family: var(--ff-mono);
   font-size: 8px;
   letter-spacing: 2px;
-  color: var(--lime);
-  border: 1px solid rgba(244, 240, 232, .25);
+  color: var(--teal);
+  border: 1px solid var(--ink);
   padding: 2px 8px;
   flex-shrink: 0;
 }
 
 .faq-icon {
   font-size: 24px;
-  color: var(--lime);
+  color: var(--teal);
   flex-shrink: 0;
   font-family: var(--ff-mono);
 }
@@ -1527,7 +1581,7 @@ section {
   font-family: var(--ff-ser);
   font-size: 15px;
   line-height: 1.9;
-  color: rgba(244, 240, 232, .55);
+  color: var(--grey);
   padding: 0;
   transition: max-height .4s ease, padding .4s;
 }
@@ -1535,6 +1589,7 @@ section {
 .faq-a.open {
   max-height: 280px;
   padding: 0 0 24px;
+  color: var(--ink);
 }
 
 .sec-contact-cta {
@@ -1635,8 +1690,8 @@ section {
 }
 
 .sec-contact-icc {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   border-bottom: 3px solid var(--lime);
 }
 
@@ -1664,7 +1719,8 @@ section {
   font-size: 13px;
   letter-spacing: .3px;
   padding: 12px 0;
-  border-bottom: 1px solid rgba(26, 26, 26, .15);
+  border-bottom: 1px solid var(--ink);
+  opacity: 0.8;
   color: var(--ink);
   display: flex;
   align-items: flex-start;
@@ -1825,7 +1881,7 @@ section {
 }
 
 .contact-map-wrap {
-  border: 2px solid #2a2a2a;
+  border: 2px solid var(--ink);
   margin-top: 64px;
 }
 
@@ -1858,7 +1914,7 @@ section {
 }
 
 .icc-table {
-  border: 1px solid #1e1e1e;
+  border: 1px solid var(--ink);
 }
 
 .icc-row {
@@ -1866,7 +1922,7 @@ section {
   grid-template-columns: 220px 1fr;
   gap: 24px;
   padding: 16px 20px;
-  border-bottom: 1px solid #1e1e1e;
+  border-bottom: 1px solid var(--ink);
 }
 
 .icc-row:last-child {
@@ -1874,7 +1930,13 @@ section {
 }
 
 .icc-row:hover {
-  background: #141414;
+  background: var(--ink);
+}
+
+.icc-row:hover .icc-label,
+.icc-row:hover .icc-value,
+.icc-row:hover .icc-value strong {
+  color: var(--paper);
 }
 
 .icc-label {
@@ -1882,7 +1944,7 @@ section {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: var(--paper);
+  color: var(--ink);
   text-transform: uppercase;
   padding-top: 2px;
 }
@@ -1890,7 +1952,7 @@ section {
 .icc-value {
   font-family: var(--ff-mono);
   font-size: 12.5px;
-  color: #bbb;
+  color: var(--grey);
   line-height: 1.9;
 }
 
