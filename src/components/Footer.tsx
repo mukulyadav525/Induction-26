@@ -177,13 +177,6 @@ export default function Footer({
             <>
               <div className="footer-stitch-divider" />
               <div className="footer-faq-cluster">
-                <Image
-                  src="/assets/stack-deco/coffee-ring.svg"
-                  alt=""
-                  width={140}
-                  height={140}
-                  className="footer-coffee-stain"
-                />
                 <FooterFaqIndex />
               </div>
             </>
@@ -221,13 +214,6 @@ export default function Footer({
             </span>
           )}
         </div>
-        <Image
-          src="/assets/stack-deco/stamp-induction.svg"
-          alt=""
-          width={275}
-          height={100}
-          className="footer-stamp"
-        />
       </footer>
     </div>
   );
