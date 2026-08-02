@@ -279,6 +279,8 @@ html[data-theme="dark"] .footer-bottom a {
   flex-direction: column;
   justify-content: space-between;
   scale: 0.75;
+  overflow: hidden;
+  border-radius: 32px;
 }
 
 .shared-canvas .container::before,
@@ -954,6 +956,14 @@ section {
   color: var(--grey);
   margin-top: 14px;
   max-width: 440px;
+}
+
+@media (max-width: 900px) {
+  .gallery-sub {
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+  }
 }
 
 .gallery-view-all {
@@ -2484,7 +2494,67 @@ section {
   }
 
   .track-cards {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 4px 0;
+  }
+
+  .track-card {
+    flex: 0 0 68%;
+    scroll-snap-align: start;
+    padding: 28px;
+  }
+
+  .track-card h3 {
+    font-size: 42px;
+  }
+
+  .info-grid {
+    overflow-y: hidden;
+    touch-action: pan-x;
+  }
+
+  .gallery-grid,
+  .campus-grid,
+  .info-grid,
+  .speakers-grid {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 4px 0;
+  }
+
+  .speakers-grid {
+    overflow-y: hidden;
+    touch-action: pan-x;
+  }
+
+  .gallery-photo,
+  .campus-photo,
+  .info-card,
+  .speaker-card {
+    flex: 0 0 60%;
+    scroll-snap-align: start;
+  }
+
+  .gallery-photo {
+    height: 250px;
+  }
+
+  .campus-photo {
+    height: 250px;
+  }
+
+  .speaker-photo {
+    height: 320px;
   }
 
   .mentorship-layout {
@@ -2521,28 +2591,6 @@ section {
   }
 
 
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .info-card:nth-child(5),
-  .info-card:nth-child(6) {
-    grid-column: span 1;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-
-  .gallery-photo.gp-tall {
-    grid-row: span 1;
-  }
-
-  .gallery-photo.gp-wide2 {
-    grid-column: span 2;
-  }
-
   .sched-page-hero {
     padding: 100px 28px 44px;
   }
@@ -2557,6 +2605,10 @@ section {
 
   .gallery-inner {
     padding: 60px 28px 56px;
+  }
+
+  .container {
+    padding: 12px 28px;
   }
 }
 
@@ -4841,43 +4893,31 @@ section {
 
 @media (max-width: 640px) {
   .about-stats {
-    flex-direction: unset;
+    display: flex;
+    flex-direction: row;
     align-items: stretch;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    flex-wrap: nowrap;
   }
 
   .astat {
-    border: 1px solid var(--ink);
     min-width: 0;
+    padding: 14px 6px;
+  }
+
+  .astat-n {
+    font-size: 26px;
+  }
+
+  .astat-l {
+    font-size: 6.5px;
+    letter-spacing: 1.2px;
   }
 
   .astat-divider {
-    width: 100%;
-    height: 2px;
-    display: none;
+    width: 2px;
+    height: auto;
+    display: block;
   }
-}
-
-@media (max-width: 900px) {
-  .speakers-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 520px) {
-  .speakers-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-}
-
-@media (max-width: 640px) {
-  .campus-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-  }
-
 }
 
 .speaker-footer {
@@ -5804,7 +5844,7 @@ section {
   .shared-canvas .container::before,
   .shared-canvas .gallery-inner::before,
   .shared-canvas .landing-card-container::before {
-    inset: -18px;
+    inset: -6px;
   }
 
   .landing-card-header {
