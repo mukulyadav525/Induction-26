@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import type { TeamMember } from "@/lib/teamData";
 
 const FALLBACK_PHOTO = "/photos/mentors/mentor-01.webp";
-const COLUMN_COUNT = 4;
+const COLUMN_COUNT = 5;
 const COLUMN_TOP_OFFSETS = [0, 64, 24, 88];
 const COLUMN_SPEED_MULTIPLIERS = [0.6, -0.9, 1.1, -0.5];
 const PARALLAX_AMPLITUDE_PX = 160;
@@ -49,7 +49,9 @@ export default function OcParallaxGrid({ members }: OcParallaxGridProps) {
           columnRefs.current.forEach((columnElement, columnIndex) => {
             if (!columnElement) return;
             const speedMultiplier =
-              COLUMN_SPEED_MULTIPLIERS[columnIndex % COLUMN_SPEED_MULTIPLIERS.length];
+              COLUMN_SPEED_MULTIPLIERS[
+                columnIndex % COLUMN_SPEED_MULTIPLIERS.length
+              ];
             gsap.set(columnElement, {
               y: self.progress * PARALLAX_AMPLITUDE_PX * speedMultiplier,
               force3D: true,
@@ -75,14 +77,19 @@ export default function OcParallaxGrid({ members }: OcParallaxGridProps) {
             columnRefs.current[columnIndex] = element;
           }}
           className="oc-parallax-column"
-          style={{ marginTop: COLUMN_TOP_OFFSETS[columnIndex % COLUMN_TOP_OFFSETS.length] }}
+          style={{
+            marginTop:
+              COLUMN_TOP_OFFSETS[columnIndex % COLUMN_TOP_OFFSETS.length],
+          }}
         >
           {columnMembers.map((member, memberIndex) => {
             const heightTier =
               PHOTO_HEIGHT_TIERS[memberIndex % PHOTO_HEIGHT_TIERS.length];
             return (
               <div className="oc-parallax-card" key={member.name}>
-                <div className={`oc-parallax-photo oc-parallax-photo--${heightTier}`}>
+                <div
+                  className={`oc-parallax-photo oc-parallax-photo--${heightTier}`}
+                >
                   <Image
                     src={member.photo ?? FALLBACK_PHOTO}
                     alt={member.name}
