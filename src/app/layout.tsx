@@ -28,8 +28,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  const savedTheme = window.localStorage.getItem("induction-theme");
+                  const theme =
+                    savedTheme === "dark" || savedTheme === "light"
+                      ? savedTheme
+                      : "dark";
+                  document.documentElement.setAttribute("data-theme", theme);
+                  document.documentElement.style.colorScheme = theme;
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

@@ -19,7 +19,7 @@ export default function Navbar({
   links,
   showThemeToggle = true,
 }: NavbarProps) {
-  const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
+  const [themeMode, setThemeMode] = useState<"light" | "dark">("dark");
 
   const defaultLinks = [
     { label: "ABOUT", href: "#about" },
@@ -76,7 +76,7 @@ export default function Navbar({
     const resolvedTheme =
       savedTheme === "dark" || savedTheme === "light"
         ? savedTheme
-        : "light";
+        : "dark";
 
     setThemeMode(resolvedTheme);
     document.documentElement.setAttribute("data-theme", resolvedTheme);

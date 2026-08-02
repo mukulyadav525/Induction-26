@@ -391,14 +391,14 @@ export default function ScheduleView({
               margin: "10px 0 1.25rem 0",
               fontFamily: "var(--ff-mono)",
               fontSize: "0.8rem",
-              color: "#555555",
+              color: "var(--grey)",
             }}
           >
             <div style={{ display: "flex", alignItems: "center" }}>
               <span className="spm-badge-cream">LIVE SYNC</span>
               <span>
                 Schedule syncs automatically from the master sheet · Last refreshed:{" "}
-                <strong style={{ color: "#121212" }}>{lastRefreshed}</strong>
+                <strong style={{ color: "var(--ink)" }}>{lastRefreshed}</strong>
               </span>
             </div>
             <button
