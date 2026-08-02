@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SCHEDULE_CONFIG, pad } from "@/lib/scheduleEngine";
 import HeroNoticeButton from "@/components/HeroNoticeButton";
+import Reveal from "@/components/Reveal";
 
 type CountdownValues = {
   days: string;
@@ -24,11 +25,11 @@ export default function HeroSection() {
   const mainTitleStickerRef = useRef<HTMLImageElement>(null);
   const bottomThreeQuotesRef = useRef<HTMLImageElement>(null);
   const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(
-    null,
+    null
   );
   const [countdown, setCountdown] =
     useState<CountdownValues>(INITIAL_COUNTDOWN);
-  const [isLive, setIsLive] = useState(false);
+  const [isLive, setIsLive] = useState(true);
 
   useEffect(() => {
     function tick() {
@@ -67,14 +68,14 @@ export default function HeroSection() {
         y: window.innerWidth <= 640 ? 75 : 0,
         duration: 0.9,
         rotate: 0,
-      },
+      }
     );
 
     animationTimeline.fromTo(
       bottomThreeQuotesRef.current,
       { opacity: 0, x: threeQuotesOffscreenX },
       { opacity: 1, x: threeQuotesRestingX, duration: 0.7 },
-      "-=0.6",
+      "-=0.6"
     );
   }, []);
 
@@ -98,11 +99,16 @@ export default function HeroSection() {
         </div>
 
         <div
-          className={`grunge-countdown-box ${isMobileViewport ? "grunge-top-margin" : ""}`}
+          className={`grunge-countdown-box ${
+            isMobileViewport ? "grunge-top-margin" : ""
+          }`}
         >
-          <span className="grunge-countdown-label">
-            {isLive ? "INDUCTION IS LIVE ●" : "INDUCTION BEGINS IN"}
-          </span>
+          {!isLive && (
+            <span className="grunge-countdown-label">
+              INDUCTION BEGINS IN
+            </span>
+          )}
+
           <div className="grunge-countdown-card">
             <img
               src="/assets/hero/hero_bottom_sticker.webp"
@@ -112,7 +118,9 @@ export default function HeroSection() {
             {!isLive && (
               <div className="grunge-countdown-timer">
                 <div className="grunge-countdown-unit">
-                  <span className="grunge-countdown-num">{countdown.days}</span>
+                  <span className="grunge-countdown-num">
+                    {countdown.days}
+                  </span>
                   <span className="grunge-countdown-lbl">DAYS</span>
                 </div>
                 <span className="grunge-countdown-sep">:</span>
@@ -124,22 +132,22 @@ export default function HeroSection() {
                 </div>
                 <span className="grunge-countdown-sep">:</span>
                 <div className="grunge-countdown-unit">
-                  <span className="grunge-countdown-num">{countdown.mins}</span>
+                  <span className="grunge-countdown-num">
+                    {countdown.mins}
+                  </span>
                   <span className="grunge-countdown-lbl">MIN</span>
                 </div>
                 <span className="grunge-countdown-sep">:</span>
                 <div className="grunge-countdown-unit">
-                  <span className="grunge-countdown-num">{countdown.secs}</span>
+                  <span className="grunge-countdown-num">
+                    {countdown.secs}
+                  </span>
                   <span className="grunge-countdown-lbl">SEC</span>
                 </div>
               </div>
             )}
-            {isLive && (
-              <div className="grunge-countdown-timer grunge-countdown-num">
-                {" "}
-                Induction is Live!
-              </div>
-            )}
+
+            {isLive && <Reveal />}
           </div>
         </div>
 
