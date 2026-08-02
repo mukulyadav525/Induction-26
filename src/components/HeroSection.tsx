@@ -285,13 +285,11 @@ export default function HeroSection() {
             className="grunge-main-sticker-img"
           />
         </div>
-        (
         <div
           className={`grunge-countdown-box ${
             isMobileViewport ? "grunge-top-margin" : ""
           }`}
         >
-          )
           {!isLive && (
             <span className="grunge-countdown-label">INDUCTION BEGINS IN</span>
           )}
