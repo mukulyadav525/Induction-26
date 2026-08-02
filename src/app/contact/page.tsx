@@ -74,8 +74,6 @@ export default function ContactPage() {
       setResultMessage(
         "✕ FAILED. PLEASE EMAIL induction@iiitd.ac.in DIRECTLY.",
       );
-    } finally {
-      if (formStatus !== "success") setFormStatus("idle");
     }
   }
 
@@ -91,7 +89,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={contactNavLinks} activeBtech={true}/>
+      <Navbar
+        isScrolledByDefault={true}
+        links={contactNavLinks}
+        activeBtech={true}
+      />
 
       <PageHero
         title={

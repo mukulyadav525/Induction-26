@@ -279,8 +279,6 @@ html[data-theme="dark"] .footer-bottom a {
   flex-direction: column;
   justify-content: space-between;
   scale: 0.75;
-  overflow: hidden;
-  border-radius: 32px;
 }
 
 .shared-canvas .container::before,
@@ -2511,11 +2509,6 @@ section {
 
   .track-card h3 {
     font-size: 42px;
-  }
-
-  .info-grid {
-    overflow-y: hidden;
-    touch-action: pan-x;
   }
 
   .gallery-grid,
@@ -5839,6 +5832,8 @@ section {
     justify-content: flex-start;
     gap: 18px;
     scale: 1;
+    overflow: hidden;
+    border-radius: 32px;
   }
 
   .shared-canvas .container::before,
