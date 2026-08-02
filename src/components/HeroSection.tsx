@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SCHEDULE_CONFIG, pad } from "@/lib/scheduleEngine";
 import HeroNoticeButton from "@/components/HeroNoticeButton";
-import Reveal from "@/components/Reveal";
+import ArtistRevealTeaser from "@/components/ArtistRevealTeaser";
 
 type CountdownValues = {
   days: string;
@@ -54,7 +54,9 @@ function parseTimeToMinutes(value: string): number | null {
     return Math.round(parseFloat(decimalMatch[1]) * 24 * 60);
   }
 
-  const timeMatch = trimmed.match(/(\d{1,2})(?::(\d{2}))?(?::(\d{2}))?\s*(AM|PM)?/i);
+  const timeMatch = trimmed.match(
+    /(\d{1,2})(?::(\d{2}))?(?::(\d{2}))?\s*(AM|PM)?/i,
+  );
   if (!timeMatch) return null;
 
   let hour = parseInt(timeMatch[1], 10);
@@ -79,7 +81,8 @@ function findCurrentOrUpcomingEvent(
   const currentDayIndex = dayOffset;
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
-  const candidateEvents: Array<{ dayIndex: number; event: ScheduleApiEvent }> = [];
+  const candidateEvents: Array<{ dayIndex: number; event: ScheduleApiEvent }> =
+    [];
   for (const day of days) {
     if (day.dayIndex < currentDayIndex) continue;
     for (const event of day.events) {
@@ -95,15 +98,22 @@ function findCurrentOrUpcomingEvent(
     const startMinutes = parseTimeToMinutes(event.time);
     const endMinutes = parseTimeToMinutes(event.endTime);
     if (startMinutes == null) continue;
-    if (startMinutes <= nowMinutes && (endMinutes == null || nowMinutes <= endMinutes)) {
+    if (
+      startMinutes <= nowMinutes &&
+      (endMinutes == null || nowMinutes <= endMinutes)
+    ) {
       return event;
     }
   }
 
   const upcomingEvents = currentDayEvents
-    .map(({ event }) => ({ event, startMinutes: parseTimeToMinutes(event.time) }))
-    .filter((item): item is { event: ScheduleApiEvent; startMinutes: number } =>
-      item.startMinutes != null,
+    .map(({ event }) => ({
+      event,
+      startMinutes: parseTimeToMinutes(event.time),
+    }))
+    .filter(
+      (item): item is { event: ScheduleApiEvent; startMinutes: number } =>
+        item.startMinutes != null,
     )
     .filter((item) => item.startMinutes >= nowMinutes)
     .sort((a, b) => a.startMinutes - b.startMinutes);
@@ -119,8 +129,13 @@ function findCurrentOrUpcomingEvent(
       dayIndex,
     }))
     .filter(
-      (item): item is { event: ScheduleApiEvent; startMinutes: number; dayIndex: number } =>
-        item.startMinutes != null,
+      (
+        item,
+      ): item is {
+        event: ScheduleApiEvent;
+        startMinutes: number;
+        dayIndex: number;
+      } => item.startMinutes != null,
     )
     .sort((a, b) => a.dayIndex - b.dayIndex || a.startMinutes - b.startMinutes);
 
@@ -136,8 +151,9 @@ export default function HeroSection() {
   );
   const [countdown, setCountdown] =
     useState<CountdownValues>(INITIAL_COUNTDOWN);
-  const [isLive, setIsLive] = useState(false);
-  const [badgeText, setBadgeText] = useState<ScheduleBadgeText>(INITIAL_BADGE_TEXT);
+  const [isLive, setIsLive] = useState(true);
+  const [badgeText, setBadgeText] =
+    useState<ScheduleBadgeText>(INITIAL_BADGE_TEXT);
 
   useEffect(() => {
     function tick() {
@@ -229,8 +245,8 @@ export default function HeroSection() {
 
     animationTimeline.fromTo(
       bottomThreeQuotesRef.current,
-      { opacity: 0, x: threeQuotesOffscreenX },
-      { opacity: 1, x: threeQuotesRestingX, duration: 0.7 },
+      { opacity: 0, x: threeQuotesOffscreenX, y: -284 },
+      { opacity: 1, y: -284, x: threeQuotesRestingX, duration: 0.7 },
       "-=0.6",
     );
   }, []);
@@ -244,7 +260,6 @@ export default function HeroSection() {
       />
       <div className="landing">
         <HeroNoticeButton />
-
         {isLive ? (
           <div className="hero-live-badge-wrapper">
             <img
@@ -262,7 +277,6 @@ export default function HeroSection() {
             </div>
           </div>
         ) : null}
-
         <div className="grunge-main-sticker-box">
           <img
             ref={mainTitleStickerRef}
@@ -271,21 +285,24 @@ export default function HeroSection() {
             className="grunge-main-sticker-img"
           />
         </div>
-
+        (
         <div
           className={`grunge-countdown-box ${
             isMobileViewport ? "grunge-top-margin" : ""
           }`}
         >
+          )
           {!isLive && (
             <span className="grunge-countdown-label">INDUCTION BEGINS IN</span>
           )}
-
           <div className="grunge-countdown-card">
             <img
               src="/assets/hero/hero_bottom_sticker.webp"
               alt=""
               className="grunge-countdown-card-bg"
+              style={{
+                opacity: isLive ? 0 : 1,
+              }}
             />
             {!isLive && (
               <div className="grunge-countdown-timer">
@@ -313,10 +330,9 @@ export default function HeroSection() {
               </div>
             )}
 
-            {/* {isLive && <Reveal />} */}
+            {isLive && <ArtistRevealTeaser />}
           </div>
         </div>
-
         <footer className="grunge-footer-area">
           <div className="grunge-three-quotes-box">
             <img

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import SspField from "@/components/SspField";
 import NoticesManager from "@/components/NoticesManager";
+import ArtistsManager from "@/components/ArtistsManager";
 
 type Track = "BTECH" | "PG" | "ALL";
 
@@ -132,9 +133,9 @@ export default function SupersecretPanel() {
   const [eventsLoading, setEventsLoading] = useState(false);
   const [eventsError, setEventsError] = useState("");
 
-  const [resourceView, setResourceView] = useState<"schedule" | "notices">(
-    "schedule",
-  );
+  const [resourceView, setResourceView] = useState<
+    "schedule" | "notices" | "artists"
+  >("schedule");
 
   const [activeTab, setActiveTab] = useState<"list" | "add" | "edit">("list");
   const [editingEvent, setEditingEvent] = useState<DbEvent | null>(null);
@@ -700,18 +701,23 @@ export default function SupersecretPanel() {
         </header>
 
         <div className="ssp-filter-group ssp-mt ssp-border">
-          {(["schedule", "notices"] as const).map((view) => (
+          {(["schedule", "notices", "artists"] as const).map((view) => (
             <button
               key={view}
               onClick={() => setResourceView(view)}
               className={`ssp-pill ${resourceView === view ? "ssp-pill-active" : ""}`}
             >
-              {view === "schedule" ? "Schedule" : "Notices"}
+              {view === "schedule"
+                ? "Schedule"
+                : view === "notices"
+                  ? "Notices"
+                  : "Artists"}
             </button>
           ))}
         </div>
 
         {resourceView === "notices" && <NoticesManager password={password} />}
+        {resourceView === "artists" && <ArtistsManager password={password} />}
 
         {resourceView === "schedule" && activeTab === "list" && (
           <div className="ssp-list-wrap">
