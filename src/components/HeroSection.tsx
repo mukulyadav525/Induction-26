@@ -151,7 +151,7 @@ export default function HeroSection() {
   );
   const [countdown, setCountdown] =
     useState<CountdownValues>(INITIAL_COUNTDOWN);
-  const [isLive, setIsLive] = useState(true);
+  const [isLive, setIsLive] = useState(false);
   const [badgeText, setBadgeText] =
     useState<ScheduleBadgeText>(INITIAL_BADGE_TEXT);
 
