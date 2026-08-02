@@ -762,10 +762,6 @@ section {
   margin-bottom: 24px;
 }
 
-.sec-heading--light {
-  color: var(--paper);
-}
-
 .about-copy {
   font-family: var(--ff-ser);
   font-size: 16px;
