@@ -117,7 +117,7 @@ export default function Footer({
                   }}
                 >
                   <Image
-                    src="/assets/sponsors/sbi.webp"
+                    src="/assets/sponsors/sbi.jpg"
                     alt="State Bank of India"
                     width={100}
                     height={60}
