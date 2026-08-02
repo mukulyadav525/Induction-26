@@ -58,21 +58,21 @@ export const saOfficeMembers: SAOfficial[] = [
     email: "kanjilal@iiitd.ac.in",
     title: "Dean of Student Affairs (DoSA)",
     adjective: "Visionary",
-    photo: "/photos/sa/SA-1.jpg",
+    photo: "/photos/sa/SA-1.webp",
   },
   {
     name: "Jagadanand Dwivedi",
     email: "jagadanand@iiitd.ac.in",
     title: "Junior Administrative Officer (SG) (Student Affairs)",
     adjective: "Steadfast",
-    photo: "/photos/sa/SA-2.jpg",
+    photo: "/photos/sa/SA-2.webp",
   },
   {
     name: "Sonal Garg",
     email: "sonal@iiitd.ac.in",
     title: "Junior Administrative Officer (SG) (Student Affairs)",
     adjective: "Precise",
-    photo: "/photos/sa/SA-3.jpg",
+    photo: "/photos/sa/SA-3.webp",
   },
 ];
 

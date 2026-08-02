@@ -70,14 +70,6 @@ export default function Footer({
         className="footer-tape footer-tape--right"
       />
       <footer className="site-footer">
-        <div className="footer-top-strip">
-          {stripItems.map((item, i) => (
-            <span key={i}>
-              {item}
-              {i < stripItems.length - 1 && <span className="mq-sep">✦</span>}
-            </span>
-          ))}
-        </div>
         <div className="footer-inner">
           <div className="footer-links-col">
             <div className="footer-brand">

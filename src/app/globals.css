@@ -4321,6 +4321,10 @@ section {
 }
 
 @media (max-width: 900px) {
+  .oc-parallax-container {
+    overflow: hidden;
+  }
+
   .oc-parallax-grid {
     flex-wrap: wrap;
   }
@@ -4423,7 +4427,7 @@ section {
 @media (max-width: 600px) {
   .site-footer .footer-inner {
     background-image: url('/assets/footer/footer_bg.webp');
-    background-position: 30%;
+    background-position: 30% 10%;
   }
 
   .footer-torn-edge {
@@ -4469,6 +4473,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding: 10%;
   flex: 0 0 auto;
 }
 

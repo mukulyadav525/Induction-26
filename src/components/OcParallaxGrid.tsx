@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import type { TeamMember } from "@/lib/teamData";
 
 const FALLBACK_PHOTO = "/photos/mentors/mentor-01.webp";
-const COLUMN_COUNT = 5;
+const DESKTOP_COLUMN_COUNT = 5;
+const MOBILE_COLUMN_COUNT = 2;
+const MOBILE_BREAKPOINT_PX = 900;
 const COLUMN_TOP_OFFSETS = [0, 64, 24, 88];
 const COLUMN_SPEED_MULTIPLIERS = [0.6, -0.9, 1.1, -0.5];
-const PARALLAX_AMPLITUDE_PX = 160;
+const DESKTOP_PARALLAX_AMPLITUDE_PX = 160;
+const MOBILE_PARALLAX_AMPLITUDE_PX = 50;
 const PHOTO_HEIGHT_TIERS = ["short", "tall", "medium"];
 
 interface OcParallaxGridProps {
@@ -28,9 +31,50 @@ function splitIntoColumns(
   return columns;
 }
 
+function createColumnParallax(
+  gridContainer: HTMLDivElement,
+  columnRefs: React.MutableRefObject<(HTMLDivElement | null)[]>,
+  parallaxAmplitudePx: number,
+) {
+  return ScrollTrigger.create({
+    trigger: gridContainer,
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+    onUpdate: (self) => {
+      columnRefs.current.forEach((columnElement, columnIndex) => {
+        if (!columnElement) return;
+        const speedMultiplier =
+          COLUMN_SPEED_MULTIPLIERS[
+            columnIndex % COLUMN_SPEED_MULTIPLIERS.length
+          ];
+        gsap.set(columnElement, {
+          y: self.progress * parallaxAmplitudePx * speedMultiplier,
+          force3D: true,
+        });
+      });
+    },
+  });
+}
+
 export default function OcParallaxGrid({ members }: OcParallaxGridProps) {
   const gridContainerRef = useRef<HTMLDivElement | null>(null);
   const columnRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [columnCount, setColumnCount] = useState(DESKTOP_COLUMN_COUNT);
+
+  useEffect(() => {
+    function updateColumnCountForViewport() {
+      setColumnCount(
+        window.innerWidth <= MOBILE_BREAKPOINT_PX
+          ? MOBILE_COLUMN_COUNT
+          : DESKTOP_COLUMN_COUNT,
+      );
+    }
+    updateColumnCountForViewport();
+    window.addEventListener("resize", updateColumnCountForViewport);
+    return () =>
+      window.removeEventListener("resize", updateColumnCountForViewport);
+  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -39,34 +83,29 @@ export default function OcParallaxGrid({ members }: OcParallaxGridProps) {
 
     const mediaQueryMatcher = gsap.matchMedia();
 
-    mediaQueryMatcher.add("(min-width: 901px)", () => {
-      const scrollTrigger = ScrollTrigger.create({
-        trigger: gridContainer,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-        onUpdate: (self) => {
-          columnRefs.current.forEach((columnElement, columnIndex) => {
-            if (!columnElement) return;
-            const speedMultiplier =
-              COLUMN_SPEED_MULTIPLIERS[
-                columnIndex % COLUMN_SPEED_MULTIPLIERS.length
-              ];
-            gsap.set(columnElement, {
-              y: self.progress * PARALLAX_AMPLITUDE_PX * speedMultiplier,
-              force3D: true,
-            });
-          });
-        },
-      });
+    mediaQueryMatcher.add(`(min-width: ${MOBILE_BREAKPOINT_PX + 1}px)`, () => {
+      const scrollTrigger = createColumnParallax(
+        gridContainer,
+        columnRefs,
+        DESKTOP_PARALLAX_AMPLITUDE_PX,
+      );
+      return () => scrollTrigger.kill();
+    });
 
+    mediaQueryMatcher.add(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`, () => {
+      const scrollTrigger = createColumnParallax(
+        gridContainer,
+        columnRefs,
+        MOBILE_PARALLAX_AMPLITUDE_PX,
+      );
       return () => scrollTrigger.kill();
     });
 
     return () => mediaQueryMatcher.revert();
-  }, [members]);
+  }, [members, columnCount]);
 
-  const memberColumns = splitIntoColumns(members, COLUMN_COUNT);
+  const memberColumns = splitIntoColumns(members, columnCount);
+  columnRefs.current.length = memberColumns.length;
 
   return (
     <div ref={gridContainerRef} className="oc-parallax-grid">
