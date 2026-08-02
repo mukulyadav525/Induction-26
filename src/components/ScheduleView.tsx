@@ -39,15 +39,22 @@ function typeColor(type: string) {
   return TYPE_COLORS[type?.toUpperCase()?.trim()] || DEFAULT_TYPE_COLOR;
 }
 
-function dayLabelToDate(dayLabel: string, allDayLabels: string[]): Date | null {
-  const dayIndex = allDayLabels.indexOf(dayLabel);
-  if (dayIndex < 0) return null;
+// Computes the calendar date for a given dayIndex, based on the induction
+// start date. Using dayIndex directly (rather than searching for a day's
+// position in an array of labels) means this can't drift out of sync if
+// days are ever returned out of order.
+function dayIndexToDate(dayIndex: number): Date {
   const start = SCHEDULE_CONFIG.INDUCTION_START;
   return new Date(
     start.getFullYear(),
     start.getMonth(),
     start.getDate() + dayIndex,
   );
+}
+
+function dayLabelToDate(day: ParsedDay): Date | null {
+  if (!day) return null;
+  return dayIndexToDate(day.dayIndex);
 }
 
 function parseEventTime(timeStr: string, dateObj: Date | null): Date | null {
@@ -99,11 +106,10 @@ function formatClockTime(date: Date | null): string {
 
 function getDefaultDayIndex(days: ParsedDay[]): number {
   if (days.length === 0) return 0;
-  const labels = days.map((d) => d.dayLabel);
   const todayStr = new Date().toDateString();
 
   const todayMatch = days.find((day) => {
-    const dateObj = dayLabelToDate(day.dayLabel, labels);
+    const dateObj = dayLabelToDate(day);
     return dateObj && dateObj.toDateString() === todayStr;
   });
   if (todayMatch) return todayMatch.dayIndex;
@@ -111,7 +117,7 @@ function getDefaultDayIndex(days: ParsedDay[]): number {
   const startOfToday = new Date();
   startOfToday.setHours(0, 0, 0, 0);
   const upcoming = days.find((day) => {
-    const dateObj = dayLabelToDate(day.dayLabel, labels);
+    const dateObj = dayLabelToDate(day);
     return dateObj && dateObj >= startOfToday;
   });
   if (upcoming) return upcoming.dayIndex;
@@ -121,14 +127,13 @@ function getDefaultDayIndex(days: ParsedDay[]): number {
 
 interface EventRowProps {
   event: ParsedEvent;
-  allDayLabels: string[];
-  dayLabel: string;
+  dayIndex: number;
   now: Date;
   index: number;
 }
 
-function EventRow({ event, allDayLabels, dayLabel, now, index }: EventRowProps) {
-  const dateObj = dayLabelToDate(dayLabel, allDayLabels);
+function EventRow({ event, dayIndex, now, index }: EventRowProps) {
+  const dateObj = dayIndexToDate(dayIndex);
   const startTime = parseEventTime(event.time, dateObj);
   const endTime = event.endTime
     ? parseEventTime(event.endTime, dateObj)
@@ -195,12 +200,11 @@ function EventRow({ event, allDayLabels, dayLabel, now, index }: EventRowProps) 
 
 interface LiveBarComputedProps {
   days: ParsedDay[];
-  allDayLabels: string[];
   now: Date;
 }
 
 function computeLiveBarState(props: LiveBarComputedProps) {
-  const { days, allDayLabels, now } = props;
+  const { days, now } = props;
 
   let currentSession: {
     event: ParsedEvent;
@@ -214,7 +218,7 @@ function computeLiveBarState(props: LiveBarComputedProps) {
   } | null = null;
 
   for (const day of days) {
-    const dateObj = dayLabelToDate(day.dayLabel, allDayLabels);
+    const dateObj = dayLabelToDate(day);
     for (const event of day.events) {
       const start = parseEventTime(event.time, dateObj);
       if (!start) continue;
@@ -258,11 +262,8 @@ export default function ScheduleView({
   const [activeDayIndex, setActiveDayIndex] = useState<number>(() =>
     getDefaultDayIndex(initialDays),
   );
-
   const refreshIconRef = useRef<HTMLSpanElement>(null);
   const doRefreshRef = useRef<() => Promise<void>>(() => Promise.resolve());
-
-  const allDayLabels = scheduleDays.map((d) => d.dayLabel);
 
   useEffect(() => {
     const clockInterval = setInterval(() => setNow(new Date()), 30000);
@@ -319,7 +320,6 @@ export default function ScheduleView({
 
   const { currentSession, nextSession } = computeLiveBarState({
     days: scheduleDays,
-    allDayLabels,
     now,
   });
 
@@ -448,8 +448,7 @@ export default function ScheduleView({
                           key={eventIndex}
                           index={eventIndex}
                           event={event}
-                          allDayLabels={allDayLabels}
-                          dayLabel={activeDay.dayLabel}
+                          dayIndex={activeDay.dayIndex}
                           now={now}
                         />
                       ))
