@@ -197,7 +197,8 @@ export default function HeroSection() {
           ...(pgData.days ?? []),
         ];
 
-        const event = findCurrentOrUpcomingEvent(days, new Date());
+        const simulatedTomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+        const event = findCurrentOrUpcomingEvent(days, simulatedTomorrow);
         if (!isCancelled) {
           setBadgeText({
             label: "LIVE",
