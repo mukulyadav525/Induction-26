@@ -268,6 +268,12 @@ export default function HeroSection() {
     );
   }, []);
 
+  const mobileBadgeTextStyles = isMobileViewport
+    ? {
+        transform: "translate(0, 8px)",
+      }
+    : undefined;
+
   return (
     <section ref={heroSectionContainerRef} className="grunge-hero-section">
       <img
@@ -284,11 +290,14 @@ export default function HeroSection() {
               alt="Live now"
               className="hero-live-badge"
             />
-            <div className="hero-live-badge-text">
+            <div
+              className="hero-live-badge-text"
+              style={mobileBadgeTextStyles}
+            >
               {badgeText.event ? (
                 <span className="hero-live-badge-event">{badgeText.event}</span>
               ) : null}
-              {badgeText.venue && isMobileViewport !== true ? (
+              {badgeText.venue ? (
                 <span className="hero-live-badge-venue">{badgeText.venue}</span>
               ) : null}
             </div>
