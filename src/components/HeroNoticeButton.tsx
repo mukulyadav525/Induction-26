@@ -9,6 +9,10 @@ export default function HeroNoticeButton() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const loudspeakerImgRef = useRef<HTMLImageElement>(null);
   const [activeNotices, setActiveNotices] = useState<ActiveNotice[]>([]);
+  const oneHourInMilliseconds = 60 * 60 * 1000;
+  const hasRecentNotice = activeNotices.some(
+    (notice) => Date.now() - new Date(notice.created_at).getTime() < oneHourInMilliseconds,
+  );
 
   useEffect(() => {
     let didUnmount = false;
@@ -88,14 +92,32 @@ export default function HeroNoticeButton() {
         type="button"
         className="hero-notice-btn"
         onClick={openNoticeDialog}
-        aria-label="Open general notices and FAQ"
+        aria-label={
+          hasRecentNotice
+            ? "Open general notices and FAQ, new notice posted"
+            : "Open general notices and FAQ"
+        }
       >
-        <img
-          ref={loudspeakerImgRef}
-          src="/assets/hero/hero_notice_loudspeaker.webp"
-          alt=""
-          className="hero-notice-btn-img"
-        />
+        <span
+          className={
+            hasRecentNotice
+              ? "hero-notice-pulse-wrapper hero-notice-pulse-wrapper--active"
+              : "hero-notice-pulse-wrapper"
+          }
+        >
+          {hasRecentNotice && (
+            <>
+              <span className="hero-notice-pulse-ring" />
+              <span className="hero-notice-pulse-ring hero-notice-pulse-ring--delayed" />
+            </>
+          )}
+          <img
+            ref={loudspeakerImgRef}
+            src="/assets/hero/hero_notice_loudspeaker.webp"
+            alt=""
+            className="hero-notice-btn-img"
+          />
+        </span>
       </button>
 
       <dialog

@@ -9,7 +9,9 @@ import type { TeamMember } from "@/lib/teamData";
 const FALLBACK_PHOTO = "/photos/mentors/mentor-01.webp";
 const DESKTOP_COLUMN_COUNT = 5;
 const MOBILE_COLUMN_COUNT = 2;
+const SINGLE_ROW_COLUMN_COUNT = 1;
 const MOBILE_BREAKPOINT_PX = 900;
+const SINGLE_ROW_BREAKPOINT_PX = 400;
 const COLUMN_TOP_OFFSETS = [0, 64, 24, 88];
 const COLUMN_SPEED_MULTIPLIERS = [0.6, -0.9, 1.1, -0.5];
 const DESKTOP_PARALLAX_AMPLITUDE_PX = 160;
@@ -64,6 +66,10 @@ export default function OcParallaxGrid({ members }: OcParallaxGridProps) {
 
   useEffect(() => {
     function updateColumnCountForViewport() {
+      if (window.innerWidth <= SINGLE_ROW_BREAKPOINT_PX) {
+        setColumnCount(SINGLE_ROW_COLUMN_COUNT);
+        return;
+      }
       setColumnCount(
         window.innerWidth <= MOBILE_BREAKPOINT_PX
           ? MOBILE_COLUMN_COUNT
@@ -92,14 +98,21 @@ export default function OcParallaxGrid({ members }: OcParallaxGridProps) {
       return () => scrollTrigger.kill();
     });
 
-    mediaQueryMatcher.add(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`, () => {
-      const scrollTrigger = createColumnParallax(
-        gridContainer,
-        columnRefs,
-        MOBILE_PARALLAX_AMPLITUDE_PX,
-      );
-      return () => scrollTrigger.kill();
+    mediaQueryMatcher.add(`(max-width: ${SINGLE_ROW_BREAKPOINT_PX}px)`, () => {
+      return () => {};
     });
+
+    mediaQueryMatcher.add(
+      `(min-width: ${SINGLE_ROW_BREAKPOINT_PX + 1}px) and (max-width: ${MOBILE_BREAKPOINT_PX}px)`,
+      () => {
+        const scrollTrigger = createColumnParallax(
+          gridContainer,
+          columnRefs,
+          MOBILE_PARALLAX_AMPLITUDE_PX,
+        );
+        return () => scrollTrigger.kill();
+      },
+    );
 
     return () => mediaQueryMatcher.revert();
   }, [members, columnCount]);
