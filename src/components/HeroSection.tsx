@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SCHEDULE_CONFIG, pad } from "@/lib/scheduleEngine";
 import HeroNoticeButton from "@/components/HeroNoticeButton";
@@ -146,9 +146,7 @@ export default function HeroSection() {
   const heroSectionContainerRef = useRef<HTMLElement>(null);
   const mainTitleStickerRef = useRef<HTMLImageElement>(null);
   const bottomThreeQuotesRef = useRef<HTMLImageElement>(null);
-  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(
-    null,
-  );
+  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(null);
   const [countdown, setCountdown] =
     useState<CountdownValues>(INITIAL_COUNTDOWN);
   const [isLive, setIsLive] = useState(false);
@@ -223,11 +221,25 @@ export default function HeroSection() {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    const updateViewport = () => setIsMobileViewport(mediaQuery.matches);
+
+    updateViewport();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updateViewport);
+      return () => mediaQuery.removeEventListener("change", updateViewport);
+    }
+
+    mediaQuery.addListener(updateViewport);
+    return () => mediaQuery.removeListener(updateViewport);
+  }, []);
+
   useEffect(() => {
     const animationTimeline = gsap.timeline({
       defaults: { ease: "power3.out" },
     });
-    setIsMobileViewport(window.innerWidth <= 640);
     const threeQuotesOffscreenX = window.innerWidth * -0.186;
     const threeQuotesRestingX = window.innerWidth * -0.065;
 
@@ -276,7 +288,7 @@ export default function HeroSection() {
               {badgeText.event ? (
                 <span className="hero-live-badge-event">{badgeText.event}</span>
               ) : null}
-              {badgeText.venue ? (
+              {badgeText.venue && isMobileViewport !== true ? (
                 <span className="hero-live-badge-venue">{badgeText.venue}</span>
               ) : null}
             </div>
