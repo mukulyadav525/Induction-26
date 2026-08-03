@@ -6950,6 +6950,7 @@ section {
 
 @media (max-width: 640px) {
   .reveal-container {
+    margin-top: 32px;
     padding: 8px 10px;
   }
 
