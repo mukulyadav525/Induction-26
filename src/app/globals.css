@@ -2669,6 +2669,65 @@ section {
   }
 }
 
+@media (max-width: 420px) {
+  .track-card {
+    flex: 0 0 88%;
+    padding: 22px 18px;
+  }
+
+  .track-card h3 {
+    font-size: 32px;
+  }
+
+  .track-dates-badge {
+    font-size: 9px;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+
+  .track-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .track-go-btn {
+    font-size: 9px;
+    padding: 10px 16px;
+  }
+
+  .info-card {
+    flex: 0 0 86%;
+    padding: 16px 16px 16px;
+  }
+
+  .info-grid {
+    height: 35vh;
+  }
+
+  .ic-watermark {
+    font-size: 90px;
+    top: -10px;
+  }
+
+  .ic-title {
+    font-size: 24px;
+  }
+
+  .ic-code {
+    font-size: 7px;
+    padding: 2px 6px;
+  }
+
+  .ic-text {
+    font-size: 12.5px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 640px) {
   .nav-logo {
     height: 34px;
