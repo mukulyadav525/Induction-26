@@ -96,13 +96,7 @@ export default function ContactPage() {
       />
 
       <PageHero
-        title={
-          <>
-            GET IN
-            <br />
-            TOUCH
-          </>
-        }
+        title={<>GET IN TOUCH</>}
         subtitles={[
           "QUESTIONS BEFORE OR DURING INDUCTION · THE TEAM MONITORS ALL TRANSMISSIONS",
         ]}

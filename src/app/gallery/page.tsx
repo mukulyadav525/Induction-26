@@ -32,16 +32,14 @@ const allGalleryPhotos = [
 export default function GalleryPage() {
   return (
     <>
-      <Navbar isScrolledByDefault={true} links={galleryNavLinks} activeBtech={true}/>
+      <Navbar
+        isScrolledByDefault={true}
+        links={galleryNavLinks}
+        activeBtech={true}
+      />
 
       <PageHero
-        title={
-          <>
-            INDUCTION &apos;25
-            <br />
-            GALLERY
-          </>
-        }
+        title={<>INDUCTION &apos;25 GALLERY</>}
         subtitles={[
           "THE FULL PHOTO ARCHIVE · A LOOK BACK AT THE YEAR THAT CAME BEFORE YOURS",
           "CAPTURED BY TASVEER, THE MEDIA SOCIETY",
