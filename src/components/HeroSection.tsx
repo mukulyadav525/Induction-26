@@ -303,6 +303,10 @@ export default function HeroSection() {
             </div>
           </div>
         ) : null}
+        <div className="hero-announcement-banner">
+          <span>Hope you liked today&apos;s events &amp; special Sufi Night!</span>
+          <span className="hero-announcement-highlight">See u guys tomorrow</span>
+        </div>
         <div className="grunge-main-sticker-box">
           <img
             ref={mainTitleStickerRef}
