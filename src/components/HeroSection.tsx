@@ -233,7 +233,12 @@ export default function HeroSection() {
 
     animationTimeline.fromTo(
       mainTitleStickerRef.current,
-      { opacity: 0, scale: 0, y: -120, rotate: 359 },
+      {
+        opacity: window.innerWidth <= 640 ? 1 : 0,
+        scale: 0,
+        y: -120,
+        rotate: 359,
+      },
       {
         opacity: 1,
         scale: 1,
@@ -245,8 +250,8 @@ export default function HeroSection() {
 
     animationTimeline.fromTo(
       bottomThreeQuotesRef.current,
-      { opacity: 0, x: threeQuotesOffscreenX, y: -284 },
-      { opacity: 1, y: -284, x: threeQuotesRestingX, duration: 0.7 },
+      { opacity: 0, x: threeQuotesOffscreenX, y: -224 },
+      { opacity: 1, y: -224, x: threeQuotesRestingX, duration: 0.7 },
       "-=0.6",
     );
   }, []);

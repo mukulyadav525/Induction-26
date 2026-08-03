@@ -709,7 +709,7 @@ button {
 }
 
 .live-bar.is-live .live-dot {
-  background: #fff;
+  background: #cc0000;
   animation: pulse 1.4s ease-in-out infinite;
 }
 
@@ -2432,7 +2432,8 @@ section {
   align-items: center;
   justify-content: space-between;
   background: var(--lime);
-  border-bottom: 2px solid var(--ink);
+  color: var(--fixed-dark-surface);
+  border-bottom: 2px solid var(--fixed-dark-surface);
   padding: 14px 24px;
   font-family: var(--ff-disp);
   font-size: 20px;
@@ -5788,7 +5789,7 @@ section {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 15px 22px rgba(0, 0, 0, 0.55));
-  transform: translateY(-312px);
+  transform: translateY(-284px);
 }
 
 @media (max-width: 860px) {
