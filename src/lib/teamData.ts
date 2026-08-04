@@ -289,6 +289,14 @@ export const ocSubsections: OcSubsection[] = [
         photo: "/photos/team/AMBIENCE/NAKUL_ZUTSHI.webp",
         email: "nakul24361@iiitd.ac.in",
       },
+
+      {
+        name: "Hiten Bisarwal",
+        role: "Ambience OC",
+        department: "AMBIENCE",
+        photo: "/photos/team/AMBIENCE/HITEN.jpeg",
+        email: "hiten24263@iiitd.ac.in",
+      },
     ],
   },
   {

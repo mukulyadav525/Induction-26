@@ -28,7 +28,6 @@ export async function POST(request: NextRequest) {
   const web3FormsResponse = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: {
-      "User-Agent": "Mozilla/5.0 (compatible; Induction26Server/1.0)",
       Accept: "application/json",
     },
     body: outgoingFormData,
