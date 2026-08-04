@@ -146,7 +146,9 @@ export default function HeroSection() {
   const heroSectionContainerRef = useRef<HTMLElement>(null);
   const mainTitleStickerRef = useRef<HTMLImageElement>(null);
   const bottomThreeQuotesRef = useRef<HTMLImageElement>(null);
-  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(null);
+  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(
+    null,
+  );
   const [countdown, setCountdown] =
     useState<CountdownValues>(INITIAL_COUNTDOWN);
   const [isLive, setIsLive] = useState(false);
@@ -291,10 +293,7 @@ export default function HeroSection() {
               alt="Live now"
               className="hero-live-badge"
             />
-            <div
-              className="hero-live-badge-text"
-              style={mobileBadgeTextStyles}
-            >
+            <div className="hero-live-badge-text" style={mobileBadgeTextStyles}>
               {badgeText.event ? (
                 <span className="hero-live-badge-event">{badgeText.event}</span>
               ) : null}
@@ -304,10 +303,10 @@ export default function HeroSection() {
             </div>
           </div>
         ) : null}
-        <div className="hero-announcement-banner">
+        {/* <div className="hero-announcement-banner">
           <span>Hope you liked today&apos;s events &amp; special Sufi Night!</span>
           <span className="hero-announcement-highlight">See u guys tomorrow</span>
-        </div>
+        </div> */}
         <div className="grunge-main-sticker-box">
           <img
             ref={mainTitleStickerRef}
