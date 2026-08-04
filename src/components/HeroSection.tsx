@@ -69,16 +69,27 @@ function parseTimeToMinutes(value: string): number | null {
   return hour * 60 + minute;
 }
 
+function getCurrentDayIndex(now: Date): number {
+  const startDate = new Date(
+    SCHEDULE_CONFIG.INDUCTION_START.getFullYear(),
+    SCHEDULE_CONFIG.INDUCTION_START.getMonth(),
+    SCHEDULE_CONFIG.INDUCTION_START.getDate(),
+  );
+  const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  return Math.max(
+    0,
+    Math.floor(
+      (currentDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000),
+    ),
+  );
+}
+
 function findCurrentOrUpcomingEvent(
   days: ScheduleApiDay[],
   now: Date,
 ): ScheduleApiEvent | null {
-  const startTime = SCHEDULE_CONFIG.INDUCTION_START.getTime();
-  const dayOffset = Math.max(
-    0,
-    Math.floor((now.getTime() - startTime) / (24 * 60 * 60 * 1000)),
-  );
-  const currentDayIndex = dayOffset;
+  const currentDayIndex = getCurrentDayIndex(now);
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
   const candidateEvents: Array<{ dayIndex: number; event: ScheduleApiEvent }> =
